@@ -19,13 +19,11 @@
 
 ---
 
-## آرشیو نسخه‌های پیشین (Legacy Versions Archive)
+## تاریخچه و نسخه‌های پیشین (Version History)
 
-نسخه‌های پیشین به منظور حفظ تاریخچه پروژه در پوشه `archive/` نگهداری می‌شوند:
-- `archive/Rad-e-Hoor-v4.3.md` (نسخه اولیه طرح ۴.۳)
-- `archive/Rad-e-Hoor_Proposal_and_Scenario.md` (طرح اولیه و سناریوی خام)
-- `archive/Rad-e-Hoor_Proposal_v4.4.md` (طرح نسخه ۴.۴ با قواعد فنی اولیه)
-- `archive/Rad-e-Hoor_Full_Screenplay_FA.md` (نسخه پیشین سناریو با پیش‌فرض رمانتیک اولیه)
+تمام نسخه‌ها و مراحل قبلی توسعه پروژه (نسخه‌های ۴.۳، ۴.۴ و فایل‌های سناریوی پیشین) از طریق تاریخچه‌ی گیت (Git Commit History) در دسترس و محفوظ هستند:
+- `commit 6eaf79b` (v4.4 و سناریوی اولیه)
+- `commit b02435d` (نسخه اولیه پروژه)
 
 ---
 
