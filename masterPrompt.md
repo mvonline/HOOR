@@ -267,7 +267,7 @@ Before broad game production, the studio must actually provide:
 1. **Ingestion** — read/index `gameStory/` (path, title, hash/mtime, section summaries).  
 2. **Analysis pipeline** — English analysis doc with citations; assumptions labeled.  
 3. **Planning pipeline** — Rad-e Hoor–specific production plan (not a wrong-genre template).  
-4. **Persistence** — plan, tasks, approvals, costs on disk/DB.  
+4. **Persistence** — plan, tasks, approvals, costs in **embedded SQLite** (`projects/<id>/data/studio.db`); no database server to install.  
 5. **Human approval gate** — game production tasks do not run without approval.  
 6. **Task runner** — role assignment, I/O, acceptance, limited retry.  
 7. **Validation hooks** — automated tests for ingestion, approval, task creation, failure recovery, story updates.  
@@ -279,7 +279,7 @@ Before broad game production, the studio must actually provide:
 | --- | --- | --- | --- |
 | Studio language | **Python 3** in `.venv/` | Human requested venv isolation; fast to test; good for pipelines | TypeScript/Node |
 | Studio packaging | `requirements.txt` (+ optional `requirements-dev.txt`) | Reproducible installs into `.venv` only | Poetry/uv lockfiles later |
-| Persistence | SQLite or versioned JSONL | Simple, inspectable | Postgres |
+| Persistence | **Embedded SQLite file** (`studio.db`) | Zero server install; ships with Python | JSONL only if SQLite must be avoided |
 | Interface | CLI first + local HTTP | Agent-friendly | UI later |
 | Fast audio prototypes | Web Audio (tests 1 & 3) | Matches Playtest Roadmap | Immediate Unity/Godot |
 | Main game engine | ADR after audio playtest signal | Do not lock early | Unity / Godot / Unreal |
@@ -298,55 +298,36 @@ Before broad game production, the studio must actually provide:
 
 Ship in lockable layers. Later layers start only after earlier acceptance (or a signed human exception).
 
-### 8.1 Layer C0 — Audio playtest prototypes (absolute priority)
+### 8.1 Fine-grained production phases (binding order)
 
-Per `Playtest_Roadmap.md`:
+The studio production plan uses **P0–P5** (more precise than coarse C0–C4 labels). Mapping: P1≈C0, P2≈C1, P3≈C2, P4≈C3, P5≈C4.
 
-| Test | Content | Stack hint in design |
-| --- | --- | --- |
-| 1 | Echo discrimination in a corridor | Web / Web Audio |
-| 2 | Night stealth with tarantulas and shelter | Unity (or ADR engine) |
-| 3 | Hand-in-darkness + 10s window | Web |
-| 4 | Ledge (optional; outside Go/No-Go) | Main engine |
+| Phase | Name | Start when | Exit gate |
+| --- | --- | --- | --- |
+| **P0** | Studio MVP | now | pytest + align/approve path |
+| **P1** | Hearing proof | after P0 | N=12 playtests + **Go/No-Go** (`P1-13`) |
+| **P2** | Vertical slice | Go = pass | Slice acceptance report (`P2-07`) |
+| **P3** | Campaign blockout | after P2 gate | Spine + Ch9 companions + E01–E07 wired |
+| **P4** | Content & presentation | after P2 (art can draft in parallel carefully) | Integrated content build |
+| **P5** | Ship | after P4 | Human release gate |
 
-Build requirements: timed event log + CSV; hide failure cause until after the probe question; no raw mic upload/storage.
+**P1 internal order (do not skip):**
 
-**Go/No-Go:** pass 1–3 → vertical slice; one fail → redesign that mechanic; two+ fails → concept review without adding new systems.
+1. `game/c0-web` scaffold  
+2. Telemetry + CSV  
+3. Playtest 1 scene → balance → failure-probe UX  
+4. Playtest 3 window (+ optional local mic level)  
+5. Pilot 2–3 → engine **shortlist** (not lock)  
+6. Playtest 2 stealth gray-box  
+7. Protocol pack → N=12 → Go/No-Go  
 
-### 8.2 Layer C1 — Mechanical vertical slice
+Per `Playtest_Roadmap.md`: Web for tests 1 & 3; Unity/shortlisted engine for test 2; test 4 optional outside Go/No-Go. Timed logs, CSV, hide fail cause until after probe; no raw mic storage.
 
-Per current README intent: short gray-box of
+**Go/No-Go:** pass 1–3 → P2; one fail → two-week redesign of that mechanic; two+ fails → concept review; **no new systems**.
 
-1. Vehicle shelter  
-2. Plate defense  
-3. Strap rescue  
-4. Three silence paths (at least playable gray-box)
+**P2 order:** engine ADR lock → hearing port → shelter → plate → strap → three silences → a11y → slice report.
 
-Plus: Persian readability path; English path even if incomplete; essential information solvable without headphones/mic; acceptance report cites Rules §§3 & 7 and Art SE-02 / SE-05 / SE-06.
-
-### 8.3 Layer C2 — Campaign blockout
-
-- Canyon space on SE→NW axis  
-- Gray chapters within design time budgets  
-- Vehicle 7 and winch/hand-puller per Rules §4.1.1  
-- Companions without illegal spawn/despawn  
-
-Final art not required; path, sound, and danger readability are.
-
-### 8.4 Layer C3 — Content & integration
-
-- Dialogue/tapes from screenplay  
-- Character/environment sheets from Art/Character bibles  
-- Echoes only E01–E07 unless a new sourced row is approved  
-- Accessibility, captions, reduced motion  
-
-### 8.5 Layer C4 — PC ship prep
-
-- Target hardware performance  
-- Steam packaging  
-- Broader playtests, localization, marketing  
-
-Do not start mass final-asset production before clearing C0–C1.
+Do not mass-produce final art/music before **P2-07**. Do not lock main engine before **P1-13**.
 
 ---
 
