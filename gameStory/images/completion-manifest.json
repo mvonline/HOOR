@@ -1,0 +1,512 @@
+﻿{
+    "tool":  "built-in image_gen",
+    "status":  "completed",
+    "completed":  "2026-11-02T15:05:50Z",
+    "assetCount":  56,
+    "assets":  [
+                   {
+                       "id":  "CH11",
+                       "group":  "animals",
+                       "title":  "Dara — base anatomy",
+                       "filename":  "dara-camel-base-v1.png",
+                       "bytes":  2104204,
+                       "sha256":  "1D5B91F91BCD22DBEE933BE8865227E70255D23218F8B560F41E63F6F892C70B",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH11-TACK",
+                       "group":  "animals",
+                       "title":  "Dara — saddle and secured panniers",
+                       "filename":  "dara-camel-tack-v1.png",
+                       "bytes":  2109069,
+                       "sha256":  "965FE415F3B0925537864EF916FF6EFE329DCA134E6E2421591F3F646BF3AA8A",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH07",
+                       "group":  "vehicles",
+                       "title":  "Pirmard 7 — current intact vehicle",
+                       "filename":  "pirmard-7-intact-v1.png",
+                       "bytes":  2638260,
+                       "sha256":  "5C228FFC39C5931D3E6AE217BD24EB3AA0D7EDD1644F3608E878669C05309899",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH01",
+                       "group":  "vehicles",
+                       "title":  "Earlier car 1 — broken rear glass and open driver door",
+                       "filename":  "pirmard-7-camp-window-door-open-v1.png",
+                       "bytes":  2655668,
+                       "sha256":  "768529C8C3038F62AECE915D84CE4D538B089533D39C297E7611663A67A1ED21",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH02",
+                       "group":  "vehicles",
+                       "title":  "Earlier car 2 — sand damage, unsealed body",
+                       "filename":  "pirmard-7-sand-reig-v1.png",
+                       "bytes":  2840951,
+                       "sha256":  "50171B6A6774051C9EECE2F025823B0139E09CC121E3E42C6FF11D662DA278C3",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH03",
+                       "group":  "vehicles",
+                       "title":  "Earlier car 3 — overturned at tunnel",
+                       "filename":  "pirmard-7-overturned-v1.png",
+                       "bytes":  3210644,
+                       "sha256":  "E6409D3B8B15FA0A4923F0570EDD92B8F3352AB83EE3BA5AF500C37296333950",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH04",
+                       "group":  "vehicles",
+                       "title":  "Earlier car 4 — crushed roof seam",
+                       "filename":  "pirmard-7-crushed-roof-v1.png",
+                       "bytes":  2672278,
+                       "sha256":  "F3AB74081F0BD39E6716F1EFD94FE0D2F91B938F691030870D8A52BDBFBE9C71",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH05",
+                       "group":  "vehicles",
+                       "title":  "Earlier car 5 — detached rear door",
+                       "filename":  "pirmard-7-blocked-cabin-v1.png",
+                       "bytes":  2500109,
+                       "sha256":  "7BB1F917B017798ED8DB847DBF6460B77FD5C5D48BF98BF79D0BEADC03C94E55",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH06",
+                       "group":  "vehicles",
+                       "title":  "Earlier car 6 — damaged in side pocket",
+                       "filename":  "pirmard-7-earlier-trapped-open-body-v2.png",
+                       "bytes":  2849002,
+                       "sha256":  "FBA1195384E998270C2E0EC0C926DFCFEA114CDCD345723B27C6496F52013174",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH07-TRAP",
+                       "group":  "vehicles",
+                       "title":  "Current car 7 — trapped but intact shelter",
+                       "filename":  "pirmard-7-final-trap-v1.png",
+                       "bytes":  3117439,
+                       "sha256":  "28A1B64ED3A4195B724CFF65278DDE64A2F41491BC4AE95854CF573AEF8188A8",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH07-CAB",
+                       "group":  "vehicles",
+                       "title":  "Pirmard — cockpit and emergency cutoff",
+                       "filename":  "pirmard-7-cockpit-v1.png",
+                       "bytes":  2858403,
+                       "sha256":  "848E2C721AE350E626A53DFD5ACF796B6186C71F3C13056128230388EE0681A2",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH-TEAM",
+                       "group":  "vehicles",
+                       "title":  "Expedition support vehicle",
+                       "filename":  "vehicle-team-support-v2.png",
+                       "bytes":  2355314,
+                       "sha256":  "6511292AB5C8C6EC99A8972EA1D0CC0AB58509069E2891F9693A9B8C8B26E8A9",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH-HAMBAR",
+                       "group":  "vehicles",
+                       "title":  "Hambar recovery truck",
+                       "filename":  "vehicle-hambar-truck-v2.png",
+                       "bytes":  2436103,
+                       "sha256":  "06F91D4CCCC20FE0320FDAAF2C21E2E3B6895D8F48FFAFEAAAC4AE3396DEB823",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH-AID",
+                       "group":  "vehicles",
+                       "title":  "Outside aid vehicle",
+                       "filename":  "vehicle-aid-support-v1.png",
+                       "bytes":  2501686,
+                       "sha256":  "A34F5ADF7BA688684601F582B92C49A7ECB41DBE46F6799034894853C0CB3152",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "VH-TRANSPORT",
+                       "group":  "vehicles",
+                       "title":  "Optional transport vehicle — empty prop",
+                       "filename":  "vehicle-optional-transport-v1.png",
+                       "bytes":  2397281,
+                       "sha256":  "BDB2DA43FE500A9E97425A8F20F436F5F9FF4A74CC91DCD193176F3A4286B9C2",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH04",
+                       "group":  "characters",
+                       "title":  "Kian",
+                       "filename":  "kian-v2.png",
+                       "bytes":  2007577,
+                       "sha256":  "2F605FF75ED177F2848394E26B7920C6D8B829327AC421312AFA4255250914A6",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH05",
+                       "group":  "characters",
+                       "title":  "Rostam",
+                       "filename":  "rostam-v2.png",
+                       "bytes":  1994331,
+                       "sha256":  "133A5F43992ED6872DB893BE2A56AECF6A3041DCE933875299490537B4BD60B0",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH06",
+                       "group":  "characters",
+                       "title":  "Farhad",
+                       "filename":  "farhad-v2.png",
+                       "bytes":  1843658,
+                       "sha256":  "E88B2DFAFA351408D30C35DD25321E46F7827A2500EC959F725100F7BC94AD64",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH07",
+                       "group":  "characters",
+                       "title":  "Qasem",
+                       "filename":  "qasem-v2.png",
+                       "bytes":  1981284,
+                       "sha256":  "6A023DA6387B2EE7FC82A20E6FC42D1CB3B210E0AD3C68EEBADD7C9B52D754A3",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH08",
+                       "group":  "characters",
+                       "title":  "Roya",
+                       "filename":  "roya-v2.png",
+                       "bytes":  1929420,
+                       "sha256":  "1EEB269AD46B57F8CD17D177F5A766D5D6758E76D902635A95F44D7EED3115D8",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH09",
+                       "group":  "characters",
+                       "title":  "Yunus — healthy H01",
+                       "filename":  "yunus-rescued-v2.png",
+                       "bytes":  1991198,
+                       "sha256":  "869DAD764BB8AF7C4FA988E88448DC6123CB9FAA5E113F8DB2F08B08299560F6",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH10",
+                       "group":  "characters",
+                       "title":  "Nader — accessible work concept",
+                       "filename":  "nader-seated-v2.png",
+                       "bytes":  2219207,
+                       "sha256":  "71A861E026BD3F6405617C585574F9BA1B27F9A507C182ACD9D745A292C31A89",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH12",
+                       "group":  "creatures",
+                       "title":  "Young Hoor creature",
+                       "filename":  "hoor-juvenile-v2.png",
+                       "bytes":  2303443,
+                       "sha256":  "C623C188C34876ED5D24833E050A85AA564FBC5CACD82FC73EEF3780BEA2711F",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH13",
+                       "group":  "creatures",
+                       "title":  "Adult Hoor creature",
+                       "filename":  "hoor-adult-v2.png",
+                       "bytes":  2338176,
+                       "sha256":  "2EB296E0A8413F66B182923D96C410D9A68A28F088083D1FDFC97727B825682A",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "CH14",
+                       "group":  "creatures",
+                       "title":  "Giant Hoor creature",
+                       "filename":  "hoor-giant-v2.png",
+                       "bytes":  2056000,
+                       "sha256":  "0952038F9C0FEA1DADFAAB1D334B002499B8195A6D492008D36F026BCFD22B7B",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "NPC-M01",
+                       "group":  "supporting-cast",
+                       "title":  "Qanat worker — about 45",
+                       "filename":  "npc-peripheral-01-v1.png",
+                       "bytes":  1955153,
+                       "sha256":  "90EBCB98620797CBA6737F1C501E89FBFD6C2E26F4B4A6123EAEF3DE2917DF57",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "NPC-M02",
+                       "group":  "supporting-cast",
+                       "title":  "Qanat worker — about 55",
+                       "filename":  "npc-peripheral-02-v1.png",
+                       "bytes":  2047067,
+                       "sha256":  "392BA7F7968EE4E21D8B9EFCCE419218B5B52EB1F27C67D90D70EDD9CE669B67",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "NPC-DRIVER",
+                       "group":  "supporting-cast",
+                       "title":  "Familiar freight driver",
+                       "filename":  "npc-driver-v1.png",
+                       "bytes":  2009624,
+                       "sha256":  "216FEE5A7207C57CA22DDFE2FEBB47F6D0D6B809A6E032A1A07667C1D985FA2F",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "NPC-DARA",
+                       "group":  "supporting-cast",
+                       "title":  "Dara handler",
+                       "filename":  "npc-dara-associate-v1.png",
+                       "bytes":  1970657,
+                       "sha256":  "C08494E23EBD7A350098A2D984053AE1340CA913EA3229D855A2D4E8963934DE",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "NPC-WATER1",
+                       "group":  "supporting-cast",
+                       "title":  "Water-turn recipient A",
+                       "filename":  "npc-water-seller-01-v1.png",
+                       "bytes":  1932460,
+                       "sha256":  "B120E586DD5E1C4993CA94581B33721561991CDBDCEA52F22FD02E9C7E1F5237",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "NPC-WATER2",
+                       "group":  "supporting-cast",
+                       "title":  "Water-turn recipient B",
+                       "filename":  "npc-water-seller-02-v1.png",
+                       "bytes":  1880375,
+                       "sha256":  "A92AF00ABCF879F0E8D8B5D3F84A2035BE16C8F0D28D2865E8A10673FA2CD56A",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "NPC-CARE",
+                       "group":  "supporting-cast",
+                       "title":  "Wildlife caretaker",
+                       "filename":  "npc-field-caretaker-v1.png",
+                       "bytes":  2026726,
+                       "sha256":  "207E676EC0347DDA5B1F77E5744010346C1948B9AFFE0AAE4A99C930A7F97260",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "NPC-GUARD",
+                       "group":  "supporting-cast",
+                       "title":  "Recovery-yard guard",
+                       "filename":  "npc-workshop-guard-v1.png",
+                       "bytes":  1939594,
+                       "sha256":  "B0B7340A8F56F5CA37166C67B5D6A2421A6F64671116BE42AFBF16FC820F8644",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L01",
+                       "group":  "backgrounds",
+                       "title":  "Workshop alley, Shahdad",
+                       "filename":  "env-l01-garage-v1.png",
+                       "bytes":  3043677,
+                       "sha256":  "E6DD252E6E1B399AE9CBBE0F479DC49FEDA9AFF7E86E3696AD1E5CA5B38051CA",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L02",
+                       "group":  "backgrounds",
+                       "title":  "Water distribution yard and payab",
+                       "filename":  "env-l02-payab-v1.png",
+                       "bytes":  3464792,
+                       "sha256":  "C0FBBEC6958F0AE10CB3E20C85470C4325C39004EB7AAF332F70D83D34F81EC0",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L03",
+                       "group":  "backgrounds",
+                       "title":  "Logistics courtyard, Shafiabad reference region",
+                       "filename":  "env-l03-logistics-yard-v1.png",
+                       "bytes":  2996651,
+                       "sha256":  "69ED570FC7A3A68FB3DC74D629815F91084211739EA9EF648BB38DBC9B6608AD",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L04",
+                       "group":  "backgrounds",
+                       "title":  "Roadside caravanserai memory",
+                       "filename":  "env-l04-roadside-caravanserai-v1.png",
+                       "bytes":  3164532,
+                       "sha256":  "38F95C3856B58E8B0E8670916027D4A7306A28F1041A565C41F891B423DB0775",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L05",
+                       "group":  "backgrounds",
+                       "title":  "Kalut route markers",
+                       "filename":  "env-l05-kalut-markers-v1.png",
+                       "bytes":  3255512,
+                       "sha256":  "BF58FBACC8A7F8B604327B4F8E40D7EEF49697B2EA51520EF7464BEEF05CCA9F",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L06",
+                       "group":  "backgrounds",
+                       "title":  "Nebkha field sensor stop",
+                       "filename":  "env-l06-nebkha-sensor-v1.png",
+                       "bytes":  3473755,
+                       "sha256":  "257043CF3593DF5E9832A9FB49199129C68469B2E59EFFAE5889DF632D54CF91",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L07",
+                       "group":  "backgrounds",
+                       "title":  "Salt-crust route diversion",
+                       "filename":  "env-l07-night-diversion-v1.png",
+                       "bytes":  3245663,
+                       "sha256":  "EE98D85820F16C3D37D5CBDFC775462EF318A2BE35ED7A25D63D951C0952597C",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L08",
+                       "group":  "backgrounds",
+                       "title":  "Stony plain radio stop",
+                       "filename":  "env-l08-radio-relay-v1.png",
+                       "bytes":  3213580,
+                       "sha256":  "350694559EDA54C2B3EE3F632E2B31D7E2E2204CAD858829954A5BAFF566221C",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L09",
+                       "group":  "backgrounds",
+                       "title":  "Recording room near Shahdad archaeology area",
+                       "filename":  "env-l09-records-room-v1.png",
+                       "bytes":  2646318,
+                       "sha256":  "90A9E53B8D002C8714747B7F078B7894BB661257F0BB686EB73B856DA653E56D",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L10",
+                       "group":  "backgrounds",
+                       "title":  "Shaded Sirch stopping place",
+                       "filename":  "env-l10-road-memory-v1.png",
+                       "bytes":  3363838,
+                       "sha256":  "105C8BA4A3A255559C0F62CA4B7A2253F0105C615CCB780AF9DF18F929976F3F",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-O01",
+                       "group":  "backgrounds",
+                       "title":  "Hambar recovery/crane yard",
+                       "filename":  "env-o01-service-yard-v1.png",
+                       "bytes":  2779750,
+                       "sha256":  "3EAD261087142EB58E44BB7CBBD0783759E19602C4225B9F2BAD57D2AE8E4FF9",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-O02",
+                       "group":  "backgrounds",
+                       "title":  "Maintained wildlife water point",
+                       "filename":  "env-o02-salt-flat-branch-v1.png",
+                       "bytes":  3383856,
+                       "sha256":  "A833124A09462EBA871E8C276DDAA85930878DB23D56180D9D6B54E615B3E181",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-O03",
+                       "group":  "backgrounds",
+                       "title":  "Wildlife transport observation branch",
+                       "filename":  "env-o03-mirror-route-v1.png",
+                       "bytes":  3400376,
+                       "sha256":  "19ED3145C86956425676CFB5C97EA1F8B345C102A3363FE7E526FD64EE0BAAB6",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-C02",
+                       "group":  "backgrounds",
+                       "title":  "Expedition camp and repeated vehicle evidence",
+                       "filename":  "env-c02-expedition-camp-v1.png",
+                       "bytes":  2763841,
+                       "sha256":  "ECEBDF0F2F86E97387DD8338EC4F123F2D98AA52AD02858F5280DF7E4EF2FE75",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-C03",
+                       "group":  "backgrounds",
+                       "title":  "Natural erosion tunnel and Bahram annex",
+                       "filename":  "env-c03-erosion-tunnel-v1.png",
+                       "bytes":  3102649,
+                       "sha256":  "146C1489E33312FE4CE68914B5807304119B2C80BB926839DD6321F52167E3F3",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-C05",
+                       "group":  "backgrounds",
+                       "title":  "Dara courtyard, descent and service-road reunion",
+                       "filename":  "env-c05-dara-courtyard-v1.png",
+                       "bytes":  2630869,
+                       "sha256":  "816F3E0D2A6C5A1AFDCC0C31451DCD24BC1123ADD9DFE090F62F4FC8FF615EA3",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-C06",
+                       "group":  "backgrounds",
+                       "title":  "Field ledge and R-17 evidence station",
+                       "filename":  "env-c06-r17-field-ledge-v1.png",
+                       "bytes":  2761556,
+                       "sha256":  "A03F75E4EE086FBA548D9DD1584516D343426ED8AC0FFD88AD668B56150704F1",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-C07",
+                       "group":  "backgrounds",
+                       "title":  "Heart of Hoor and normal-time service perimeter",
+                       "filename":  "env-c07-core-perimeter-v1.png",
+                       "bytes":  3202655,
+                       "sha256":  "89C48EABA8F9ED9B9E6799D203EA7619FDDA747F0B45E1176D353CA4A4CEA830",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-C08",
+                       "group":  "backgrounds",
+                       "title":  "Parallel collapse routes and cooperative ledge rescue",
+                       "filename":  "env-c08-collapse-routes-v1.png",
+                       "bytes":  3034495,
+                       "sha256":  "85669B23A8E5DE736559398E3C55D4B164ABB939BFC2612D0061C2259EC76FC6",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-C09",
+                       "group":  "backgrounds",
+                       "title":  "Final stable gate, circle, ledge and gorge",
+                       "filename":  "env-c09-final-gate-v1.png",
+                       "bytes":  3138552,
+                       "sha256":  "52185A07C9EBD88D0BA6A7E0715CF9952399F8FE172EEB23FAB9D32BF64DBAE8",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-C10",
+                       "group":  "backgrounds",
+                       "title":  "Outside aid and Hambar denouement",
+                       "filename":  "env-c10-outside-aid-v1.png",
+                       "bytes":  3630684,
+                       "sha256":  "2512958C747EC62781B3D5BC58B2BACFB33A1AFD795E28A0200AC170B720DCEE",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-DUNE",
+                       "group":  "backgrounds",
+                       "title":  "Dune stop — optional boarding/rest",
+                       "filename":  "env-dune-rest-stop-v1.png",
+                       "bytes":  2396674,
+                       "sha256":  "9D906C83F995A6BCFDFDC25F6FEBBCD6A0B26D0F99A83E93A9A0D02FD17711FF",
+                       "status":  "generated"
+                   },
+                   {
+                       "id":  "ENV-L05-NIGHT",
+                       "group":  "backgrounds",
+                       "title":  "Kalut route — night return/photo variant",
+                       "filename":  "env-l05-rescue-night-v1.png",
+                       "bytes":  2359573,
+                       "sha256":  "1A87F0D87A2E41B4F9B43B42E2226EAC52DDF6C14B60023691A011C561275739",
+                       "status":  "generated"
+                   }
+               ]
+}

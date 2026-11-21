@@ -124,6 +124,46 @@ def _render_plan_tab(store: StudioStore, plan, note: str) -> None:
 
     st.divider()
 
+    st.subheader("Work with the AI production manager")
+    st.caption(
+        "Describe one outcome. The manager proposes a small dependency-aware breakdown; "
+        "you review it before adding it to the draft plan."
+    )
+    with st.form("ai_breakdown_form"):
+        breakdown_goal = st.text_input("Outcome to implement")
+        breakdown_constraints = st.text_area("Constraints or preferences", height=80)
+        request_breakdown = st.form_submit_button("Propose task breakdown")
+    if request_breakdown:
+        try:
+            proposal = service.suggest_task_breakdown(breakdown_goal, breakdown_constraints)
+            st.session_state["task_breakdown_proposal"] = [item.model_dump() for item in proposal]
+        except Exception as exc:  # noqa: BLE001
+            st.error(str(exc))
+    proposal = st.session_state.get("task_breakdown_proposal")
+    if proposal:
+        st.dataframe(proposal, use_container_width=True)
+        existing_ids = {item.id for item in plan.deliverables}
+        proposed_ids = {item["id"] for item in proposal}
+        duplicates = existing_ids & proposed_ids
+        if duplicates:
+            st.warning(f"Rename these IDs in the proposal before adding: {', '.join(sorted(duplicates))}")
+        if st.button("Add reviewed proposal to draft plan", disabled=bool(duplicates)):
+            try:
+                service.save_plan_edits(
+                    plan,
+                    summary=plan.summary,
+                    phases=plan.phases,
+                    risks=plan.risks,
+                    human_gates=plan.human_gates,
+                    deliverables=[item.model_dump() for item in plan.deliverables] + proposal,
+                    store=store,
+                )
+                st.session_state.pop("task_breakdown_proposal", None)
+                st.success("Added to the draft. Review dependencies and acceptance checks below.")
+                st.rerun()
+            except Exception as exc:  # noqa: BLE001
+                st.error(str(exc))
+
     summary = st.text_area("Summary", value=plan.summary, height=120, key="plan_summary")
     phases = st.text_area(
         "Phases (one per line)",
@@ -248,6 +288,10 @@ def main() -> None:
         if not tasks:
             st.info("No tasks yet. Approve the plan to create them.")
         else:
+            st.caption(
+                "Each task has an agent-ready work order with scope, acceptance checks, "
+                "approved constraints, and source documents."
+            )
             st.dataframe(
                 [
                     {
@@ -257,11 +301,21 @@ def main() -> None:
                         "role": t.role,
                         "retries": t.retries,
                         "layer": t.inputs.get("layer"),
+                        "work_order": t.inputs.get("work_order"),
                     }
                     for t in tasks
                 ],
                 use_container_width=True,
             )
+            for task in tasks:
+                order = task.inputs.get("work_order")
+                if order:
+                    with st.expander(f"Work order: {task.title}"):
+                        content = _load_text(order)
+                        if content:
+                            st.markdown(content)
+                        else:
+                            st.warning(f"Work order missing: `{order}`")
 
     with tab_status:
         st.write(

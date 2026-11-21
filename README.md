@@ -1,38 +1,25 @@
-# Rad-e Hoor — AI-Native Game Studio
+# ردِ هور — سناریو و طراحی گیم‌پلی
 
-Multi-agent production studio for **Rad-e Hoor** (The Solar Trace).
+مرجع جاری: **بازنویسی ۷.۰، ۲۱ نوامبر ۲۰۲۶**. این بسته برای مطالعه و توسعهٔ داستان، مأموریت‌ها، جهان و سیستم‌های بازی آماده شده است. هدفِ ۳۰ تا ۴۰ ساعت، بودجهٔ طراحی است و مدتِ عملیِ آزموده‌شده نیست.
 
-- Design source of truth: `gameStory/` (do not overwrite)
-- Studio constitution: `masterPrompt.md` (English)
-- Studio code: `studio/`
-- Generated workspace: `projects/rade-hoor/`
-- State DB: embedded **SQLite** at `projects/rade-hoor/data/studio.db` (no DB server to install)
+## شروع مطالعه
 
-## Setup
+- [فهرست کامل آخرین نسخه](gameStory/redesign/v7-20261121/README.md)
+- [سناریوی ده فصل و پایان داخل تنگه](gameStory/redesign/v7-20261121/SCREENPLAY_AND_FINAL_SEQUENCE_FA.md)
+- [گیم‌پلی، حرکت، مبارزه و ابزارها](gameStory/redesign/v7-20261121/GAMEPLAY_SYSTEMS_FA.md)
+- [جهان و ۴۰ مأموریت اصلی](gameStory/redesign/v7-20261121/WORLD_AND_MISSIONS_FA.md)
+- [آموزش مرحله‌به‌مرحله](gameStory/redesign/v7-20261121/ONBOARDING_AND_LEARNING_FA.md)
+- [نقشهٔ جغرافیایی و چیدمان پیشنهادی](gameStory/redesign/v7-20261121/maps/README_FA.md)
+- [کتابخانهٔ تصاویر کانسپت](gameStory/images/README.md)
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
-```
+## نقشه
 
-## Quick start
+![شهداد تا مرجع تقریبی تنگ رتیل](gameStory/redesign/v7-20261121/maps/region-map.png)
 
-```bash
-source .venv/bin/activate
-python -m studio.cli align      # ingest + analysis + draft plan
-python -m studio.cli status
-python -m studio.cli submit
-python -m studio.cli approve -n "Approved by human"
-python -m studio.cli run -l 3
-pytest
-```
+تصویرِ منطقه‌ای بر دادهٔ جغرافیایی تکیه دارد؛ نشانِ تنگه تقریبی و چیدمانِ داخلی و تأسیساتِ داستانی پیشنهادی‌اند. منابع، انتساب‌ها و حدودِ دقت در [راهنمای نقشه](gameStory/redesign/v7-20261121/maps/README_FA.md) آمده‌اند.
 
-HTTP API: `python -m studio.cli serve` then `GET http://127.0.0.1:8000/status`.
+## دامنهٔ این بسته
 
-Streamlit UI (separate folder `ui/`):
+سناریو، شخصیت، مأموریت اصلی/جانبی، آموزش، اکشن، اقتصاد و منابع، سلاح/وسیله، نجوم، حیات‌وحش و آبشخور در آخرین نسخه مستند شده‌اند. تصاویرِ موجود، مرجع مفهومی‌اند؛ بازنگری‌های پیشین و طرح‌های بازنشسته در کتابخانه با وضعیتِ جدا مشخص شده‌اند.
 
-```bash
-streamlit run ui/app.py
-```
+پیاده‌سازی‌های بازی، دموها، فایل‌های اجرایی، ویدئوها و خروجی‌های ساخت جزو این بسته نیستند. برای مرور اسناد و نقشه‌ها نصب موتور بازی لازم نیست.

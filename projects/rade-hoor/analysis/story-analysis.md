@@ -13,9 +13,9 @@ First-person audio survival / narrative thriller with light off-road traversal
 ## Platform
 PC/Steam primary; console later; gamepad + MK from day one
 
-## Campaign time budget (design minutes): 270
+## Campaign time budget (core design minutes): 260
 
-_This is a design budget, not validated playtime._
+_Current design package: 5.7. This is a core-path design target, not validated playtime; optional content and epilogue are additional. The extraction below is the 2026-10-21 baseline and is not a fresh full analysis. Current changes and unresolved blockers: [narrative review](../reports/20261102-narrative-framework-review.md)._
 
 ## Gameplay loop
 Move and shelter while managing emitted sound; distinguish live sources from Hoor echoes; protect companions; resolve the dawn window without (or with) Bang; preserve evidence. Winch/hand-puller extend Daniel's craft under sound cost.

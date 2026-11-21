@@ -1,3 +1,6 @@
+import json
+from unittest.mock import Mock
+
 from fastapi.testclient import TestClient
 
 from studio.api import app
@@ -6,6 +9,17 @@ from studio.api import app
 def test_api_align_status_approve_flow(settings, monkeypatch):
     monkeypatch.setenv("STUDIO_REPO_ROOT", str(settings.repo_root))
     monkeypatch.setenv("STUDIO_PROJECT_ID", settings.project_id)
+    # Exercise production and peer review without calling a live AI provider.
+    agent_request = Mock(side_effect=[
+        json.dumps({
+            "summary": "Created the test deliverable",
+            "files": [{"path": "game/test-deliverable.txt", "content": "API test output\n"}],
+            "acceptance_evidence": ["Test deliverable written"],
+            "assumptions": [],
+        }),
+        json.dumps({"approved": True, "issues": [], "summary": "Test review passed"}),
+    ])
+    monkeypatch.setattr("studio.agents._request", agent_request)
 
     client = TestClient(app)
     assert client.get("/health").json()["ok"] is True
@@ -33,5 +47,14 @@ def test_api_align_status_approve_flow(settings, monkeypatch):
     assert len(tasks.json()) > 0
 
     run = client.post("/tasks/run", json={"limit": 1})
-    assert run.status_code == 200
+    assert run.status_code == 200, run.text
     assert run.json()["ran"]
+    assert run.json()["produced_files"] == ["game/test-deliverable.txt"]
+    assert (settings.repo_root / "game/test-deliverable.txt").read_text(
+        encoding="utf-8"
+    ) == "API test output\n"
+    assert agent_request.call_count == 2
+    completed = [task for task in client.get("/tasks").json() if task["id"] in run.json()["ran"]]
+    assert len(completed) == 1
+    assert completed[0]["status"] == "done"
+    assert any(item["kind"] == "peer_review" for item in completed[0]["evidence"])

@@ -1,0 +1,728 @@
+{
+  "version": "6.1",
+  "date": "2026-11-12",
+  "rewritten_sections": 83,
+  "dialogue_lines": 253,
+  "sections": [
+    {
+      "scene": "۰.۰",
+      "rewritten": true,
+      "old_sha256": "ecac45bfd956e70043f94ddcf2eaaf0b7a499b5a72e84403ed562a39590c64a9",
+      "new_sha256": "798d280c9bf57206d41a0ce1bc44905933c9ea6fb2c0293d11f195c7051d37d5",
+      "dialogue_lines": 5,
+      "words": 93
+    },
+    {
+      "scene": "۰.۰.۱",
+      "rewritten": true,
+      "old_sha256": "fbfbea2d93262e00c53aad99388c71dfd31533ca43a87b464a17e320427ceddf",
+      "new_sha256": "ac42c6d9234cd6e2cf24a3bfec290c0e9f389379faeca3344ba9fdff4a6612a1",
+      "dialogue_lines": 6,
+      "words": 121
+    },
+    {
+      "scene": "H01",
+      "rewritten": true,
+      "old_sha256": "74601845b002f0a4b80b3efe4841772c8bbb15e9ba16f7a41ff1f8898ba090ab",
+      "new_sha256": "8d16ca03e3bc3bca80fd4ac179a256fe136231559e33d8fb2c29a04c10c72998",
+      "dialogue_lines": 4,
+      "words": 91
+    },
+    {
+      "scene": "۰.۱",
+      "rewritten": true,
+      "old_sha256": "30437b651b021ee62f16f852f6e2014e6c018350e788b1750c4ce0864988c01b",
+      "new_sha256": "b852ad29faa694e49bdb8ee0bda22fdb22996331cdfe204a48f976db66bf0ffc",
+      "dialogue_lines": 5,
+      "words": 83
+    },
+    {
+      "scene": "۰.۱.۱",
+      "rewritten": true,
+      "old_sha256": "521b21514cdf2c3d8e407bef956cfbab9c1b1d2e8fabe516d15e5fb5dffbd874",
+      "new_sha256": "097c8d199aff3b2793956f6da521cb18a1b2008b00e6327df0bf94b89d3e9a41",
+      "dialogue_lines": 3,
+      "words": 78
+    },
+    {
+      "scene": "۰.۲",
+      "rewritten": true,
+      "old_sha256": "ebfd4ad63db7db2468189c845bd49cfb34197f7df03fb93490d8fced5d41b238",
+      "new_sha256": "867ce2d2fee4b6debee6b6309c76c05560237ee8c4d70967f7602192ac951be6",
+      "dialogue_lines": 4,
+      "words": 88
+    },
+    {
+      "scene": "۰.۳",
+      "rewritten": true,
+      "old_sha256": "db0fa3e7595babc8bf432c37d112499c282fbd0d4b58a157263a5741f99a6b85",
+      "new_sha256": "33f4d537427fdf68dcb401518e3d11ff1515f551c1ad80643ab423cf1c9ae293",
+      "dialogue_lines": 3,
+      "words": 79
+    },
+    {
+      "scene": "۰.۳.۱",
+      "rewritten": true,
+      "old_sha256": "5a1849606f257640bdc4883201451543f96b173c4e7edec686fe173a9c9ae615",
+      "new_sha256": "6c36d925e6f2a73e7427ef2c55bd6e3ae63399f0da366fb5c57067d62629a8e7",
+      "dialogue_lines": 3,
+      "words": 74
+    },
+    {
+      "scene": "۰.۳.۲",
+      "rewritten": true,
+      "old_sha256": "6c37db84e11f7492a7fde6bc3d64b21af201f80979c00ba2caaf396f10fdf3eb",
+      "new_sha256": "403d87d2bf6f54b13913ef28ab2519e3ae6dd44bb2ffcd20a4d2f4934ab937dc",
+      "dialogue_lines": 10,
+      "words": 200
+    },
+    {
+      "scene": "H02",
+      "rewritten": true,
+      "old_sha256": "6db5d066095bd19e571a91e648c8da48a229a5501f514cb6f768e7d17b97acbb",
+      "new_sha256": "d0cc00a9df032ce85a993da897cb5fea6003c26178ac907439c7c066e7f8e43a",
+      "dialogue_lines": 4,
+      "words": 76
+    },
+    {
+      "scene": "۰.۴",
+      "rewritten": true,
+      "old_sha256": "4ae9be171bbfb201858aca6c41fa4a01dabdc45a0e988a65b8b5f45bf98ee2fd",
+      "new_sha256": "e51169d2b0386323ef86a7f76eac640bc6836133f28ddc1abd989f920c220e30",
+      "dialogue_lines": 4,
+      "words": 83
+    },
+    {
+      "scene": "۰.۵",
+      "rewritten": true,
+      "old_sha256": "d5f3b5207e1a5e35189ab18caace9650dcedf14852dd475139b07dcce28911d2",
+      "new_sha256": "42a570dbd772a5b0c73d8b6a605539872701ed018790659f1423bd6db49ef2d3",
+      "dialogue_lines": 5,
+      "words": 91
+    },
+    {
+      "scene": "۰.۶",
+      "rewritten": true,
+      "old_sha256": "317a7109004c1cfa6fecc670a466e419e9a7d99ea23bcec2ec13b2ca1ce29406",
+      "new_sha256": "87f64f65074a9e79a28d8c3f430e59b4ecd96bc074d109d96208778c10d00153",
+      "dialogue_lines": 3,
+      "words": 72
+    },
+    {
+      "scene": "۰.۷",
+      "rewritten": true,
+      "old_sha256": "041b50beef346cbcd0a34499825e22e537bd681969099149c5871ffc3dd62537",
+      "new_sha256": "2a6dec5272baeec4c8d9ec6fb8af0a42a36e3e301e73def2e0e064bea078de09",
+      "dialogue_lines": 7,
+      "words": 133
+    },
+    {
+      "scene": "۰.۷.۱",
+      "rewritten": true,
+      "old_sha256": "713758cb3f10ed103458a8965951772235cba173d3631b586bbc30a0c9a28552",
+      "new_sha256": "703cf92575a8b656346b8c043d3e7e6d776e39173a03d92ab6d3a0f563a2e51c",
+      "dialogue_lines": 4,
+      "words": 88
+    },
+    {
+      "scene": "H03",
+      "rewritten": true,
+      "old_sha256": "624387b8c39480c2055bfb974dd2c620390cc5f598c3bc4ef84eeb51bc81673e",
+      "new_sha256": "f63f7f16bc8c98298b9d9c7429a2b2d64b4d672da8e1ce4c12ba952954c3e69d",
+      "dialogue_lines": 4,
+      "words": 90
+    },
+    {
+      "scene": "H04",
+      "rewritten": true,
+      "old_sha256": "2958c079e7cd9ca69ae55589a346ec2e9232ce84e3f5050fefbe6b287b5cbc56",
+      "new_sha256": "65ddbd16e5ca9170d0a1933cd54f79d4142e44a1ecbcd1cca53268bce2fec771",
+      "dialogue_lines": 4,
+      "words": 82
+    },
+    {
+      "scene": "۰.۸",
+      "rewritten": true,
+      "old_sha256": "c60ce5837b49d17c3d115254cf2e34acc83e662ebe85a740802e43b18670c0be",
+      "new_sha256": "ea15334edb14365e5ad3027c5c41dac442eb9ce05c18defc8f08aa8885411c2d",
+      "dialogue_lines": 1,
+      "words": 71
+    },
+    {
+      "scene": "۱.۱",
+      "rewritten": true,
+      "old_sha256": "c2a3d35a70b2c8ae1d10430b6cd0aebfd1aec9428f6e5b3a26c0d7ef7b07881b",
+      "new_sha256": "261aa61bd63048424360108a5a10137d56537034b8698680e49449cf3cb0d6a8",
+      "dialogue_lines": 2,
+      "words": 85
+    },
+    {
+      "scene": "۱.۲",
+      "rewritten": true,
+      "old_sha256": "768d730795b4059bf8d50c2b0174dac7164f9369d221d1be3e5a7fc1df51dde1",
+      "new_sha256": "7b8b084ee92f8cca18d1c2cbd7275f7501c11a94b6fa0a336e34d497ff03f68b",
+      "dialogue_lines": 1,
+      "words": 85
+    },
+    {
+      "scene": "۲.۱",
+      "rewritten": true,
+      "old_sha256": "512e214788627b2c7dfc996c1adfc28e4f64f30706c3b62e9088493bcb5be5be",
+      "new_sha256": "8f96299c34eb113a41809ffcd53587c69a70da6a0e9f94affd15696e2793b98e",
+      "dialogue_lines": 1,
+      "words": 83
+    },
+    {
+      "scene": "۲.۲",
+      "rewritten": true,
+      "old_sha256": "b41dd1977c8c277f23b5770deaaeffdc610d2660daf6bd772303292f8a7b12ff",
+      "new_sha256": "f5e66ea65ab04d11f6db922d509ea9d3ed4265d9d11543ab80716a97a1136c7f",
+      "dialogue_lines": 1,
+      "words": 71
+    },
+    {
+      "scene": "۲.۳",
+      "rewritten": true,
+      "old_sha256": "0ea10d57fc32f5743acc45bfb19178d09855612cc810f7c0c5f2d9098fcd6a49",
+      "new_sha256": "7174521a4c11faed9f0d5b60b1967d067887942512e7ddaf2bc0f40414bb9b28",
+      "dialogue_lines": 1,
+      "words": 71
+    },
+    {
+      "scene": "۲.۴",
+      "rewritten": true,
+      "old_sha256": "828554d01cd5bb2c0c8df7ab569265dcc1cf7831a2b742adf5bcc77c6b8a5d66",
+      "new_sha256": "7e51c892c7c064e4a0f52e83c76083cbf66ba350ea8497c6a8e2ed92182b9294",
+      "dialogue_lines": 3,
+      "words": 77
+    },
+    {
+      "scene": "۳.۱",
+      "rewritten": true,
+      "old_sha256": "3deedb86344eb2467cb0b7f317894955e9b606263ed7d1073df62b946a0e6116",
+      "new_sha256": "a2dd828980c8e238560f87ff8587ed45b24cbde65fc5a39246d446d7bd5b313a",
+      "dialogue_lines": 1,
+      "words": 71
+    },
+    {
+      "scene": "۳.۲",
+      "rewritten": true,
+      "old_sha256": "9b8b8d275ed09cc6ed6105245dfccab4c6aca036f820d3b1a5c8528d285dedc1",
+      "new_sha256": "fada565f3ea167a71a82420f8f0d4ea0c4a69376a1c9afdd049009d39cf96add",
+      "dialogue_lines": 1,
+      "words": 63
+    },
+    {
+      "scene": "۳.۳",
+      "rewritten": true,
+      "old_sha256": "0d13ca7f00f814bdef30ebd8859d11c59ea0e28c0cfea2c5443fbe6b2e34676f",
+      "new_sha256": "147f6936a3f484e6b988709482b56aa2030381e421c92aaf227f6387a1cc7075",
+      "dialogue_lines": 1,
+      "words": 84
+    },
+    {
+      "scene": "۴.۱",
+      "rewritten": true,
+      "old_sha256": "9f955e588f51b6c64d0ee8bfd2d831cdf4c07404d716f192bdd526a29647227f",
+      "new_sha256": "61f4b82bbf62ad3746164d2abfec7cd7cecc1f23b20c0e10453746296b1812ad",
+      "dialogue_lines": 4,
+      "words": 87
+    },
+    {
+      "scene": "۴.۲",
+      "rewritten": true,
+      "old_sha256": "5a3f97985b5f22941bb83a09dac99599b5ab2a9ba46002213d16df6881fcdffc",
+      "new_sha256": "d7b961796c3baf9e6d2a48ade87a5996ed305bdd19bd0f3c03229ae675758fa2",
+      "dialogue_lines": 4,
+      "words": 87
+    },
+    {
+      "scene": "۴.۳",
+      "rewritten": true,
+      "old_sha256": "6824b54c511e3a9beeb808a0d4936a1e236050653a8f662d788ab0d92216487c",
+      "new_sha256": "44e4a883ee049da2e35a19ebc180aa1c56d44358ae61b8c7a2c365311aec3ec2",
+      "dialogue_lines": 4,
+      "words": 80
+    },
+    {
+      "scene": "۴.۴",
+      "rewritten": true,
+      "old_sha256": "d91b4d6c31c85bfa6942604e2b49fdff2602746929444eb78afae616a166aa4e",
+      "new_sha256": "444e73e4e84020cb2746cdb33398c326e257409ca0b10ad01a133ed5f68a5d49",
+      "dialogue_lines": 4,
+      "words": 74
+    },
+    {
+      "scene": "۵.۱",
+      "rewritten": true,
+      "old_sha256": "a9695718c5c0fcd4e899a08f17502db512cbcd8508e0bbc2e4601a5b9bc6df34",
+      "new_sha256": "151e559a542d7e7697967561f4d927de816bb6f68ca6621071c88dc727e3aa3b",
+      "dialogue_lines": 3,
+      "words": 80
+    },
+    {
+      "scene": "H05",
+      "rewritten": true,
+      "old_sha256": "df7bfe615e9ab56699914cdd7d5774d06a6a8761d04feb69ffc144f39923d088",
+      "new_sha256": "fd7adaab7ecf625bcad3fa603d12b773271adf13db92894462f32909b5c0b145",
+      "dialogue_lines": 4,
+      "words": 124
+    },
+    {
+      "scene": "۵.۲",
+      "rewritten": true,
+      "old_sha256": "93dbaeba345039ada85c9937343580627120822fa0fbf1f168c6b0be38b9c2b5",
+      "new_sha256": "7c61f010b71e3f26da7f40d432984a327f9da99d3b288afe4474ed7e9b7702ed",
+      "dialogue_lines": 1,
+      "words": 78
+    },
+    {
+      "scene": "۵.۳",
+      "rewritten": true,
+      "old_sha256": "2e63774b632d5ce944927c2d1b763123639f40e429effbbc1b5552b0219f41cd",
+      "new_sha256": "9e614322949133b53d5430b19b12278641c32afc5b1427783c6b708aec261597",
+      "dialogue_lines": 3,
+      "words": 81
+    },
+    {
+      "scene": "۶.۱",
+      "rewritten": true,
+      "old_sha256": "ca2870b2ff4ca8cd441f07a757af5b8cf6f31ef65fd10192a8e36f701b6e7212",
+      "new_sha256": "e98b0e4c8fb31a678bc19b8a57694040db01c8c1f798d426e3915d26cb6ce104",
+      "dialogue_lines": 2,
+      "words": 74
+    },
+    {
+      "scene": "۶.۲",
+      "rewritten": true,
+      "old_sha256": "813ff32bdaa8792d9d19f482a9eaf42a128260c6c0c29492310e5b68dd46f1ed",
+      "new_sha256": "607ecc4dc568dc13b804d0f10d37f3fb151f090f75e348c3f13d482a29855a30",
+      "dialogue_lines": 3,
+      "words": 74
+    },
+    {
+      "scene": "۶.۳",
+      "rewritten": true,
+      "old_sha256": "17a1fa49fd21177b5c6aa7b692617eeba7ef8a05aa88d8fe5665a83231a92757",
+      "new_sha256": "f9dc7b1cdceb43ab5182a6d3c986740efe1117008e66e67756b59a2ce4f6f179",
+      "dialogue_lines": 2,
+      "words": 85
+    },
+    {
+      "scene": "۶.۴",
+      "rewritten": true,
+      "old_sha256": "f677713cb3a3c60a69f8a123604db4df0a7d096bd6b4f5f402b119d2be76aa09",
+      "new_sha256": "07011af7d3b242a90f217bb6ad2d106c0446281701ab840ebbdec4ae7c409ffa",
+      "dialogue_lines": 2,
+      "words": 76
+    },
+    {
+      "scene": "H06",
+      "rewritten": true,
+      "old_sha256": "701cf841f671c401619b191af3f6a03d1c8a327cc52bcb0edb4b36a9b21a6130",
+      "new_sha256": "061731275183d12408c4af90dcebabffc32543ef3c199d3a8b236565d8a80aa5",
+      "dialogue_lines": 1,
+      "words": 72
+    },
+    {
+      "scene": "۷.۱",
+      "rewritten": true,
+      "old_sha256": "49eeeb7f761d0c79a0c2a1cc4b962bd3b6c3fd71335200e48cf0badfae8c1c1b",
+      "new_sha256": "199bf78f489cc3c0e483a053c64c47876fad63bd94ec9b724707b40d0d2be58f",
+      "dialogue_lines": 4,
+      "words": 91
+    },
+    {
+      "scene": "۷.۲",
+      "rewritten": true,
+      "old_sha256": "0fa02bfee1cf18c0a8494941d77d5df564d691748c93260824e8339c7c1dd771",
+      "new_sha256": "f051d37e7829b9e86b807e158bb489503058b2efb68118c4d520fa3b1a93517b",
+      "dialogue_lines": 4,
+      "words": 66
+    },
+    {
+      "scene": "۷.۳",
+      "rewritten": true,
+      "old_sha256": "425d5d746c50f46dc956b6554a6b263079f70d7cfbec7f2877121a138db6d1b6",
+      "new_sha256": "985d3c16c652a52734c372c4b33e7bdbbb282c9a094a1579f6cf85fa223e55b8",
+      "dialogue_lines": 4,
+      "words": 85
+    },
+    {
+      "scene": "۸.۱",
+      "rewritten": true,
+      "old_sha256": "ad3c921bcc94133dab2b781e6006f58232c1af72f9fdf9652d8d33d19a6bee12",
+      "new_sha256": "70c36dbef576ccd44cc139f900225f8afbcd9b97a6edb94243216c9ed8d4762c",
+      "dialogue_lines": 3,
+      "words": 76
+    },
+    {
+      "scene": "۸.۲",
+      "rewritten": true,
+      "old_sha256": "580a742346e7f048d4c0f3e73b142b0db50b409815340c99ffb30b891434c094",
+      "new_sha256": "e2364f74c1614f80acc06e1f1220669e8363264bda4e2e64fe7cb0a3a67f472d",
+      "dialogue_lines": 4,
+      "words": 80
+    },
+    {
+      "scene": "۸.۳",
+      "rewritten": true,
+      "old_sha256": "8418bafd075e84997e6b4cd49d5648a1ce895817e6365af10c1605907e3b8d73",
+      "new_sha256": "b1ca0679bfaf4d29ab63cd68bcc89394a0b62e66126fc8715d718bb6f3db2800",
+      "dialogue_lines": 2,
+      "words": 72
+    },
+    {
+      "scene": "۸.۴",
+      "rewritten": true,
+      "old_sha256": "13360b747b9ce0149f211c4b3059559c3dc6675944988a7bcdd46bac9cb36994",
+      "new_sha256": "314bdf5e1b875cb9773b686e49a01e6cf60676d1fa22b2d05706a8e8ac04a3c4",
+      "dialogue_lines": 5,
+      "words": 108
+    },
+    {
+      "scene": "۹.۱",
+      "rewritten": true,
+      "old_sha256": "b129ff942edfdc67107fbf903680c4648b2e42ecef5e8f91569eba149adcd71f",
+      "new_sha256": "fba18450a71799ae6b95337e93633c46d3deac03eda960a10f6be0d9c75b1b2a",
+      "dialogue_lines": 3,
+      "words": 80
+    },
+    {
+      "scene": "۹.۲",
+      "rewritten": true,
+      "old_sha256": "824ffc423cf969f3dc9974df9d9a219177010255ede7f1dbb032f5a36815ab85",
+      "new_sha256": "68643a3bf795ad46287501b3decbd82d8daa2c87727555d52f481f2e02f38ba7",
+      "dialogue_lines": 3,
+      "words": 91
+    },
+    {
+      "scene": "۹.۳",
+      "rewritten": true,
+      "old_sha256": "462c20875f7f7bf9437e00a88e6d52f13e946b3d650a2bbcc16d89350823e4dc",
+      "new_sha256": "972d5eafef9f076e43bd147e03dc50b1138d6bd3d2fbda11b485e3cf065258d5",
+      "dialogue_lines": 2,
+      "words": 78
+    },
+    {
+      "scene": "۹.۴",
+      "rewritten": true,
+      "old_sha256": "d9fcd5b405177e196d0a04ec85eda401f0603e6de6c5698d8a1f78f24fe65dc0",
+      "new_sha256": "ea0958878fc7ea8a8d2f73b3cfe3ba41acc8f92751e016829b22305ae9d8a8c5",
+      "dialogue_lines": 5,
+      "words": 87
+    },
+    {
+      "scene": "۹.۵",
+      "rewritten": true,
+      "old_sha256": "7b3afaecc3f9313bdb411b99c9b5c8878e68cf40039dbf9aea35194d42e046f1",
+      "new_sha256": "8d33447e090a4170a1f3ee62035b7c9647219ac678325be8a28abe00863900dd",
+      "dialogue_lines": 3,
+      "words": 75
+    },
+    {
+      "scene": "۱۰.۱",
+      "rewritten": true,
+      "old_sha256": "6e954ac82f77d708b15005d49068571eb4d6f0a66c824d55ec773a827ffa88f4",
+      "new_sha256": "245def937562c1f2ab4982174c22b382f3d6a8190b723bc77e09bbdbd2d3b67e",
+      "dialogue_lines": 4,
+      "words": 108
+    },
+    {
+      "scene": "۱۰.۲",
+      "rewritten": true,
+      "old_sha256": "f76109119504d88fccf2ef9d5595704ba90d91f9b5565e37dfd4966f62f8fba4",
+      "new_sha256": "b18d3c79bceb3b9571830df4a95361b5fc70da50deb207db2fa7ec3460da2734",
+      "dialogue_lines": 2,
+      "words": 106
+    },
+    {
+      "scene": "۱۰.۲.۱",
+      "rewritten": true,
+      "old_sha256": "56bbc460078a2b80ca18164ee1ee4e1bcab388daff3ba634bbdf2039b7a6d297",
+      "new_sha256": "437eb7a88eb25afed86040ef2256348ab996567020d89fa17718dffa512ceb8c",
+      "dialogue_lines": 2,
+      "words": 87
+    },
+    {
+      "scene": "۱۰.۳",
+      "rewritten": true,
+      "old_sha256": "00ce95d408a8b32811236aa9c788f3daed43b7cb7539fe4f56bb78332879b06e",
+      "new_sha256": "3b0dd79f01a7dcfcc806f5fa5a564859a84a822bb9f109e501672cf433731869",
+      "dialogue_lines": 2,
+      "words": 109
+    },
+    {
+      "scene": "۱۰.۴",
+      "rewritten": true,
+      "old_sha256": "9a3eda759270161c4ea42170ae1dbb98e3c9a05e5dac1156a196b5f58f899acd",
+      "new_sha256": "a4fd92aaf8f8c179926fbfec6040f9472b9a74e37d1f2b2527d16ac0ca1ba5ed",
+      "dialogue_lines": 3,
+      "words": 81
+    },
+    {
+      "scene": "۱۰.۵",
+      "rewritten": true,
+      "old_sha256": "81b3aca1a8a2d2153071815346d905e4001e44f420b7273f0e18e02667e0db8f",
+      "new_sha256": "a3cd7833082b46b27979400155c0568a43f1cafca31892cf086928703a62a1f0",
+      "dialogue_lines": 2,
+      "words": 107
+    },
+    {
+      "scene": "H07",
+      "rewritten": true,
+      "old_sha256": "53c93ce985d086e55b440e64618ef3a27dfaf2912f9a4419501120cb4dd51cd3",
+      "new_sha256": "0f6a3abbbfa60a37b87d09762204888d3586d7560d6f12ae91d4dd18181e253e",
+      "dialogue_lines": 5,
+      "words": 141
+    },
+    {
+      "scene": "۱۰.۵.۲",
+      "rewritten": true,
+      "old_sha256": "faab781f2c44b68f28bf4c72a055253c88b882cfd73e83874df0fea6af5ed0c4",
+      "new_sha256": "2d7052f029e7b8e36fe89526b8de6328487899b9f62d7a1ebd8a6c567a4a8e5e",
+      "dialogue_lines": 13,
+      "words": 571
+    },
+    {
+      "scene": "۱۰.۶",
+      "rewritten": true,
+      "old_sha256": "a3a21a4e0ac1495581eedc48bd70b316f0118795a8c6ee8f102284ae29c4f57d",
+      "new_sha256": "19c3be71b4e54d79a87d057dced9c66906e6aeb5204f998cbdac47f74416ed88",
+      "dialogue_lines": 6,
+      "words": 115
+    },
+    {
+      "scene": "۱۰.۷",
+      "rewritten": true,
+      "old_sha256": "00eda9461fd1f2ff92ab927837a5e6b035fd8586eb853b87563ff02ee17dd537",
+      "new_sha256": "fe25f586bfb9ecf3dfea9acb77c07b64896aa269b2c52f8625a8455a67383f87",
+      "dialogue_lines": 4,
+      "words": 90
+    },
+    {
+      "scene": "S01",
+      "rewritten": true,
+      "old_sha256": "6992a9f139e893f1fbae2fdb321458ed55bceee84eb4f5cf7d1d8d1536f39749",
+      "new_sha256": "3dc0d495a1c2b340f6706a6638669af21ca147e0cb35b8255b3392a816074e98",
+      "dialogue_lines": 3,
+      "words": 90
+    },
+    {
+      "scene": "S02",
+      "rewritten": true,
+      "old_sha256": "1d08a021b8c8bd5aea024ead683f62435553af464900533beb4c345477662490",
+      "new_sha256": "02c3796802e8b64dcee3d8b0fbb11ebbdc4a4bd9bcdd4895f9cb9dfbdde998e6",
+      "dialogue_lines": 1,
+      "words": 99
+    },
+    {
+      "scene": "S03",
+      "rewritten": true,
+      "old_sha256": "23bf6b9fe341aff52b552c2bab27eea644bb5859b31b76e95bfaf62ed3d90fa3",
+      "new_sha256": "5c95c51d714b429786e181463bff2a0377cebd29a6991278748b97e187ba7b49",
+      "dialogue_lines": 3,
+      "words": 87
+    },
+    {
+      "scene": "S04",
+      "rewritten": true,
+      "old_sha256": "296d27a1cc919d19ed4fc03ca7b66d913161e51698dfee2815bad5f8468e7818",
+      "new_sha256": "ebe3e5d0f3ebff33106d0c4f9f2c1fc0bba9a3e12784c1d4da8796fa1c0e7b6e",
+      "dialogue_lines": 3,
+      "words": 77
+    },
+    {
+      "scene": "گالری دستاورد و دسترسی",
+      "rewritten": true,
+      "old_sha256": "3951deef42981c6dfa222f79385377c70e470f62acc2f00688fa86db40fed278",
+      "new_sha256": "522b3d09565f47c0ce930e13e181f46c8713ec9a65db2d1dd03f827f181a50cf",
+      "dialogue_lines": 0,
+      "words": 59
+    },
+    {
+      "scene": "نوار ۱",
+      "rewritten": true,
+      "old_sha256": "11f4eabfb8491ae7a0064cd614c242f3427d3fbb7148d6de3f40229370a70723",
+      "new_sha256": "bb79837eee3bebf7c90206d2c0f15c39afb325e14b78c4482c615f764b9cb91c",
+      "dialogue_lines": 4,
+      "words": 64
+    },
+    {
+      "scene": "نوار ۲",
+      "rewritten": true,
+      "old_sha256": "6bab5b6360ffb8e8c2c1a0c698d893f68bf88fa6c39130adf906f6aaf7739b92",
+      "new_sha256": "28aed8f941f977ce766092702aff96ac48dada843e05fad8ae788c8c0f32f8e2",
+      "dialogue_lines": 5,
+      "words": 67
+    },
+    {
+      "scene": "نوار ۳",
+      "rewritten": true,
+      "old_sha256": "0fd3a27b2558330362b1d703732356ecf3c7ac3508471079d5159ab3d79ead3a",
+      "new_sha256": "6a52f002b9117c332eea348881fd7fc7ed77f289f12d20a89c7125ca4440ec77",
+      "dialogue_lines": 5,
+      "words": 64
+    },
+    {
+      "scene": "نوار ۴",
+      "rewritten": true,
+      "old_sha256": "9025ce8d2569ab97d715535aea5b2b9cbc71f4d6b89fcb8803ca5ff9484f47ec",
+      "new_sha256": "e6f9e55a425ad28dfdf2844e8e6de94632a1595ac521a0cbe342543eea96f3bd",
+      "dialogue_lines": 2,
+      "words": 63
+    },
+    {
+      "scene": "نوار ۵",
+      "rewritten": true,
+      "old_sha256": "979eb0eb78a1de669dd9345b9bb5b83830af669a662e7c29844f0e72816a4e43",
+      "new_sha256": "cf6fdef2194f58826ebd953cdc9c1053448f9a74fd1d4761008f6517cd694cb7",
+      "dialogue_lines": 7,
+      "words": 72
+    },
+    {
+      "scene": "نوار ۶",
+      "rewritten": true,
+      "old_sha256": "850ef8adf9987ff35e5a88a7012d2dea4e728937a3c358b4c9f4865e5c70c9e7",
+      "new_sha256": "0f10f5ef197ba5ceddc9902c895fea94951f749dc797bb493a292e0301395b9e",
+      "dialogue_lines": 5,
+      "words": 131
+    },
+    {
+      "scene": "D01",
+      "rewritten": true,
+      "old_sha256": "4e0fbeac5a660a256413f79cb89acaf2b20b5a50c25ab1bb314c2cc147229e81",
+      "new_sha256": "dc415fe3339c935350a5148c2d7920be3105ed90eb2968391646df0d94bdb702",
+      "dialogue_lines": 0,
+      "words": 42
+    },
+    {
+      "scene": "D02",
+      "rewritten": true,
+      "old_sha256": "9035e61d1ba67b1941cd9f9acab49ddd0c8dc17f64282415e699647d78d8366e",
+      "new_sha256": "6e39db1da244744f429a874935f7d342465da1a19f5e60e4d43ae2ee507d95df",
+      "dialogue_lines": 0,
+      "words": 43
+    },
+    {
+      "scene": "D03",
+      "rewritten": true,
+      "old_sha256": "ce6f3b10a358453e2f07dd56d43c5acca5ed1489a74739d38d43f43652af10c0",
+      "new_sha256": "f2c46f6ed9d25786c1ff96aaf799fee14789817886e6a10c54f7e689719327f6",
+      "dialogue_lines": 0,
+      "words": 42
+    },
+    {
+      "scene": "D04",
+      "rewritten": true,
+      "old_sha256": "acdd99c915c63807d5bd42d99234a3e4d5b08d5164c79845fd5ba6b0f00fa89b",
+      "new_sha256": "8382ff4056810abd8d6b35da19febb8637ebd10dfedec9954ea8fa2e6698034a",
+      "dialogue_lines": 1,
+      "words": 64
+    },
+    {
+      "scene": "D05",
+      "rewritten": true,
+      "old_sha256": "4fd23abccd4eb6be43ecddcb39ea55950432ace5e5371791f0c3888e8c37d330",
+      "new_sha256": "c8e153d09ecdbdaeb7ff7c5ca775f144990b31dd8d84177118d84427cc17f99b",
+      "dialogue_lines": 0,
+      "words": 72
+    },
+    {
+      "scene": "D06",
+      "rewritten": true,
+      "old_sha256": "a30d2eaa0751fdd2e3c42927fb9180f2cb501ad90cd6c163350ff26d0ddaac6d",
+      "new_sha256": "cdd58582b76444e4c038dbc64c4f7f1e87c86a0e8164a33b8513dc73f82e70d9",
+      "dialogue_lines": 0,
+      "words": 63
+    },
+    {
+      "scene": "D07",
+      "rewritten": true,
+      "old_sha256": "57427ea0c8e8e2c8805dd9fa138af496c24f5c0b320c7c701e4277cb04c3d3a0",
+      "new_sha256": "d5373ab6ef03dd8686a4d4e3c2ed8ff9824f2b785a5e6aafd19aa41d27525b7a",
+      "dialogue_lines": 0,
+      "words": 61
+    },
+    {
+      "scene": "D08",
+      "rewritten": true,
+      "old_sha256": "934e602926d13cedf9e8b314a8ecf9171017839f4e6d4c34c3956135e45aba7c",
+      "new_sha256": "989695f058a4dca038e1d0a9aafa07230828c31a5384b1eba664263281272932",
+      "dialogue_lines": 0,
+      "words": 50
+    },
+    {
+      "scene": "D09",
+      "rewritten": true,
+      "old_sha256": "7573cd800cc49c8a487f0df17dd90420527ac32b32bbe7feb25be7f15672f3fc",
+      "new_sha256": "fa6741bb62a75117c3413735c07ae3cdb9b6cae67052b52bcd800d21b795ee15",
+      "dialogue_lines": 1,
+      "words": 60
+    },
+    {
+      "scene": "D10",
+      "rewritten": true,
+      "old_sha256": "b135f5192b37bea26ac77734a5e0a6f27b17ac26607bae0d15af44a3866bc4fa",
+      "new_sha256": "18faa66b635d0a717d9503e8cf059d6fd9b822a9dba3bde560f6ad03361f01fd",
+      "dialogue_lines": 0,
+      "words": 92
+    }
+  ],
+  "all_rewritten": true,
+  "checks": {
+    "all_previous_scene_headings_retained": true,
+    "duel_order": true,
+    "echo_sources_present": true,
+    "all_scene_bodies_rewritten": true,
+    "all_chapters_have_new_dialogue": true,
+    "new_complaint_motive_seeded": true,
+    "no_duplicated_scene_keys": true
+  },
+  "chapter_coverage": {
+    "0": {
+      "scenes": 14,
+      "dialogue_lines": 63
+    },
+    "1": {
+      "scenes": 2,
+      "dialogue_lines": 3
+    },
+    "2": {
+      "scenes": 4,
+      "dialogue_lines": 6
+    },
+    "3": {
+      "scenes": 3,
+      "dialogue_lines": 3
+    },
+    "4": {
+      "scenes": 4,
+      "dialogue_lines": 16
+    },
+    "5": {
+      "scenes": 3,
+      "dialogue_lines": 7
+    },
+    "6": {
+      "scenes": 4,
+      "dialogue_lines": 9
+    },
+    "7": {
+      "scenes": 3,
+      "dialogue_lines": 12
+    },
+    "8": {
+      "scenes": 4,
+      "dialogue_lines": 14
+    },
+    "9": {
+      "scenes": 5,
+      "dialogue_lines": 16
+    },
+    "10": {
+      "scenes": 9,
+      "dialogue_lines": 38
+    }
+  }
+}

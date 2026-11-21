@@ -1,0 +1,1073 @@
+{
+  "schema_version": 1,
+  "status": "design_target_unmeasured",
+  "date": "2026-11-21",
+  "source": "WORLD_AND_MISSIONS_FA.md",
+  "duration_claim": "30–40h intended balanced experience, 35h midpoint; not observed playtime",
+  "target_totals": {
+    "main_minutes": 1440,
+    "side_minutes": 480,
+    "exploration_minutes": 180,
+    "balanced_total_minutes": 2100
+  },
+  "chapter_minutes": [
+    90,
+    120,
+    150,
+    150,
+    150,
+    150,
+    165,
+    165,
+    150,
+    150
+  ],
+  "main_missions": [
+    {
+      "id": "M01",
+      "chapter": 1,
+      "title_fa": "بار را نگه دار، آدم را بیرون بکش",
+      "minutes": 20,
+      "regions": [
+        "R01"
+      ],
+      "primary_region": "R01",
+      "system_groups": [],
+      "focus_tags_fa": [
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M02",
+      "chapter": 1,
+      "title_fa": "راه آب را از راه برق جدا کن",
+      "minutes": 20,
+      "regions": [
+        "R01",
+        "R02"
+      ],
+      "primary_region": "R01",
+      "system_groups": [
+        "S4"
+      ],
+      "waterhole": "W01",
+      "focus_tags_fa": [
+        "شبکهٔ خورشید و گرما",
+        "آب، زیستگاه و مشاهدهٔ غیرمداخله‌ای"
+      ],
+      "physical_water_delivery": {
+        "game_units": 5,
+        "purpose": "handheld learning only, not mainbulkorder"
+      }
+    },
+    {
+      "id": "M03",
+      "chapter": 1,
+      "title_fa": "بارِ ثبت‌نشده را دنبال کن",
+      "minutes": 25,
+      "regions": [
+        "R02",
+        "R03"
+      ],
+      "primary_region": "R02",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "ردگیریِ زمین و باد",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M04",
+      "chapter": 1,
+      "title_fa": "کاروان را از شیار باد رد کن",
+      "minutes": 25,
+      "regions": [
+        "R03"
+      ],
+      "primary_region": "R03",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "ردگیریِ زمین و باد",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M05",
+      "chapter": 2,
+      "title_fa": "بالای سایه بمان",
+      "minutes": 25,
+      "regions": [
+        "R04"
+      ],
+      "primary_region": "R04",
+      "system_groups": [
+        "S1"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M06",
+      "chapter": 2,
+      "title_fa": "چشمِ بالا را پایین بیاور",
+      "minutes": 30,
+      "regions": [
+        "R04"
+      ],
+      "primary_region": "R04",
+      "system_groups": [
+        "S1",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "شبکهٔ خورشید و گرما",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M07",
+      "chapter": 2,
+      "title_fa": "ابزار را پس بگیر، تعقیب را قطع کن",
+      "minutes": 30,
+      "regions": [
+        "R03",
+        "R04"
+      ],
+      "primary_region": "R03",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "ردگیریِ زمین و باد",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M08",
+      "chapter": 2,
+      "title_fa": "پنجرهٔ نور را به اردوگاه برسان",
+      "minutes": 35,
+      "regions": [
+        "R03",
+        "R08-A"
+      ],
+      "primary_region": "R03",
+      "system_groups": [
+        "S1",
+        "S2"
+      ],
+      "mandatory_quiet_night_minutes": 7,
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "شب و مسیریابی آسمانی"
+      ]
+    },
+    {
+      "id": "M09",
+      "chapter": 3,
+      "title_fa": "دهانه را امن کن",
+      "minutes": 35,
+      "regions": [
+        "R08-A"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S1"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M10",
+      "chapter": 3,
+      "title_fa": "صدای خودت را از شاهد جدا کن",
+      "minutes": 40,
+      "regions": [
+        "R08-A",
+        "R08-B"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S2",
+        "S3"
+      ],
+      "focus_tags_fa": [
+        "ردگیریِ زمین و باد",
+        "نرخِ محلیِ ساعت"
+      ]
+    },
+    {
+      "id": "M11",
+      "chapter": 3,
+      "title_fa": "از میان دو سایه عبور کن",
+      "minutes": 40,
+      "regions": [
+        "R08-B"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S1",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "شبکهٔ خورشید و گرما"
+      ]
+    },
+    {
+      "id": "M12",
+      "chapter": 3,
+      "title_fa": "شاهد را با وزنش برگردان",
+      "minutes": 35,
+      "regions": [
+        "R08-B",
+        "R08-A"
+      ],
+      "primary_region": "R08",
+      "system_groups": [],
+      "focus_tags_fa": [
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M13",
+      "chapter": 4,
+      "title_fa": "سهم اضطراری را حفظ کن",
+      "minutes": 35,
+      "regions": [
+        "R02",
+        "R04"
+      ],
+      "primary_region": "R02",
+      "system_groups": [
+        "S4"
+      ],
+      "waterhole": "W01",
+      "focus_tags_fa": [
+        "شبکهٔ خورشید و گرما",
+        "آب، زیستگاه و مشاهدهٔ غیرمداخله‌ای"
+      ],
+      "physical_water_delivery": {
+        "W_game_units": 40,
+        "P_game_units": 20,
+        "phases_minutes": [
+          5,
+          10,
+          8,
+          7,
+          5
+        ],
+        "real_capacity_claim": false
+      }
+    },
+    {
+      "id": "M14",
+      "chapter": 4,
+      "title_fa": "معاملهٔ نادر را باز بخوان",
+      "minutes": 40,
+      "regions": [
+        "R06"
+      ],
+      "primary_region": "R06",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "ردگیریِ زمین و باد",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M15",
+      "chapter": 4,
+      "title_fa": "بار را به جای گروگان آزاد کن",
+      "minutes": 35,
+      "regions": [
+        "R06"
+      ],
+      "primary_region": "R06",
+      "system_groups": [],
+      "focus_tags_fa": [
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M16",
+      "chapter": 4,
+      "title_fa": "برق را از حصار بگیر",
+      "minutes": 40,
+      "regions": [
+        "R04"
+      ],
+      "primary_region": "R04",
+      "system_groups": [
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "شبکهٔ خورشید و گرما",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M17",
+      "chapter": 5,
+      "title_fa": "راهِ پوشانده‌شده را پیدا کن",
+      "minutes": 30,
+      "regions": [
+        "R08-C"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "ردگیریِ زمین و باد"
+      ]
+    },
+    {
+      "id": "M18",
+      "chapter": 5,
+      "title_fa": "مهار را پیش از سقف ببند",
+      "minutes": 45,
+      "regions": [
+        "R08-C"
+      ],
+      "primary_region": "R08",
+      "system_groups": [],
+      "focus_tags_fa": [
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M19",
+      "chapter": 5,
+      "title_fa": "بهرام را از ساعتِ اشتباه بیرون بیاور",
+      "minutes": 40,
+      "regions": [
+        "R08-C",
+        "R08-D"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S3",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "نرخِ محلیِ ساعت",
+        "شبکهٔ خورشید و گرما",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M20",
+      "chapter": 5,
+      "title_fa": "دفتر را از بدن جدا نکن",
+      "minutes": 35,
+      "regions": [
+        "R08-D",
+        "R08-C"
+      ],
+      "primary_region": "R08",
+      "system_groups": [],
+      "focus_tags_fa": [
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M21",
+      "chapter": 6,
+      "title_fa": "مرجع را دوباره بساز",
+      "minutes": 35,
+      "regions": [
+        "R05",
+        "R07"
+      ],
+      "primary_region": "R05",
+      "system_groups": [
+        "S2",
+        "S3"
+      ],
+      "waterhole": "W02",
+      "phases_minutes": [
+        6,
+        12,
+        10,
+        7
+      ],
+      "focus_tags_fa": [
+        "نرخِ محلیِ ساعت",
+        "شب و مسیریابی آسمانی",
+        "آب، زیستگاه و مشاهدهٔ غیرمداخله‌ای"
+      ]
+    },
+    {
+      "id": "M22",
+      "chapter": 6,
+      "title_fa": "خودروی سفید را از پوسته بیرون بکش",
+      "minutes": 40,
+      "regions": [
+        "R05"
+      ],
+      "primary_region": "R05",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "ردگیریِ زمین و باد",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M23",
+      "chapter": 6,
+      "title_fa": "راهِ بالا را باز کن",
+      "minutes": 40,
+      "regions": [
+        "R07",
+        "R08-B"
+      ],
+      "primary_region": "R07",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "شب و مسیریابی آسمانی",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M24",
+      "chapter": 6,
+      "title_fa": "دستورِ پیش از حادثه را بازیابی کن",
+      "minutes": 35,
+      "regions": [
+        "R07"
+      ],
+      "primary_region": "R07",
+      "system_groups": [
+        "S2",
+        "S3"
+      ],
+      "focus_tags_fa": [
+        "نرخِ محلیِ ساعت",
+        "شب و مسیریابی آسمانی"
+      ]
+    },
+    {
+      "id": "M25",
+      "chapter": 7,
+      "title_fa": "مصرف‌کننده را پیش از منبع نجات بده",
+      "minutes": 35,
+      "regions": [
+        "R04"
+      ],
+      "primary_region": "R04",
+      "system_groups": [
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "شبکهٔ خورشید و گرما",
+        "آب، زیستگاه و مشاهدهٔ غیرمداخله‌ای",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M26",
+      "chapter": 7,
+      "title_fa": "نورِ مهاجم را از راه بردار",
+      "minutes": 45,
+      "regions": [
+        "R04",
+        "R08-B"
+      ],
+      "primary_region": "R04",
+      "system_groups": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "شبکهٔ خورشید و گرما",
+        "شب و مسیریابی آسمانی",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M27",
+      "chapter": 7,
+      "title_fa": "کاروانِ بی‌چراغ را هدایت کن",
+      "minutes": 40,
+      "regions": [
+        "R03",
+        "R08-A"
+      ],
+      "primary_region": "R03",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "ردگیریِ زمین و باد",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M28",
+      "chapter": 7,
+      "title_fa": "تالارِ تاریک را دوباره بخوان",
+      "minutes": 45,
+      "regions": [
+        "R08-B"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "شبکهٔ خورشید و گرما",
+        "شب و مسیریابی آسمانی"
+      ]
+    },
+    {
+      "id": "M29",
+      "chapter": 8,
+      "title_fa": "آدم‌ها را از حسابِ بار جدا کن",
+      "minutes": 40,
+      "regions": [
+        "R05",
+        "R08-A",
+        "R08-B"
+      ],
+      "primary_region": "R08",
+      "system_groups": [],
+      "waterhole": "W02",
+      "canyon_minutes_estimate": 28,
+      "focus_tags_fa": [
+        "آب، زیستگاه و مشاهدهٔ غیرمداخله‌ای",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M30",
+      "chapter": 8,
+      "title_fa": "شبکه را وادار به پاسخ کن",
+      "minutes": 45,
+      "regions": [
+        "R08-B"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S2",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "شبکهٔ خورشید و گرما",
+        "شب و مسیریابی آسمانی",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M31",
+      "chapter": 8,
+      "title_fa": "جای کلید را از دستِ نگهبان بخوان",
+      "minutes": 40,
+      "regions": [
+        "R08-D"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S3",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "نرخِ محلیِ ساعت",
+        "شبکهٔ خورشید و گرما"
+      ]
+    },
+    {
+      "id": "M32",
+      "chapter": 8,
+      "title_fa": "به قلب، راهِ برگشت ببَر",
+      "minutes": 40,
+      "regions": [
+        "R08-D"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S2"
+      ],
+      "focus_tags_fa": [
+        "شب و مسیریابی آسمانی",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M33",
+      "chapter": 9,
+      "title_fa": "کیان را پیش از حافظه آزاد کن",
+      "minutes": 35,
+      "regions": [
+        "R08-D"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S3"
+      ],
+      "focus_tags_fa": [
+        "نرخِ محلیِ ساعت",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M34",
+      "chapter": 9,
+      "title_fa": "پل را برای نفرِ بعد نگه دار",
+      "minutes": 40,
+      "regions": [
+        "R08-D"
+      ],
+      "primary_region": "R08",
+      "system_groups": [],
+      "focus_tags_fa": [
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M35",
+      "chapter": 9,
+      "title_fa": "آتش را از پناهِ آدم‌ها دور کن",
+      "minutes": 40,
+      "regions": [
+        "R08-D",
+        "R08-E"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S1"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M36",
+      "chapter": 9,
+      "title_fa": "هزینهٔ میدان را اندازه بگیر",
+      "minutes": 35,
+      "regions": [
+        "R08-E"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S3",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "نرخِ محلیِ ساعت",
+        "شبکهٔ خورشید و گرما"
+      ]
+    },
+    {
+      "id": "M37",
+      "chapter": 10,
+      "title_fa": "قلب را از گروگان جدا کن",
+      "minutes": 35,
+      "regions": [
+        "R08-E"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "شبکهٔ خورشید و گرما",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M38",
+      "chapter": 10,
+      "title_fa": "نور را به پناه برگردان",
+      "minutes": 35,
+      "regions": [
+        "R08-E"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S1",
+        "S4"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "شبکهٔ خورشید و گرما",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M39",
+      "chapter": 10,
+      "title_fa": "کامران را متوقف کن",
+      "minutes": 45,
+      "regions": [
+        "R08-E"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S1",
+        "S3"
+      ],
+      "focus_tags_fa": [
+        "سایه، حرارت سطح و خط دید",
+        "نرخِ محلیِ ساعت",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    },
+    {
+      "id": "M40",
+      "chapter": 10,
+      "title_fa": "نام خودت را کنار نتیجه بگذار",
+      "minutes": 35,
+      "regions": [
+        "R08-E"
+      ],
+      "primary_region": "R08",
+      "system_groups": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "phases_minutes": [
+        14,
+        8,
+        7,
+        6
+      ],
+      "focus_tags_fa": [
+        "نرخِ محلیِ ساعت",
+        "شبکهٔ خورشید و گرما",
+        "شب و مسیریابی آسمانی",
+        "اکشنِ زمینی و نجاتِ مشترک"
+      ]
+    }
+  ],
+  "side_chains": [
+    {
+      "id": "Q01",
+      "title_fa": "سهمِ بعدی",
+      "minutes": 60,
+      "regions": [
+        "R02",
+        "R06",
+        "R05"
+      ],
+      "phases": [
+        {
+          "id": "Q01.1",
+          "title_fa": "نشتی را از مصرف جدا کن",
+          "minutes": 18
+        },
+        {
+          "id": "Q01.2",
+          "title_fa": "نوبت را با امکان واقعی ببند",
+          "minutes": 24
+        },
+        {
+          "id": "Q01.3",
+          "title_fa": "آب را برای غایب‌ها هم نگه دار",
+          "minutes": 18
+        }
+      ],
+      "required_for_ending": false
+    },
+    {
+      "id": "Q02",
+      "title_fa": "ردِ بی‌صدا",
+      "minutes": 60,
+      "regions": [
+        "R02",
+        "R03",
+        "R05"
+      ],
+      "phases": [
+        {
+          "id": "Q02.1",
+          "title_fa": "جایِ خودت را انتخاب کن",
+          "minutes": 15
+        },
+        {
+          "id": "Q02.2",
+          "title_fa": "چیزی را که مزاحمش نیستی ثبت کن",
+          "minutes": 25
+        },
+        {
+          "id": "Q02.3",
+          "title_fa": "عکس را با محلش برگردان",
+          "minutes": 20
+        }
+      ],
+      "required_for_ending": false
+    },
+    {
+      "id": "Q03",
+      "title_fa": "بارِ دیگر",
+      "minutes": 60,
+      "regions": [
+        "R06",
+        "R01"
+      ],
+      "phases": [
+        {
+          "id": "Q03.1",
+          "title_fa": "بستِ ساییده را بیرون بگذار",
+          "minutes": 20,
+          "activity_fa": "تطبیقِ منشأ/عیار/رسید و آماده‌سازیِ بار"
+        },
+        {
+          "id": "Q03.2",
+          "title_fa": "قرقره را پس بگیر",
+          "minutes": 25,
+          "activity_fa": "بازیابیِ قرقره و سه روشِ رسید/نفوذ/دفاع در برابر توقیف"
+        },
+        {
+          "id": "Q03.3",
+          "title_fa": "بار را با اسمِ صاحبش برگردان",
+          "minutes": 15,
+          "activity_fa": "تحویل و فروش/نگهداری با وزن، کیفیت، هزینه و سودِ معلوم"
+        }
+      ],
+      "required_for_ending": false
+    },
+    {
+      "id": "Q04",
+      "title_fa": "راهی که فروخته شد",
+      "minutes": 60,
+      "regions": [
+        "R03",
+        "R04",
+        "R08-B"
+      ],
+      "phases": [
+        {
+          "id": "Q04.1",
+          "title_fa": "ردِ تعویض را پیدا کن",
+          "minutes": 18
+        },
+        {
+          "id": "Q04.2",
+          "title_fa": "کسی را که رد می‌گیرد دنبال کن",
+          "minutes": 24
+        },
+        {
+          "id": "Q04.3",
+          "title_fa": "راه را از گروِ خبر بیرون بیاور",
+          "minutes": 18
+        }
+      ],
+      "required_for_ending": false
+    },
+    {
+      "id": "Q05",
+      "title_fa": "حسابِ شاهد",
+      "minutes": 60,
+      "regions": [
+        "R06",
+        "R08-A",
+        "R08-C"
+      ],
+      "phases": [
+        {
+          "id": "Q05.1",
+          "title_fa": "ضرب را از دیوار جدا کن",
+          "minutes": 20
+        },
+        {
+          "id": "Q05.2",
+          "title_fa": "قاب را پیش از دست حرکت بده",
+          "minutes": 25
+        },
+        {
+          "id": "Q05.3",
+          "title_fa": "شهادت را به بدهی نفروش",
+          "minutes": 15
+        }
+      ],
+      "required_for_ending": false
+    },
+    {
+      "id": "Q06",
+      "title_fa": "قفسِ روشن",
+      "minutes": 60,
+      "regions": [
+        "R03",
+        "R05"
+      ],
+      "phases": [
+        {
+          "id": "Q06.1",
+          "title_fa": "ببین، بدون نزدیک‌کردن خطر",
+          "minutes": 18
+        },
+        {
+          "id": "Q06.2",
+          "title_fa": "مسیر انسان و جانور را جدا کن",
+          "minutes": 24
+        },
+        {
+          "id": "Q06.3",
+          "title_fa": "بار را به مقصدِ امن برسان",
+          "minutes": 18
+        }
+      ],
+      "required_for_ending": false
+    },
+    {
+      "id": "Q07",
+      "title_fa": "رصدگاهِ خاموش",
+      "minutes": 60,
+      "regions": [
+        "R07",
+        "R08-B"
+      ],
+      "phases": [
+        {
+          "id": "Q07.1",
+          "title_fa": "افق را تمیز کن",
+          "minutes": 20
+        },
+        {
+          "id": "Q07.2",
+          "title_fa": "دو نشانه، یک مسیر",
+          "minutes": 25
+        },
+        {
+          "id": "Q07.3",
+          "title_fa": "آنچه نمی‌دیدی را ثبت کن",
+          "minutes": 15
+        }
+      ],
+      "required_for_ending": false
+    },
+    {
+      "id": "Q08",
+      "title_fa": "گرمایی که می‌ماند",
+      "minutes": 60,
+      "regions": [
+        "R01",
+        "R04",
+        "R08-A"
+      ],
+      "phases": [
+        {
+          "id": "Q08.1",
+          "title_fa": "گرمای دورریز را بشناس",
+          "minutes": 20,
+          "activity_fa": "برداشتِ محدود از کشتِ مدیریت‌شده و سفارشِ مکملِ غیرضروری"
+        },
+        {
+          "id": "Q08.2",
+          "title_fa": "حلقه را بدون نشت ببند",
+          "minutes": 25,
+          "activity_fa": "بازیابی/تعمیر/مبادلهٔ قطعهٔ گرما و آماده‌سازیِ خدمت"
+        },
+        {
+          "id": "Q08.3",
+          "title_fa": "نوبتِ گرما را تقسیم کن",
+          "minutes": 15,
+          "activity_fa": "تقسیمِ ذخیرهٔ آسایش با حفاظت از درمان/نجاتِ پایه"
+        }
+      ],
+      "required_for_ending": false
+    }
+  ],
+  "exploration_packs": [
+    {
+      "id": "X01",
+      "minutes": 30,
+      "required_for_ending": false,
+      "title_fa": "نشانهٔ پایدار",
+      "activity_fa": "مسیر و تحویلِ آبِ انسانی/جانوریِ مجزا"
+    },
+    {
+      "id": "X02",
+      "minutes": 30,
+      "required_for_ending": false,
+      "title_fa": "خط سایه",
+      "activity_fa": "کشتِ مشخص، برداشتِ محدود و مسیرِ گرما/سایه"
+    },
+    {
+      "id": "X03",
+      "minutes": 30,
+      "required_for_ending": false,
+      "title_fa": "رد در باد",
+      "activity_fa": "شکارِ خوراکیِ اختیاری بیرونِ حریمِ حفاظت یا عکاسی/خوراکِ معتبر"
+    },
+    {
+      "id": "X04",
+      "minutes": 30,
+      "required_for_ending": false,
+      "title_fa": "مصرفِ پنهان",
+      "activity_fa": "ماده/اسقاط، عیار، وزن و مالکیت"
+    },
+    {
+      "id": "X05",
+      "minutes": 30,
+      "required_for_ending": false,
+      "title_fa": "حافظهٔ کار",
+      "activity_fa": "نگهداریِ خوراک، معامله و تاریخِ ابزار"
+    },
+    {
+      "id": "X06",
+      "minutes": 30,
+      "required_for_ending": false,
+      "title_fa": "شب و سطح",
+      "activity_fa": "آسمان، عکاسی، پناه و سطحِ شبانه"
+    }
+  ],
+  "canyon_focus": {
+    "main_missions_with_primary_region_canyon": 21,
+    "all_main_missions": 40,
+    "final_chapters_wholly_inside_canyon": [
+      9,
+      10
+    ],
+    "last_scene_region": "R08-E"
+  },
+  "double_counting_rule": "Travel/dialogue/combat are inclusive inside each mission budget. Shared travel is counted only once. No deaths, reloads, waiting for rare wildlife or idle waiting counted.",
+  "mechanical_signatures": {
+    "S1": "سایه، گرمای سطح و خط دید",
+    "S2": "راه‌خوانیِ زمین و آسمان",
+    "S3": "دو ساعت و نرخِ محلیِ محدود",
+    "S4": "شبکهٔ خورشیدی، انرژی و گرمای خدمت"
+  },
+  "metadata_note": "S1–S4 are the four mechanical signatures. Human-readable focus tags are mission subjects, not extra resource systems.",
+  "validation": {
+    "mission_count": 40,
+    "side_chain_count": 8,
+    "side_stage_count": 24,
+    "main_minutes": 1440,
+    "side_minutes": 480,
+    "exploration_minutes": 180,
+    "total_minutes": 2100,
+    "measured_playtest": false
+  },
+  "geography_contract": {
+    "source": "GEOGRAPHY_EVIDENCE_FA.md",
+    "maps": "maps/README_FA.md",
+    "area25km2": "aggregate design target of separated playable sectors, not continuous measured realarea",
+    "canyon_geometry_or_GPX_verified": false,
+    "fictional_facility_or_waterhole_GPS_assigned": false
+  }
+}

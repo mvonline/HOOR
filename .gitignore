@@ -1,4 +1,5 @@
 .venv/
+venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -7,6 +8,37 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+builds/
+.tools/
+game/DesertSlice/node_modules/
+game/DesertSlice/.cache/
+game/RadEHoor/Library/
+game/RadEHoor/Temp/
+game/RadEHoor/Logs/
+game/RadEHoor/obj/
+game/RadEHoor/UserSettings/
+game/RadEHoor/*.csproj
+game/RadEHoor/*.sln
 *.db
 projects/*/data/
 projects/*/artifacts/task-receipts/
+
+projects/rade-hoor/artifacts/intro-films-20261119/node_modules/
+projects/rade-hoor/artifacts/intro-films-20261119/**/.hyperframes/
+
+# Local discarded implementations and generated outputs: design-only delivery.
+/game/
+/builds/
+/DesertSlice.cmd
+/NativeGame.cmd
+/demo.cmd
+/spore-dev-log.html
+/projects/rade-hoor/artifacts/
+/gameStory/images/demo/
+/gameStory/images/* - Copy.png
+
+# Local map authoring and QA files; the published maps are staged explicitly.
+/gameStory/redesign/v7-20261121/maps-download.py
+/gameStory/redesign/v7-20261121/maps/map-check.cjs
+/gameStory/redesign/v7-20261121/maps/map-preview.html
+/gameStory/redesign/v7-20261121/maps/region-map-mobile.png

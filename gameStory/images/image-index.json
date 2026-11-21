@@ -1,0 +1,731 @@
+{
+  "date": "2026-11-21",
+  "purpose": "Concept image staging inventory; the v7 documents own story canon.",
+  "image_count": 79,
+  "total_bytes": 199398736,
+  "excluded_identical_local_copies": [
+    "bahram-62-v1 - Copy.png",
+    "camel-pack-v1 - Copy.png",
+    "canyon-day-v1 - Copy.png",
+    "caravanserai-night-v1 - Copy.png",
+    "daniyal-v1 - Copy.png",
+    "env-c02-expedition-camp-v1 - Copy.png",
+    "env-c03-erosion-tunnel-v1 - Copy.png"
+  ],
+  "excluded_subtrees": [
+    "demo/"
+  ],
+  "assets": [
+    {
+      "filename": "bahram-62-v1.png",
+      "bytes": 1921535,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "b362cc26fec97383d56e9cea39b66f3f9861e7d9287f5e4ad7a280158af0a868",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "bahram-82-v1.png",
+      "bytes": 1995545,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "b971e08650e25506b589d0a1da4dc72cf4b0ae2407258d03d532429055fad7f4",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "camel-pack-v1.png",
+      "bytes": 2195141,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ac9dbd2f78bdf27ba66b2b8aeaea9e930b23e3242ca5abe9d542159c2ed335e7",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "canyon-day-v1.png",
+      "bytes": 3584893,
+      "width": 1881,
+      "height": 836,
+      "sha256": "85bf127d706bf1d7e927fe598bc66c40613a6c31d3f9b882bf43cce141f3dc69",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "caravanserai-night-v1.png",
+      "bytes": 2679433,
+      "width": 1672,
+      "height": 941,
+      "sha256": "3c8f9dd043d65116886e1b6baf301afaf24fb67a576784a13faae256976d1fbe",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "daniyal-v1.png",
+      "bytes": 1874798,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "a0f1314c5adbfea4a7d5ca07acdfcc7cfe65370affdf4ec9adda04ac2232eaf8",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "dara-camel-base-v1.png",
+      "bytes": 2104204,
+      "width": 1402,
+      "height": 1122,
+      "sha256": "1d5b91f91bcd22dbee933be8865227e70255d23218f8b560f41e63f6f892c70b",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "dara-camel-tack-v1.png",
+      "bytes": 2109069,
+      "width": 1402,
+      "height": 1122,
+      "sha256": "965fe415f3b0925537864ef916ff6efe329dca134e6e2421591f3f646bf3aa8a",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-c02-expedition-camp-v1.png",
+      "bytes": 2763841,
+      "width": 1893,
+      "height": 831,
+      "sha256": "ecebdf0f2f86e97387dd8338ec4f123f2d98aa52ad02858f5280df7e4ef2fe75",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-c03-erosion-tunnel-v1.png",
+      "bytes": 3102649,
+      "width": 1672,
+      "height": 941,
+      "sha256": "146c1489e33312fe4ce68914b5807304119b2c80bb926839dd6321f52167e3f3",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-c05-dara-courtyard-v1.png",
+      "bytes": 2630869,
+      "width": 1847,
+      "height": 851,
+      "sha256": "816f3e0d2a6c5a1afdcc0c31451dcd24bc1123add9dfe090f62f4fc8ff615ea3",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-c06-r17-field-ledge-v1.png",
+      "bytes": 2761556,
+      "width": 1774,
+      "height": 887,
+      "sha256": "a03f75e4ee086fba548d9dd1584516d343426ed8ac0ffd88ad668b56150704f1",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-c07-core-perimeter-v1.png",
+      "bytes": 3202655,
+      "width": 1774,
+      "height": 887,
+      "sha256": "89c48eaba8f9ed9b9e6799d203ea7619fdda747f0b45e1176d353ca4a4cea830",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-c08-collapse-routes-v1.png",
+      "bytes": 3034495,
+      "width": 1983,
+      "height": 793,
+      "sha256": "85669b23a8e5de736559398e3c55d4b164abb939bfc2612d0061c2259ec76fc6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-c09-final-gate-v1.png",
+      "bytes": 3138552,
+      "width": 1983,
+      "height": 793,
+      "sha256": "52185a07c9ebd88d0ba6a7e0715cf9952399f8fe172eeb23fab9d32bf64dbae8",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-c10-outside-aid-v1.png",
+      "bytes": 3630684,
+      "width": 1983,
+      "height": 793,
+      "sha256": "2512958c747ec62781b3d5bc58b2bacfb33a1afd795e28a0200ac170b720dcee",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-dune-rest-stop-v1.png",
+      "bytes": 2396674,
+      "width": 1672,
+      "height": 941,
+      "sha256": "9d906c83f995a6bcfdfdc25f6febbcd6a0b26d0f99a83e93a9a0d02fd17711ff",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l01-garage-v1.png",
+      "bytes": 3043677,
+      "width": 1983,
+      "height": 793,
+      "sha256": "e6dd252e6e1b399ae9cbbe0f479dc49feda9aff7e86e3696ad1e5ca5b38051ca",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l02-payab-v1.png",
+      "bytes": 3464792,
+      "width": 1881,
+      "height": 836,
+      "sha256": "c0fbbec6958f0ae10cb3e20c85470c4325c39004eb7aaf332f70d83d34f81ec0",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l03-logistics-yard-v1.png",
+      "bytes": 2996651,
+      "width": 1774,
+      "height": 887,
+      "sha256": "69ed570fc7a3a68fb3dc74d629815f91084211739ea9ef648bb38dbc9b6608ad",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l04-roadside-caravanserai-v1.png",
+      "bytes": 3164532,
+      "width": 1774,
+      "height": 887,
+      "sha256": "38f95c3856b58e8b0e8670916027d4a7306a28f1041a565c41f891b423db0775",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l05-kalut-markers-v1.png",
+      "bytes": 3255512,
+      "width": 1774,
+      "height": 887,
+      "sha256": "bf58fbacc8a7f8b604327b4f8e40d7eef49697b2ea51520ef7464beef05cca9f",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l05-rescue-night-v1.png",
+      "bytes": 2359573,
+      "width": 1774,
+      "height": 887,
+      "sha256": "1a87f0d87a2e41b4f9b43b42e2226eac52ddf6c14b60023691a011c561275739",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l06-nebkha-sensor-v1.png",
+      "bytes": 3473755,
+      "width": 1672,
+      "height": 941,
+      "sha256": "257043cf3593df5e9832a9fb49199129c68469b2e59effae5889df632d54cf91",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l07-night-diversion-v1.png",
+      "bytes": 3245663,
+      "width": 1672,
+      "height": 940,
+      "sha256": "ee98d85820f16c3d37d5cbdfc775462ef318a2be35ed7a25d63d951c0952597c",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l08-radio-relay-v1.png",
+      "bytes": 3213580,
+      "width": 1918,
+      "height": 820,
+      "sha256": "350694559eda54c2b3ee3f632e2b31d7e2e2204cad858829954a5baff566221c",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l09-records-room-v1.png",
+      "bytes": 2646318,
+      "width": 1672,
+      "height": 941,
+      "sha256": "90a9e53b8d002c8714747b7f078b7894bb661257f0bb686eb73b856da653e56d",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-l10-road-memory-v1.png",
+      "bytes": 3363838,
+      "width": 1672,
+      "height": 941,
+      "sha256": "105c8ba4a3a255559c0f62ca4b7a2253f0105c615ccb780af9df18f929976f3f",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-o01-service-yard-v1.png",
+      "bytes": 2779750,
+      "width": 1983,
+      "height": 793,
+      "sha256": "3ead261087142eb58e44bb7cbbd0783759e19602c4225b9f2bad57d2ae8e4ff9",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-o02-salt-flat-branch-v1.png",
+      "bytes": 3383856,
+      "width": 1672,
+      "height": 941,
+      "sha256": "a833124a09462eba871e8c276ddaa85930878db23d56180d9d6b54e615b3e181",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-o03-mirror-route-v1.png",
+      "bytes": 3400376,
+      "width": 1672,
+      "height": 941,
+      "sha256": "19ed3145c86956425676cfb5c97ea1f8b345c102a3363fe7e526fd64ee0baab6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "farhad-v1.png",
+      "bytes": 2062278,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "7e3d22ed9414455a6098a69f29d16482826571695a390b9508fcc207f29e7255",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "farhad-v2.png",
+      "bytes": 1843658,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "e88b2dfafa351408d30c35dd25321e46f7827a2500ec959f725100f7bc94ad64",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "hoor-adult-v1.png",
+      "bytes": 2104453,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "9a107955094482983fa59a9f6aeff00f4a87e81e6164749ffdfe9bf4892493a3",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "hoor-adult-v2.png",
+      "bytes": 2338176,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "2eb296e0a8413f66b182923d96c410d9a68a28f088083d1fdfc97727b825682a",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "hoor-giant-v1.png",
+      "bytes": 2598934,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "761d0bac94d7a91188139e71118b1a11e6d6f63cb8bf045cfc97b0e6ca1d42df",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "hoor-giant-v2.png",
+      "bytes": 2056000,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "0952038f9c0fea1dadfaab1d334b002499b8195a6d492008d36f026bcfd22b7b",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "hoor-juvenile-v1.png",
+      "bytes": 2013372,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "50c19f4acff2218ac4c52ea153af4470de2ea90a5c4679011660f8c1a4af2305",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "hoor-juvenile-v2.png",
+      "bytes": 2303443,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "c623c188c34876ed5d24833e050a85aa564fbc5cacd82fc73eef3780bea2711f",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "kian-v1.png",
+      "bytes": 2119980,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "4b0894bd507f624f2518ff81553ceaa2a77f30b9af89c0bbd72ddf8b1f51df89",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "kian-v2.png",
+      "bytes": 2007577,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "2f605ff75ed177f2848394e26b7920c6d8b829327ac421312afa4255250914a6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "nader-seated-v1.png",
+      "bytes": 2230802,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "2604a3993c01b252c1e5f99a034a5178e336d80ae32b04eefb8c2225deddbf30",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "nader-seated-v2.png",
+      "bytes": 2219207,
+      "width": 1145,
+      "height": 1374,
+      "sha256": "71a861e026bd3f6405617c585574f9ba1b27f9a507c182acd9d745a292c31a89",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "npc-dara-associate-v1.png",
+      "bytes": 1970657,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "c08494e23ebd7a350098a2d984053ae1340ca913ea3229d855a2d4e8963934de",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "npc-driver-v1.png",
+      "bytes": 2009624,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "216fee5a7207c57ca22ddfe2febb47f6d0d6b809a6e032a1a07667c1d985fa2f",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "npc-field-caretaker-v1.png",
+      "bytes": 2026726,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "207e676ec0347dda5b1f77e5744010346c1948b9affe0aae4a99c930a7f97260",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "npc-peripheral-01-v1.png",
+      "bytes": 1955153,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "90ebcb98620797cba6737f1c501e89fbfd6c2e26f4b4a6123eaef3de2917df57",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "npc-peripheral-02-v1.png",
+      "bytes": 2047067,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "392ba7f7968ee4e21d8b9efcce419218b5b52eb1f27c67d90d70edd9ce669b67",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "npc-water-seller-01-v1.png",
+      "bytes": 1932460,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "b120e586dd5e1c4993ca94581b33721561991cdbdcea52f22fd02e9c7e1f5237",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "npc-water-seller-02-v1.png",
+      "bytes": 1880375,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "a92af00abcf879f0e8d8b5d3f84a2035be16c8f0d28d2865e8a10673fa2cd56a",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "npc-workshop-guard-v1.png",
+      "bytes": 1939594,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "b0b7340a8f56f5ca37166c67b5d6a2421a6f64671116be42afbf16fc820f8644",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-blocked-cabin-v1.png",
+      "bytes": 2500109,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "7bb1f917b017798ed8db847dbf6460b77fd5c5d48bf98bf79d0beadc03c94e55",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-camp-window-door-open-v1.png",
+      "bytes": 2655668,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "768529c8c3038f62aece915d84ce4d538b089533d39c297e7611663a67a1ed21",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-cockpit-v1.png",
+      "bytes": 2858403,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "848e2c721ae350e626a53dfd5acf796b6186c71f3c13056128230388ee0681a2",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-crushed-roof-v1.png",
+      "bytes": 2672278,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "f3ab74081f0bd39e6716f1efd94fe0d2f91b938f691030870d8a52bdbfbe9c71",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-earlier-trapped-open-body-v2.png",
+      "bytes": 2849002,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "fba1195384e998270c2e0ec0c926dfcfea114cdcd345723b27c6496f52013174",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-final-trap-v1.png",
+      "bytes": 3117439,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "28a1b64ed3a4195b724cff65278dde64a2f41491bc4ae95854cf573aef8188a8",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-intact-shielded-v1.png",
+      "bytes": 2893235,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "39bf29a472e8c28de78517fb94952ab30037c0f92380f17f9655c033bbff95ca",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-intact-v1.png",
+      "bytes": 2638260,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "5c228ffc39c5931d3e6ae217bd24eb3aa0d7edd1644f3608e878669c05309899",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-overturned-v1.png",
+      "bytes": 3210644,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "e6409d3b8b15fa0a4923f0570edd92b8f3352ab83ee3ba5af500c37296333950",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "pirmard-7-sand-reig-v1.png",
+      "bytes": 2840951,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "50171b6a6774051c9eece2f025823b0139e09cc121e3e42c6ff11d662da278c3",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "qasem-v1.png",
+      "bytes": 1957828,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "b8bf2c759fff90e02d44088b950f83bc1d7eaa48956eddea7fb125f9368eb42b",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "qasem-v2.png",
+      "bytes": 1981284,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "6a023da6387b2ee7fc82a20e6fc42d1cb3b210e0ad3c68eebadd7c9b52d754a3",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "rostam-v1.png",
+      "bytes": 2306783,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "c25ea0ce0256d36e94fd8755d45745f9f4dba916c49c524bce720e3c5de777e5",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "rostam-v2.png",
+      "bytes": 1994331,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "133a5f43992ed6872db893be2a56aecf6a3041dce933875299490537b4bd60b0",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "roya-v1.png",
+      "bytes": 1922850,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "577489f7e82fcdeac0a21924434011ce17a21baedd677fe1d8927fe8da8d559e",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "roya-v2.png",
+      "bytes": 1929420,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "1eeb269ad46b57f8cd17d177f5a766d5d6758e76d902635a95f44d7eed3115d8",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "sara-v1.png",
+      "bytes": 1901109,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "4ad77c72c1af3965858f4873d4441233f5f3c04d0c539a09e89272f1437657d0",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-aid-support-v1.png",
+      "bytes": 2501686,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a34f5adf7ba688684601f582b92c49a7ecb41dbe46f6799034894853c0cb3152",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-final-crash-v1.png",
+      "bytes": 2841131,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "cadee22951c96ea9daa5beb999db7e6f85f93097639308ebba1bbacb924820c0",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-hambar-recovery-v1.png",
+      "bytes": 2543966,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "66b210d88e47580856d17ddaba45c96164c9400a5995d16e79b773ac43ad359e",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-hambar-truck-v2.png",
+      "bytes": 2436103,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "06f91d4cccc20fe0320fdaaf2c21e2e3b6895d8f48ffafeaaac4ae3396deb823",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-old-camp-v1.png",
+      "bytes": 2619642,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "0f0ad7e46b293f6aec1c32745decf2195141fad5beb761eacab7d5c59cd7a06c",
+      "status": "retired_story_reference",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-optional-transport-v1.png",
+      "bytes": 2397281,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "bdb2da43fe500a9e97425a8f20f436f5f9ff4a74cc91dcd193176f3a4286b9c2",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-research-pickup-v1.png",
+      "bytes": 2527857,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a23c187206bc41657f9b53efe30950552d58350e166121b092ab5c8d87c1dba4",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-support-suv-v1.png",
+      "bytes": 2416369,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "7f98597d16c659eac32904570cad6a3832fd7b21f0ea33388bf82df9364fe1b2",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "vehicle-team-support-v2.png",
+      "bytes": 2355314,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "6511292ab5c8c6ec99a8972ea1d0cc0ab58509069e2891f9693a9b8c8b26e8a9",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "yunus-rescued-v1.png",
+      "bytes": 1960593,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "807d1f65b541234b8993c68693276c7d35fc7ec9eca2d3e8358641cc4da4512a",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "yunus-rescued-v2.png",
+      "bytes": 1991198,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "869dad764bb8af7c4fa988e88448dc6123cb9faa5e113f8db2f08b08299560f6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    }
+  ]
+}

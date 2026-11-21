@@ -1,10 +1,28 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
+from unittest.mock import Mock
 
 import pytest
 
 from studio.config import Settings
+
+
+@pytest.fixture()
+def production_responses(monkeypatch):
+    """Simulate only the provider; run the actual production and review workflow."""
+    request = Mock(side_effect=[
+        json.dumps({
+            "summary": "Implemented test deliverable",
+            "files": [{"path": "game/deliverable.txt", "content": "implemented\n"}],
+            "acceptance_evidence": ["Deliverable exists"],
+            "assumptions": [],
+        }),
+        json.dumps({"approved": True, "issues": [], "summary": "Reviewed"}),
+    ])
+    monkeypatch.setattr("studio.agents._request", request)
+    return request
 
 
 @pytest.fixture()

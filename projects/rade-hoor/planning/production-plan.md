@@ -1,7 +1,9 @@
 # Production Plan — rade-hoor
 
 Plan ID: `plan-437c67b787`
-Status: **approved**
+Status: **approved baseline from 2026-10-21**
+
+> Design-impact note, 2026-11-02: this approval does not approve the expanded 5.7 campaign scope. Current target is native Unity PC; older Web Audio task descriptions below are historical prototype work. Narrative revisions, Hambar branches and optional missions need a revised production estimate and task mapping before full campaign production. F07 and narrative playtests remain open. See [the current narrative review](../reports/20261102-narrative-framework-review.md).
 Updated (UTC): 2026-10-21T18:03:58.493189+00:00
 
 ## Summary

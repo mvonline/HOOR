@@ -1,0 +1,13 @@
+# Vehicle surface and optical detail continuation
+
+User requested continuation of the vehicle/object improvement pass. Source-only work; no new executable, version increment or Suno use.
+
+Added persistent 128px linear normal and metallic/smoothness maps for six field-kit surfaces: paint, frame, rubber, steel, canvas and wood. Height detail wraps continuously, uses mipmaps/trilinear filtering and is cached. During gameplay the cached maps load from the prepared Resources assets. Paint relief was deliberately reduced after an actual camp scene render showed an overly hammered appearance. The maps remain procedural rather than final hand-painted material sets.
+
+The paint shader reads relief and finish maps, with low-body dust and reduced metallic/smoothness response through dust. Model mesh generation now supplies tangents, combined asset baking recalculates them, and in-place mesh updates preserve them. The asset baker saves normal and finish textures alongside the existing main textures without changing existing material/prefab references. Asset review rejects detailed surfaces with missing tangents or unsaved map references.
+
+Replaced square wheel-bolt blocks with chamfered hex fasteners. Headlights now have recessed housings, annular bezels, concave reflectors, small bulbs and convex glass. Fluting is incorporated in the glass mesh and normals instead of dozens of separate cylinder pieces. Final intact vehicle count is 49,860 triangles; damaged vehicle 50,188; workstation 4,048. These counts supersede the preceding model pass's current-column numbers. No target-PC frame-rate claim is made.
+
+Validation: all five Editor suites passed after the material/tangent changes. Driving and camp suites passed after the optical geometry changes. Final fastener winding/lens optimisation passed saved-geometry, wheel-opening, transparency, material-persistence and tangent checks. Camp passed again after the final relief-strength adjustment. The close-up vehicle/workstation renders and the actual camp camera capture were inspected. No new player was built, so these source changes have not undergone fresh standalone-player checks. A small material-name-versus-filename import warning is unrelated to runtime mesh accessibility; no shader/compiler exception was reported by the review.
+
+Review gallery: ../artifacts/vehicles/20261105-model-pass/details.html. Earlier comparison images are preserved, and current renders are refreshed. The gameplay capture has no HUD; it is not evidence of UI visual quality. Final artist-authored textures, more detailed damage, LOD/performance work and human playtesting remain open.

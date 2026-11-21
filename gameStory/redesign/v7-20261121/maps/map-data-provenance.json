@@ -1,0 +1,11 @@
+{
+  "retrieved": "2026-11-21",
+  "projection": "EPSG:3857 / d3-geo Mercator",
+  "geonames": "https://download.geonames.org/export/dump/IR.zip",
+  "road_geometry": "https://overpass-api.de/api/interpreter",
+  "roads_count": 75,
+  "imagery": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+  "imagery_capture_date": "not established",
+  "canyon_points_status": "approximate source references, not surveyed geometry",
+  "fictional_game_sectors": "schematic, no coordinates assigned"
+}

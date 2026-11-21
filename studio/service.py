@@ -195,12 +195,30 @@ def run_batch(limit: int = 5, store: StudioStore | None = None) -> dict:
         raise RuntimeError("No plan found.")
     if plan.status != PlanStatus.APPROVED:
         raise RuntimeError("Plan is not approved; refusing to run production tasks.")
-    done = run_ready_tasks(store, plan.id, limit=limit)
+    from studio.agents import production_agent_handler
+
+    done = run_ready_tasks(
+        store,
+        plan.id,
+        limit=limit,
+        handler=lambda task: production_agent_handler(task, store.settings, store),
+    )
     tasks = store.list_tasks(plan.id)
     return {
         "ran": [t.id for t in done],
+        "produced_files": [
+            path for task in done for path in task.outputs.get("changed_files", [])
+        ],
         "task_counts": task_counts(tasks),
     }
+
+
+def suggest_task_breakdown(goal: str, constraints: str = "", settings: Settings | None = None) -> list[PlanDeliverable]:
+    """Return a proposed breakdown; the user must review and save it to the draft plan."""
+    from studio.agents import suggest_breakdown
+
+    settings = ensure_project_dirs(settings or get_settings())
+    return suggest_breakdown(goal, constraints, settings)
 
 
 def save_plan_edits(

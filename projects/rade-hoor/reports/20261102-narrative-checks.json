@@ -1,0 +1,315 @@
+{
+  "scope": "Document structure, placement, local links and arithmetic; not runtime, independent review or audience validation.",
+  "passed": 75,
+  "total": 75,
+  "results": [
+    {
+      "check": "README.md: UTF-8 without replacement characters",
+      "passed": true
+    },
+    {
+      "check": "README.md: current version in opening",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Proposal_v5.0.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Full_Screenplay_FA.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Character_Bible.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Art_Direction_Bible.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Validation_Report.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Character_Bible.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Character_Prompt_Bible_EN.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Layout_Background_Bible_EN.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link ../projects/rade-hoor/artifacts/concepts/20261102/README.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Expansion_Draft_FA.md",
+      "passed": true
+    },
+    {
+      "check": "README.md: local link Rad-e-Hoor_Hambar_Integration_Design_FA.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Full_Screenplay_FA.md: UTF-8 without replacement characters",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Full_Screenplay_FA.md: current version in opening",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Full_Screenplay_FA.md: local link Rad-e-Hoor_Proposal_v5.0.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Full_Screenplay_FA.md: local link Rad-e-Hoor_Character_Bible.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Full_Screenplay_FA.md: local link Rad-e-Hoor_Art_Direction_Bible.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Proposal_v5.0.md: UTF-8 without replacement characters",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Proposal_v5.0.md: current version in opening",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Proposal_v5.0.md: local link Rad-e-Hoor_Full_Screenplay_FA.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Proposal_v5.0.md: local link Rad-e-Hoor_Character_Bible.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Proposal_v5.0.md: local link Rad-e-Hoor_Art_Direction_Bible.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Character_Bible.md: UTF-8 without replacement characters",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Character_Bible.md: current version in opening",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Character_Bible.md: local link Rad-e-Hoor_Full_Screenplay_FA.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Character_Bible.md: local link Rad-e-Hoor_Proposal_v5.0.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Character_Bible.md: local link Rad-e-Hoor_Character_Prompt_Bible_EN.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Character_Bible.md: local link Rad-e-Hoor_Layout_Background_Bible_EN.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Art_Direction_Bible.md: UTF-8 without replacement characters",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Art_Direction_Bible.md: current version in opening",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Art_Direction_Bible.md: local link Rad-e-Hoor_Full_Screenplay_FA.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Art_Direction_Bible.md: local link Rad-e-Hoor_Proposal_v5.0.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Art_Direction_Bible.md: local link Rad-e-Hoor_Character_Bible.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Art_Direction_Bible.md: local link Rad-e-Hoor_Layout_Background_Bible_EN.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Art_Direction_Bible.md: local link Rad-e-Hoor_Character_Prompt_Bible_EN.md",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Validation_Report.md: UTF-8 without replacement characters",
+      "passed": true
+    },
+    {
+      "check": "Rad-e-Hoor_Validation_Report.md: current version in opening",
+      "passed": true
+    },
+    {
+      "check": "Eleven chapters",
+      "passed": true
+    },
+    {
+      "check": "Six tape archive entries",
+      "passed": true
+    },
+    {
+      "check": "D01 through D10 exactly",
+      "passed": true
+    },
+    {
+      "check": "H01 through H07 exactly",
+      "passed": true
+    },
+    {
+      "check": "S01 through S04 exactly",
+      "passed": true
+    },
+    {
+      "check": "L01 through L10 retained",
+      "passed": true
+    },
+    {
+      "check": "O01 through O04 retained",
+      "passed": true
+    },
+    {
+      "check": "E01 through E07 only in source table",
+      "passed": true
+    },
+    {
+      "check": "H01 before logistics departure",
+      "passed": true
+    },
+    {
+      "check": "Water-yard action before garage cut",
+      "passed": true
+    },
+    {
+      "check": "H02 after radio stop, before L06",
+      "passed": true
+    },
+    {
+      "check": "H03/H04 before entry",
+      "passed": true
+    },
+    {
+      "check": "Tape 4 access outside optional H05",
+      "passed": true
+    },
+    {
+      "check": "H05 before main defensive route",
+      "passed": true
+    },
+    {
+      "check": "H06 before Sara release",
+      "passed": true
+    },
+    {
+      "check": "H07 between morning and report",
+      "passed": true
+    },
+    {
+      "check": "Tape 2 obtainable in source scene",
+      "passed": true
+    },
+    {
+      "check": "Tape 5 obtainable in source scene",
+      "passed": true
+    },
+    {
+      "check": "E03 has on-scene playback",
+      "passed": true
+    },
+    {
+      "check": "E04 has on-scene playback",
+      "passed": true
+    },
+    {
+      "check": "E05 has on-scene playback",
+      "passed": true
+    },
+    {
+      "check": "E06 has on-scene playback",
+      "passed": true
+    },
+    {
+      "check": "No second parking drive in chapter 3",
+      "passed": true
+    },
+    {
+      "check": "Same cut has cause before bandaging",
+      "passed": true
+    },
+    {
+      "check": "Daniyal does not claim authorship of dispatch summary",
+      "passed": true
+    },
+    {
+      "check": "Locator boundary disconnection specified",
+      "passed": true
+    },
+    {
+      "check": "Dialogue skipping is not time-transition consent",
+      "passed": true
+    },
+    {
+      "check": "F07 explicitly remains open",
+      "passed": true
+    },
+    {
+      "check": "Finite source of Yunus info and rescue condition retained",
+      "passed": true
+    },
+    {
+      "check": "Yunus arithmetic",
+      "passed": true
+    },
+    {
+      "check": "Bahram surface arithmetic unchanged",
+      "passed": true
+    },
+    {
+      "check": "Eleven core duration rows",
+      "passed": true
+    },
+    {
+      "check": "Core durations total 260",
+      "passed": true
+    },
+    {
+      "check": "Opening component durations total 30",
+      "passed": true
+    },
+    {
+      "check": "Real final timing: 4:45 plus ten seconds",
+      "passed": true
+    },
+    {
+      "check": "Master references current package",
+      "passed": true
+    },
+    {
+      "check": "Narrative map covers eleven chapters",
+      "passed": true
+    }
+  ],
+  "sha256": {
+    "README.md": "0fa53afe3b672f001087228db2f36ba817db410fcf6ecd5b93c80aa939559bca",
+    "Rad-e-Hoor_Full_Screenplay_FA.md": "07d89a4c5b225bf1acb7704521778f7f33fbd1626af41450a3b425a04c49d970",
+    "Rad-e-Hoor_Proposal_v5.0.md": "604c23502f61f6d132380abd94c7c9eba368637f347f9ce93ad2b1007ca53ee0",
+    "Rad-e-Hoor_Character_Bible.md": "255b5291593ad60506ba1f16d0a49ec4cda17d328d7571675f508a0585ef673b",
+    "Rad-e-Hoor_Art_Direction_Bible.md": "c7581dd80b2bc983f81346fbc6702d7b98a5c4b6c129e0eb610a4a07bdae9044",
+    "Rad-e-Hoor_Validation_Report.md": "82668242a594b25774fef4313116e4f947006900c0962f3feeaf2fdfd3b05821"
+  }
+}

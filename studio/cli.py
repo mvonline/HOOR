@@ -13,6 +13,31 @@ from studio import service
 app = typer.Typer(help="Rad-e Hoor AI game studio CLI", no_args_is_help=True)
 
 
+@app.command("demo")
+def demo_cmd(
+    port: int = typer.Option(8765, "--port", min=1, max=65535),
+) -> None:
+    """Serve the playable C0 browser demo locally (Ctrl+C to stop)."""
+    from functools import partial
+    from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+    from pathlib import Path
+
+    demo_dir = Path(__file__).resolve().parent.parent / "game" / "demo"
+    if not (demo_dir / "index.html").is_file():
+        raise typer.BadParameter("Demo files are missing from game/demo.")
+    handler = partial(SimpleHTTPRequestHandler, directory=str(demo_dir))
+    try:
+        with ThreadingHTTPServer(("127.0.0.1", port), handler) as server:
+            rprint(f"Rad-e Hoor demo: http://127.0.0.1:{port} (Ctrl+C to stop)")
+            try:
+                server.serve_forever()
+            except KeyboardInterrupt:
+                pass
+    except OSError as exc:
+        rprint(f"Cannot start demo: {exc}. Try --port with another port.")
+        raise typer.Exit(1) from exc
+
+
 @app.command("align")
 def align_cmd() -> None:
     """Ingest gameStory, write analysis + draft production plan."""
@@ -49,6 +74,17 @@ def reject_cmd(
     rprint(service.reject_latest(note=note))
 
 
+@app.command("breakdown")
+def breakdown_cmd(
+    goal: str = typer.Option(..., "--goal", help="Outcome you want the agents to implement"),
+    constraints: str = typer.Option("", "--constraints", help="Your scope, style, or technical constraints"),
+) -> None:
+    """Ask the AI production manager for a task breakdown to review and edit."""
+    deliverables = service.suggest_task_breakdown(goal, constraints)
+    rprint([item.model_dump() for item in deliverables])
+    rprint("Review this proposal, then add/edit it in the UI draft plan before approval.")
+
+
 @app.command("tasks")
 def tasks_cmd(plan_id: Optional[str] = typer.Option(None, "--plan-id")) -> None:
     """List tasks for a plan (default: latest)."""
@@ -66,6 +102,7 @@ def tasks_cmd(plan_id: Optional[str] = typer.Option(None, "--plan-id")) -> None:
                 "status": t.status.value,
                 "role": t.role,
                 "retries": t.retries,
+                "work_order": t.inputs.get("work_order"),
             }
             for t in tasks
         ]

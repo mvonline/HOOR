@@ -1,0 +1,16 @@
+{
+  "href": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Topo_Map_MapServer/_ags_map672643360c6c47328a3d3aec76786452.jpg",
+  "width": 960,
+  "height": 1079,
+  "extent": {
+    "xmin": 6373030.548822118,
+    "ymin": 3516410.398293053,
+    "xmax": 6534464.408657951,
+    "ymax": 3697855.330337703,
+    "spatialReference": {
+      "wkid": 102100,
+      "latestWkid": 3857
+    }
+  },
+  "scale": 635565.1061736757
+}

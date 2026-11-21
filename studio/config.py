@@ -13,6 +13,10 @@ class Settings(BaseSettings):
     repo_root: Path = Path(__file__).resolve().parent.parent
     project_id: str = "rade-hoor"
     max_task_retries: int = 3
+    ai_base_url: str = "https://api.openai.com/v1"
+    ai_api_key: str | None = None
+    ai_model: str = "gpt-4.1"
+    ai_timeout_seconds: int = 180
 
     @property
     def game_story_dir(self) -> Path:

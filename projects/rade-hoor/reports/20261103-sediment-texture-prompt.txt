@@ -1,0 +1,8 @@
+﻿Use case: stylized-concept.
+Asset type: game environment diffuse material texture, square 2048x2048.
+Reference image is style and material guide only: canyon-day-v1.png.
+Generate ONE flat seamless warm sedimentary sandstone albedo texture for a 3D canyon cliff in Rad-e Hoor. Full frame uninterrupted rock surface, perfectly orthographic frontal macro view, no perspective, no horizon, no sky, no objects, no text, no grid. Fine horizontal weathered sediment layers, shallow irregular fractures, pale dusty ochre, muted rust-red silt, warm gray clay, subtle chalky bands. Same grounded detailed material family as the reference, restrained surface attached ink and print texture. Flat neutral even illumination: NO cast shadows, NO directional light, NO baked ambient occlusion, no giant black crevices. All four edges should tile seamlessly. Natural scale variety and physically plausible layered erosion; no volcanic columns, crystals or lava. This will be wrapped on actual 3D cliff meshes, so do not draw an environment scene.
+
+Mode: built-in image_gen tool. Reference role: material/style guide, not an edit target.
+Source concept unchanged. Output copied to Assets/Resources/ArtTextures/Sediment-v1.png.
+Seamless tiling was requested; edge periodicity is not formally validated.

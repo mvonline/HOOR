@@ -2,7 +2,7 @@
 
 **Version:** 1.1  
 **Status:** Project constitution; binding for all agents, tools, and the human overseer  
-**Target game:** Rad-e Hoor (The Solar Trace) — design package **5.4** in `gameStory/`  
+**Target game:** Rad-e Hoor (The Solar Trace) — design package **5.7** in `gameStory/`
 **Market:** International; primary ship target **PC / Steam**
 
 **Language policy (binding):**
@@ -81,12 +81,12 @@ Proposed guesses must be labeled `ASSUMPTION` and kept separate from `APPROVED`.
 
 ### 2.1 Input directory
 
-`gameStory/` is the only design source of truth. Studio-generated files never overwrite it.
+`gameStory/` is the only design source of truth. Production outputs never overwrite it. Explicit user requests to revise the design authorize editorial changes in the owning documents; record the scope and unresolved decisions separately.
 
 | Document | Owns |
 | --- | --- |
 | `README.md` | Current doc index, recorded decisions, version |
-| `Rad-e-Hoor_Proposal_v5.0.md` (content 5.4) | Time, hearing, shelter, items, branches, endings |
+| `Rad-e-Hoor_Proposal_v5.0.md` (content 5.7) | Time, hearing, shelter, items, branches, endings |
 | `Rad-e-Hoor_Full_Screenplay_FA.md` | Action, dialogue, tapes, readable docs, ending execution |
 | `Rad-e-Hoor_Character_Bible.md` | Appearance, costume, behavior, emotion, sheets |
 | `Rad-e-Hoor_Art_Direction_Bible.md` | Visual language of sound, environment, camera, key scenes |
@@ -241,7 +241,7 @@ When `gameStory/` changes:
 
 ### 6.2 Required story-analysis fields
 
-- Concept, genre, platform, campaign time budget (270 design minutes ≠ validated playtime)  
+- Concept, genre, platform, campaign time budget (260 core design minutes in 5.7 ≠ validated playtime; optional content and epilogue additional)
 - Gameplay loop and hearing unit table  
 - Eleven-chapter structure and mechanical stress points  
 - Characters and narrative/visual prohibitions  
