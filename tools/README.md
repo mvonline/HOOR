@@ -21,3 +21,7 @@ npm run check                           # tsc
 ```
 
 `public/content.hoor` is the encrypted package (AES-256-GCM, PBKDF2 600k). Commit it so CI ships it; without it the site shows "دریافت کتاب طراحی انجام نشد" before any password check. Re-run `snapshot` + `encrypt` whenever the story or `content/*.json` change.
+
+## One command
+
+`tools/build_site.sh` runs sync, continuity check, snapshot, encrypt (you type the passphrase) and build. `--no-encrypt` skips encryption and keeps the existing `public/content.hoor`.

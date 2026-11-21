@@ -133,7 +133,8 @@ for fname, body in docs.items():
             report('F ages', f'{fname}: {who} age {age} (character doc says {ages[who]})')
 
 # ---------------------------------------------------------------- G. site content vs sources
-sc = norm(docs['SCREENPLAY_AND_FINAL_SEQUENCE_FA.md'])
+film_md = read(ROOT / 'gameStory/redesign/v10-bible/SCREENPLAY_FILM_FA.md')
+sc = norm(film_md)
 rec = norm(docs['RECORDINGS_DOCUMENTS_AND_DIRECTION_FA.md'])
 dlg = json.loads(read(SITE / 'content/dialogues.json'))
 lines_total = scenes_total = 0
@@ -144,7 +145,7 @@ for ch in dlg['chapters']:
             lines_total += 1
             if norm(ln['text']) not in sc:
                 report('G site dialogues', f'ch{ch["number"]} {scene["id"]} line not in screenplay: {ln["text"][:70]}')
-        if scene['id'] not in ids and not re.fullmatch(r'C\d+', scene['id']):
+        if not re.fullmatch(r'N\d+', scene['id']):
             report('G site dialogues', f'unknown scene id {scene["id"]}')
 fa_digits = str(lines_total).translate(str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹'))
 if fa_digits not in dlg['note']:
@@ -159,7 +160,7 @@ for r in dlg['recordings']:
         if True:
             report('G site recordings', f'{r["id"]} speech not in recordings doc: {ln[:70]}')
 print(f'[info] recordings speech-like lines (heuristic): {rec_lines}; note claims 37')
-heads_sc = re.findall(r'^## فصل (\d+) — (.+)$', docs['SCREENPLAY_AND_FINAL_SEQUENCE_FA.md'], flags=re.M)
+heads_sc = re.findall(r'^## فصل (\d+) — (.+)$', film_md, flags=re.M)
 for (num, title), ch in zip(heads_sc, dlg['chapters']):
     if norm(title) != norm(ch['title']) or int(num) != ch['number']:
         report('G site dialogues', f'chapter {num} title mismatch: doc="{title}" site="{ch["title"]}"')
