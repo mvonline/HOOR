@@ -26,7 +26,7 @@ CONTEXT_PATCH = {
 
 # ---- parse screenplay -------------------------------------------------------
 chapter_re = re.compile(r'^## فصل (\d+) — (.+)$')
-scene_re = re.compile(r'^(?:\*\*(M\d\d)، ([^:*]+):\*\*|### (M\d\d) — (.+))')
+scene_re = re.compile(r'^(?:\*\*(M\d\d)، ([^:*]+):\*\*|### (M\d\d) — (.+)|\*\*(شبِ کمپ)، فصل (\d+):\*\*)')
 line_re = re.compile(r'^([^«»\n:]{1,60}):\s*«(.+)»\s*$')
 
 chapters = []
@@ -41,15 +41,20 @@ for raw in screenplay.splitlines():
         continue
     m = scene_re.match(raw)
     if m and current_chapter is not None:
-        sid = m.group(1) or m.group(3)
-        title = (m.group(2) or m.group(4)).strip()
-        current_scene = {'id': sid, 'title': title, 'context': '', 'lines': []}
+        if m.group(5):
+            sid, title = 'C' + m.group(6).translate(str.maketrans('۰۱۲۳۴۵۶۷۸۹', '0123456789')), f'{m.group(5)} — فصل {m.group(6)}'
+        else:
+            sid = m.group(1) or m.group(3)
+            title = (m.group(2) or m.group(4)).strip()
+        current_scene = {'id': sid, 'title': title, 'context': '', 'lines': [], 'intro': raw[m.end():].strip()}
         current_chapter['scenes'].append(current_scene)
         continue
     if raw.startswith('## '):
         current_scene = None
         continue
     if current_scene is not None:
+        if not current_scene['intro'] and raw.strip() and not line_re.match(raw.strip()):
+            current_scene['intro'] = raw.strip()
         m = line_re.match(raw.strip())
         if m:
             current_scene['lines'].append({'speaker': m.group(1).strip(), 'text': m.group(2).strip()})
@@ -61,7 +66,8 @@ for ch in chapters:
         if not sc['lines']:
             continue
         prev = old_scene.get(sc['id'])
-        sc['context'] = CONTEXT_PATCH.get(sc['id']) or (prev['context'] if prev else '')
+        first = re.split(r'(?<=[.؟!])\s+', re.sub(r'[*_]', '', sc.pop('intro', '')))[0][:220]
+        sc['context'] = CONTEXT_PATCH.get(sc['id']) or first or (prev['context'] if prev else '')
         if not sc['context']:
             raise SystemExit(f'scene {sc["id"]} has dialogue but no context; add one')
         sc['source'] = {'docId': 'SCREENPLAY_AND_FINAL_SEQUENCE_FA',
@@ -89,8 +95,8 @@ for r in recs:
 
 old['chapters'] = chapters
 old['note'] = (
-    f'این بخش گفت‌وگوهای مستقیمِ نوشته‌شده در سناریوی نسخهٔ ۷٫۱ را به تفکیک ده فصل گردآوری می‌کند: {fa(n_lines)} خط در {fa(len(scenes_out))} صحنه. '
-    'همهٔ چهل مأموریت هنوز متن گفت‌وگوی مستقل ندارند. شش ضبط اختیاری نیز با متن پایهٔ کامل و مشخصاتِ ثبت (زمان، فرستنده و دستگاه)، شامل ۳۷ خط گفتار و توضیح موقعیت، آمده‌اند. '
+    f'این بخش گفت‌وگوهای مستقیمِ نوشته‌شده در سناریوی نسخهٔ ۸ را به تفکیک ده فصل گردآوری می‌کند: {fa(n_lines)} خط در {fa(len(scenes_out))} صحنه. '
+    'چهل مأموریت و هفت شبِ کمپ هر کدام گفت‌وگوی نوشته‌شده دارند، ولی دیالوگ‌های واکنشی و شاخه‌های شرطی هنوز نوشته نشده‌اند. شش ضبط اختیاری نیز با متن پایهٔ کامل و مشخصاتِ ثبت (زمان، فرستنده و دستگاه)، شامل ۳۷ خط گفتار و توضیح موقعیت، آمده‌اند. '
     'این‌ها متنِ نوشته‌شده‌اند؛ هیچ فایل صوتی یا اجرای بازیگری ضبط نشده است. دیالوگ‌های واکنشیِ سیستمی، شاخه‌های شرطی و ترجمهٔ کامل انگلیسی همچنان کار نگارش و تولید آینده‌اند. '
     'خلاصهٔ غیرمستقیمِ حرفِ شخصیت به دیالوگ تازه تبدیل نشده است. خواندن این بخش، پیشروی و پایان داستان را افشا می‌کند.'
 )

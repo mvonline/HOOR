@@ -144,14 +144,19 @@ for ch in dlg['chapters']:
             lines_total += 1
             if norm(ln['text']) not in sc:
                 report('G site dialogues', f'ch{ch["number"]} {scene["id"]} line not in screenplay: {ln["text"][:70]}')
-        if scene['id'] not in ids and not scene['id'].startswith('M'):
+        if scene['id'] not in ids and not re.fullmatch(r'C\d+', scene['id']):
             report('G site dialogues', f'unknown scene id {scene["id"]}')
-print(f'[info] dialogues.json: chapters={len(dlg["chapters"])} scenes={scenes_total} lines={lines_total}; note claims "46 lines in 16 scenes"')
+fa_digits = str(lines_total).translate(str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹'))
+if fa_digits not in dlg['note']:
+    report('G site dialogues', f'dialogues.json note does not state the real line count {lines_total}')
+print(f'[info] dialogues.json: chapters={len(dlg["chapters"])} scenes={scenes_total} lines={lines_total}')
 rec_lines = 0
 for r in dlg['recordings']:
-    for ln in re.findall(r'^\s*[^:\n]{1,40}:\s*(.+)$', r['markdown'], flags=re.M):
+    for ln in re.findall(r'^\s*(?!\*\*)[^:\n]{1,40}:\s*(.+)$', r['markdown'], flags=re.M):
         rec_lines += 1
-        if norm(ln) not in rec and norm(ln) not in sc:
+        if ln.startswith('**') or norm(ln) in rec or norm(ln) in sc:
+            continue
+        if True:
             report('G site recordings', f'{r["id"]} speech not in recordings doc: {ln[:70]}')
 print(f'[info] recordings speech-like lines (heuristic): {rec_lines}; note claims 37')
 heads_sc = re.findall(r'^## فصل (\d+) — (.+)$', docs['SCREENPLAY_AND_FINAL_SEQUENCE_FA.md'], flags=re.M)
@@ -184,8 +189,8 @@ m = re.search(r"SOURCE=new URL\('([^']+)'", src)
 if m and not (SITE / 'scripts' / m.group(1)).resolve().exists():
     report('H site build', f'encrypt-content.mjs SOURCE {m.group(1)} does not exist (snapshot of docs/gallery/media/mapHtml is gone)')
 wf = read(ROOT / '.github/workflows/jekyll-gh-pages.yml')
-if 'encrypt' not in wf and 'content.hoor' not in wf:
-    report('H site build', 'CI workflow never runs encrypt-content.mjs; dist/content.hoor is not produced -> deployed site cannot unlock')
+if not (SITE / 'public/content.hoor').exists() and 'encrypt' not in wf:
+    report('H site build', 'public/content.hoor is missing and CI does not encrypt: the deployed site cannot unlock (run npm run snapshot && npm run encrypt, commit public/content.hoor)')
 if 'encrypt' not in json.dumps(pkg['scripts']):
     report('H site build', 'no npm script for the encrypt step')
 
