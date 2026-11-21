@@ -69,3 +69,34 @@
 .chapter-hero figcaption{font-size:12px;color:var(--muted);margin-top:6px}
 .reader-pager{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:48px 0 8px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 @media (max-width:860px){.reader-layout{grid-template-columns:1fr;gap:18px}.reader-nav{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px}.reader-nav strong{display:none}.reader-nav button{white-space:nowrap}.reader-prose{font-size:18px}.reader-prose .dlg b{min-width:58px}}
+
+/* ---- تنگهٔ رتیل: صفحهٔ معرفی و پخش‌کنندهٔ تمام‌صفحه ---- */
+.tg-lead{max-width:62ch;font-size:1.18rem;line-height:2.1;margin:1rem 0 1.2rem;border-inline-start:3px solid var(--accent,#c27a3f);padding-inline-start:1rem}
+.tg-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.4rem;color:var(--muted,#8a7f73);font-size:.9rem}
+.tg-meta span{border:1px solid currentColor;border-radius:999px;padding:.15rem .7rem;opacity:.85}
+.tg-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}
+.tg-card{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;border-radius:12px;overflow:hidden;background:var(--panel,rgba(127,127,127,.1));border:1px solid rgba(127,127,127,.25)}
+.tg-card:focus-visible{outline:3px solid var(--accent,#c27a3f);outline-offset:2px}
+.tg-thumb{position:relative;display:block;aspect-ratio:16/9;background:#000}
+.tg-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+.tg-card:hover .tg-thumb img{transform:scale(1.04)}
+.tg-play{position:absolute;inset:0;display:grid;place-items:center;color:#fff;background:linear-gradient(transparent 40%,rgba(0,0,0,.55))}
+.tg-play svg{background:rgba(0,0,0,.5);border-radius:50%;padding:12px;width:52px;height:52px;box-sizing:border-box}
+.tg-idx{position:absolute;top:.5rem;inset-inline-start:.5rem;background:rgba(0,0,0,.65);color:#fff;border-radius:6px;padding:.05rem .5rem;font-weight:700}
+.tg-dur{position:absolute;bottom:.45rem;inset-inline-end:.5rem;background:rgba(0,0,0,.65);color:#fff;border-radius:6px;padding:.05rem .45rem;font-size:.8rem}
+.tg-cap{display:block;padding:.7rem .85rem}.tg-cap strong{display:block}.tg-cap small{display:block;opacity:.7;margin-top:.15rem}
+.tg-credit{margin-top:1.6rem;font-size:.85rem;opacity:.7}
+.tg-player{position:fixed;inset:0;z-index:1000;background:#000;color:#fff;overflow:hidden}
+.tg-stage{position:absolute;top:50%;left:50%;transform-origin:center;transition:transform .25s ease}
+.tg-stage video{width:100%;height:100%;object-fit:contain;background:#000}
+.tg-bar{position:absolute;z-index:2;display:flex;gap:.5rem;align-items:center}
+.tg-bar button{all:unset;cursor:pointer;display:inline-flex;gap:.4rem;align-items:center;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;padding:.55rem .8rem;backdrop-filter:blur(6px)}
+.tg-bar button:hover,.tg-bar button:focus-visible{background:rgba(255,255,255,.22)}
+.tg-bar.top{top:.8rem;inset-inline:.8rem;justify-content:flex-start}
+.tg-title{display:flex;flex-direction:column;background:rgba(0,0,0,.45);padding:.3rem .8rem;border-radius:10px}.tg-title small{opacity:.75}
+.tg-bar.side{top:50%;inset-inline:.8rem;justify-content:space-between;transform:translateY(-50%);pointer-events:none}
+.tg-bar.side button{pointer-events:auto}
+.tg-bar.bottom{inset-inline:0;bottom:4.5rem;justify-content:center;pointer-events:none}
+.tg-bar.bottom button{pointer-events:auto}
+@media (max-width:640px){.tg-bar.bottom{bottom:5.2rem}.tg-bar.side{display:none}}
+@media (prefers-reduced-motion:reduce){.tg-stage,.tg-thumb img{transition:none}}
