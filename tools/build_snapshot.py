@@ -29,6 +29,7 @@ DOCS = {
     'SCREENPLAY_AND_FINAL_SEQUENCE_FA': ('SCREENPLAY_AND_FINAL_SEQUENCE_FA.md', 'داستان', True),
     'SCREENPLAY_FILM_FA': ('../v10-bible/SCREENPLAY_FILM_FA.md', 'داستان', True),
     'CHARACTER_BIBLE_FA': ('../v10-bible/CHARACTER_BIBLE_FA.md', 'داستان', True),
+    'GAMEPLAY_DESIGN_FA': ('../v10-bible/GAMEPLAY_DESIGN_FA.md', 'بازی‌سازی', False),
     'STORY_BIBLE_FA': ('../v10-bible/STORY_BIBLE_FA.md', 'داستان', True),
     'CHARACTERS_AND_DRAMA_FA': ('CHARACTERS_AND_DRAMA_FA.md', 'داستان', False),
     'WORLD_AND_MISSIONS_FA': ('WORLD_AND_MISSIONS_FA.md', 'جهان و مأموریت‌ها', False),
