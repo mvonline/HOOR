@@ -48,7 +48,7 @@ projects/rade-hoor/artifacts/intro-films-20261119/**/.hyperframes/
 
 # Earlier design snapshots and generated production reports are not the v7 delivery.
 /gameStory/archive/
-/gameStory/redesign/*
+/gameStory/redesign/v11-aaa/
 !/gameStory/redesign/v7-20261121/
 !/gameStory/redesign/v10-bible/
 /projects/rade-hoor/reports/
