@@ -42,3 +42,45 @@ projects/rade-hoor/artifacts/intro-films-20261119/**/.hyperframes/
 /gameStory/redesign/v7-20261121/maps/map-check.cjs
 /gameStory/redesign/v7-20261121/maps/map-preview.html
 /gameStory/redesign/v7-20261121/maps/region-map-mobile.png
+
+# Local website authoring uses its own private Sites source repository.
+/sites/
+
+# Earlier design snapshots and generated production reports are not the v7 delivery.
+/gameStory/archive/
+/gameStory/redesign/*
+!/gameStory/redesign/v7-20261121/
+/projects/rade-hoor/reports/
+
+# Machine-local caches, test scratch files, logs, and build products.
+/pytest-cache-files-*/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+node_modules/
+.next/
+.vinext/
+.wrangler/
+.sites-runtime/
+*.tsbuildinfo
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Runtime credentials belong in secret storage, never in the repository.
+.env
+.env.*
+!.env.example
+!.env.template
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+*.pem
+*.key
+*.p12
+*.pfx
