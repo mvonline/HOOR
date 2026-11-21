@@ -1,0 +1,70 @@
+{
+  "version": "v11-aaa",
+  "destination_folder": "gameStory/images/",
+  "note": "Drop each generated PNG with the exact filename below into gameStory/images/ and run build_snapshot.py — the website 'آدم‌ها' tab automatically picks them up.",
+  "new_characters_needing_portraits": [
+    {
+      "name_fa": "کامران",
+      "age": 46,
+      "filename": "kamran-v1.png",
+      "status": "missing",
+      "prompt": "Photorealistic AAA character portrait (3:4 vertical), Red Dead Redemption 2 meets Breaking Bad cinematography. Kamran, a charismatic 46-year-old Iranian operations baron with neatly trimmed salt-and-pepper beard, warm polite half-smile but chillingly cold calculating eyes. Wearing an immaculately clean light beige linen shirt and tailored desert vest that eerily stays spotless inside a dusty glass industrial office overlooking the Lut desert at dusk, holding a small Persian glass of tea. Ultra-detailed realistic skin texture, cinematic rim light, zero text."
+    },
+    {
+      "name_fa": "مهدی",
+      "age": 42,
+      "filename": "mehdi-v1.png",
+      "status": "missing",
+      "prompt": "Photorealistic AAA character portrait (3:4 vertical), RDR2 meets GTA 6 desert realism. Mehdi, a 42-year-old Iranian master electrician and ex-thief with a weathered cheeky smirk, short messy graying hair, thick stubble, oil-smudged rugged khaki work shirt with rolled sleeves, electrician tool belt, tactical radio and small folding recon drone strapped to his chest, standing inside a warmly lit desert workshop garage with sparks and tools blurred behind him. Grounded realistic lighting, zero text."
+    },
+    {
+      "name_fa": "مینا",
+      "age": 33,
+      "filename": "mina-v1.png",
+      "status": "missing",
+      "prompt": "Photorealistic AAA character portrait (3:4 vertical), RDR2 desert frontier realism. Mina, a fierce, self-reliant 33-year-old Iranian female wildlife ranger and tracker from Kerman/Lut desert. Sun-tanned sharp features, determined dark eyes, dusty patterned desert scarf (dastar) pulled down around her neck, short dark hair tucked under wind dust, rugged olive field jacket, hunting rifle slung over one shoulder and a digital trail-camera + binoculars hanging at her chest. Standing beside a rocky desert waterhole at golden hour with an electric dirt bike blurred in background. Zero text."
+    },
+    {
+      "name_fa": "اسماعیل",
+      "age": 39,
+      "filename": "esmaeil-v1.png",
+      "status": "missing",
+      "prompt": "Photorealistic AAA character portrait (3:4 vertical), Modern Warfare meets RDR2 dark drama. Esmaeil, a 39-year-old Iranian tactical desert commander with haunted, exhausted eyes and a fresh bandage on his left forearm. Wearing dusty matte-black and tan tactical vest, night-vision goggles (NVG) flipped up on his tactical helmet/headstrap, desert scarf pulled down off his face, holding an assault rifle, with a crumpled small vintage photograph peeking from his chest pocket. Standing at a floodlit desert steel outpost at night. Cinematic gritty realism, zero text."
+    },
+    {
+      "name_fa": "پویا (تورلیدر — خاکستریِ خنگ)",
+      "age": 32,
+      "filename": "pouya-v1.png",
+      "status": "missing",
+      "prompt": "Photorealistic AAA character portrait (3:4 vertical), GTA 6 comedic realism in the Iranian Lut Desert. Pouya, an overly cheerful, oblivious 32-year-old Iranian desert safari tour leader with a big goofy grin, flashy orange-tinted sport sunglasses, wide-brim khaki sun hat with chin cord, spotless multi-pocket tourist fishing vest, holding a selfie stick with smartphone in one hand and a chunky neon-lit Bluetooth party speaker over his shoulder, yellow tour flag sticking out of his backpack. Harsh sunlit Lut desert Kaluts and a beat-up brightly stickered old Nissan Patrol 4x4 blurred behind him. Gritty photorealistic AAA texture, zero text."
+    },
+    {
+      "name_fa": "ماهرخ",
+      "age": 58,
+      "filename": "mahrokh-v1.png",
+      "status": "missing",
+      "prompt": "Photorealistic AAA character portrait (3:4 vertical), Red Dead Redemption 2 camp realism. Mahrokh, a tough, sharp-eyed 58-year-old Iranian camp cook and elder woman with deeply lined sun-weathered face, silver-streaked dark hair under a practical loosely draped desert cotton headscarf, wearing a worn dark cardigan over a simple patterned tunic with a weathered apron, holding a battered metal ladle beside a steaming campfire pot at dusk in a rocky Lut desert camp. Warm firelight against deep twilight blue sky, zero text."
+    },
+    {
+      "name_fa": "فرهاد (نگهبان بی‌نام / بازوبند ۹)",
+      "age": 34,
+      "filename": "farhad-guard-v1.png",
+      "status": "missing",
+      "prompt": "Photorealistic AAA character portrait (3:4 vertical), Resident Evil meets RDR2 tragic realism. Farhad, a hollow-eyed 34-year-old Iranian erased mercenary guard (Armband 9). Pale, dusty, dazed expression as if waking from a fog; wearing worn tan desert mercenary fatigues, a faded cloth armband with number 9 on his upper arm, desert scarf half-unwrapped from his face, old wooden-stock bolt-action rifle slung over shoulder, clutching a crumpled tiny paper grocery receipt against his chest. Cold dusk lighting in a rocky canyon, zero text."
+    },
+    {
+      "name_fa": "نادر (نسخهٔ اکشنِ v11 — ارتقا از nader-seated-v2)",
+      "age": 52,
+      "filename": "nader-v3.png",
+      "status": "upgrade_optional",
+      "prompt": "Photorealistic AAA character portrait (3:4 vertical), Red Dead Redemption 2 western realism. Nader, a grizzled, bitter 52-year-old Iranian desert tracker and survivor with deep scars, weathered tan skin, thick silver-streaked beard, wearing a dusty dark utility coat and desert scarf, leaning slightly on a battered iron crutch while holding a classic wooden-stock .308 bolt-action sniper rifle and a heavy .357 revolver holstered at his hip. Harsh golden Lut Kalut canyon behind him, zero text."
+    },
+    {
+      "name_fa": "رتیلِ هور — حیدر (شماره ۱ — بازطراحیِ آیکونیکِ v11)",
+      "age": 0,
+      "filename": "v11-retil-haydar-v1.png",
+      "status": "monster_redesign",
+      "prompt": "Terrifying AAA survival-horror creature concept portrait (3:4 vertical), Resident Evil RE Engine photorealism. Haydar (Retil #1 of Tang-e Hoor): an emaciated, hunched, elongated humanoid figure wearing tattered black-salt-encrusted industrial mining coveralls with a faded cloth wristband reading 1 on its bony wrist. The entire upper half of its face and eyes are completely sealed shut by a jagged natural crust of black-grey volcanic salt crystals, lower jaw unhinged in silent dread. Lit by crimson emergency road flare glow against pitch-black wet salt canyon rock. NOT a giant spider, NOT a generic zombie. Zero text."
+    }
+  ]
+}

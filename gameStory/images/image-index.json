@@ -1,8 +1,8 @@
 {
   "date": "2026-11-21",
   "purpose": "Concept image staging inventory; the v7 documents own story canon.",
-  "image_count": 83,
-  "total_bytes": 208151606,
+  "image_count": 84,
+  "total_bytes": 209274368,
   "excluded_identical_local_copies": [
     "bahram-62-v1 - Copy.png",
     "camel-pack-v1 - Copy.png",
@@ -16,6 +16,15 @@
     "demo/"
   ],
   "assets": [
+    {
+      "filename": "arash-v1.png",
+      "bytes": 1122762,
+      "width": 848,
+      "height": 1264,
+      "sha256": "7839853d686112cd51d0c662f63b5e651b6f59e0f352296e8293b51d04cfaf38",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
     {
       "filename": "bahram-62-v1.png",
       "bytes": 1921535,

@@ -2,7 +2,7 @@
   "tool": "built-in image_gen",
   "status": "completed",
   "completed": "2026-11-02T15:05:50Z",
-  "assetCount": 60,
+  "assetCount": 61,
   "assets": [
     {
       "id": "CH11",
@@ -542,6 +542,15 @@
       "filename": "daniyal-quad-atv-v2.png",
       "bytes": 2215725,
       "sha256": "461EE19A73DEE8D76E0CF61E3D399FD3FA1D8A2F5F8562768092EC011EA09F27",
+      "status": "generated"
+    },
+    {
+      "id": "CH-ARASH",
+      "group": "characters",
+      "title": "آرش — شاگرد مکانیک و موتورسوار (۱۹ ساله)",
+      "filename": "arash-v1.png",
+      "bytes": 1122762,
+      "sha256": "7839853D686112CD51D0C662F63B5E651B6F59E0F352296E8293B51D04CFAF38",
       "status": "generated"
     }
   ]
