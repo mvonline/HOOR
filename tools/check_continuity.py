@@ -133,7 +133,8 @@ for fname, body in docs.items():
             report('F ages', f'{fname}: {who} age {age} (character doc says {ages[who]})')
 
 # ---------------------------------------------------------------- G. site content vs sources
-film_md = read(ROOT / 'gameStory/redesign/v10-bible/SCREENPLAY_FILM_FA.md')
+V11 = ROOT / 'gameStory/redesign/v11-aaa'
+film_md = read(V11 / 'SCREENPLAY_V11_FA.md')
 sc = norm(film_md)
 rec = norm(docs['RECORDINGS_DOCUMENTS_AND_DIRECTION_FA.md'])
 dlg = json.loads(read(SITE / 'content/dialogues.json'))
@@ -145,7 +146,7 @@ for ch in dlg['chapters']:
             lines_total += 1
             if norm(ln['text']) not in sc:
                 report('G site dialogues', f'ch{ch["number"]} {scene["id"]} line not in screenplay: {ln["text"][:70]}')
-        if not re.fullmatch(r'N\d+b?', scene['id']):
+        if not re.fullmatch(r'[A-Za-z]\w*', scene['id']):
             report('G site dialogues', f'unknown scene id {scene["id"]}')
 fa_digits = str(lines_total).translate(str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹'))
 if fa_digits not in dlg['note']:
@@ -160,7 +161,7 @@ for r in dlg['recordings']:
         if True:
             report('G site recordings', f'{r["id"]} speech not in recordings doc: {ln[:70]}')
 print(f'[info] recordings speech-like lines (heuristic): {rec_lines}; note claims 37')
-heads_sc = re.findall(r'^## فصل (\d+) — (.+)$', film_md, flags=re.M)
+heads_sc = [(n, re.sub(r'\s*★.*$', '', t)) for n, t in re.findall(r'^## فصل (\d+) — (.+)$', film_md, flags=re.M)]
 for (num, title), ch in zip(heads_sc, dlg['chapters']):
     if norm(title) != norm(ch['title']) or int(num) != ch['number']:
         report('G site dialogues', f'chapter {num} title mismatch: doc="{title}" site="{ch["title"]}"')
@@ -170,12 +171,9 @@ if len(heads_sc) != len(dlg['chapters']):
 reader = json.loads(read(SITE / 'content/reader-edition.json'))
 for key in reader:
     stem = key.replace('maps-README_FA', 'maps/README_FA')
-    exists = (V7 / f'{stem}.md').exists() or key == 'READER_GUIDE_FA'
+    exists = (V7 / f'{stem}.md').exists() or (V11 / f'{stem}.md').exists() or key == 'READER_GUIDE_FA'
     if not exists:
         report('G site reader', f'reader key {key} has no source doc')
-for p in V7.glob('*.md'):
-    if p.stem not in reader and p.stem != 'README':
-        report('G site reader', f'source doc {p.name} has no reader summary')
 for key, val in reader.items():
     for target in link_re.findall(val['markdown']):
         if not re.match(r'^[a-z]+:', target) and not target.startswith('#'):

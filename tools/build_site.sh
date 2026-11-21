@@ -10,14 +10,14 @@ ENCRYPT=1
 [ "${1:-}" = "--no-encrypt" ] && ENCRYPT=0
 
 cd "$ROOT"
-echo "== 1/5 sync dialogues from the v10 screenplay"
+echo "== 1/5 sync dialogues from the v11 screenplay"
 python3 -I tools/sync_dialogues.py
 echo "== 2/5 continuity check (read-only report)"
 python3 -I tools/check_continuity.py | tail -15
 cd "$SITE"
 [ -d node_modules ] || { echo "== npm ci"; npm ci; }
 echo "== 3/5 snapshot (plain text, git-ignored)"
-npm run --silent snapshot
+python3 "$ROOT/tools/build_snapshot.py"
 if [ "$ENCRYPT" = 1 ]; then
   echo "== 4/5 encrypt (type the passphrase when asked)"
   npm run --silent encrypt

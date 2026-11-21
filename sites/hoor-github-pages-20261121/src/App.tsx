@@ -49,7 +49,7 @@ function dialogueize(html:string){
  });
 }
 function storyChapters(md:string){
- const film=/نما [\d۰-۹]+ —/.test(md),body=film?md:md.split(/\n---\n/)[0],parts=body.split(/\n(?=## )/).map(p=>p.replace(/\n---\s*$/,''));
+ const body=md,parts=body.split(/\n(?=## )/).map(p=>p.replace(/\n---\s*$/,''));
  const pro=parts.find(p=>p.startsWith('## پیش‌درآمد'));
  const epi=parts.find(p=>p.startsWith('## اپیلوگ'));
  const chs=parts.filter(p=>/^## فصل [\d۰-۹]+ —/.test(p));
