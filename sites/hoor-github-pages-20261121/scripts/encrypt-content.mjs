@@ -5,7 +5,7 @@ import {gzipSync} from 'node:zlib';
 const MAGIC=Buffer.from('HOORPK01','ascii');
 const ITERATIONS=600000;
 const SOURCE=new URL('../.snapshot/portal-data.json',import.meta.url);
-const OUTPUT=new URL('../dist/content.hoor',import.meta.url);
+const OUTPUT=new URL('../public/content.hoor',import.meta.url);
 const MAX_CONTENT_BYTES=32*1024*1024;
 
 async function readHiddenPassword(){
@@ -51,7 +51,7 @@ try{
  const compressed=gzipSync(plaintext,{level:9});
  const ciphertext=Buffer.from(await webcrypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:header,tagLength:128},key,compressed));
  const headerLength=Buffer.alloc(4);headerLength.writeUInt32BE(header.length);
- await mkdir(new URL('../dist/',import.meta.url),{recursive:true});
+ await mkdir(new URL('../public/',import.meta.url),{recursive:true});
  await writeFile(OUTPUT,Buffer.concat([MAGIC,headerLength,header,ciphertext]));
- console.log(JSON.stringify({output:'dist/content.hoor',bytes:MAGIC.length+4+header.length+ciphertext.length,documents:snapshot.library.docs.length,images:snapshot.library.gallery.length,readerSummaries:Object.keys(snapshot.library.readerEdition).length,dialogueChapters:snapshot.library.dialogues.chapters.length,recordings:snapshot.library.dialogues.recordings.length}));
+ console.log(JSON.stringify({output:'public/content.hoor',bytes:MAGIC.length+4+header.length+ciphertext.length,documents:snapshot.library.docs.length,images:snapshot.library.gallery.length,readerSummaries:Object.keys(snapshot.library.readerEdition).length,dialogueChapters:snapshot.library.dialogues.chapters.length,recordings:snapshot.library.dialogues.recordings.length}));
 }catch(error){console.error(error instanceof Error?error.message:'Unable to encrypt the content snapshot.');process.exitCode=1;}

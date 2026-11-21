@@ -15,9 +15,9 @@ python3 -I tools/sync_dialogues.py      # after editing the screenplay / recordi
 cd sites/hoor-github-pages-20261121
 npm ci
 npm run snapshot                        # tools/build_snapshot.py
-npm run encrypt                         # asks for the passphrase on a TTY; writes dist/content.hoor
-npm run build                           # vite build + map engine (does not touch dist/content.hoor)
+npm run encrypt                         # asks for the passphrase on a TTY; writes public/content.hoor
+npm run build                           # vite copies public/ into dist/, so dist/ now has content.hoor
 npm run check                           # tsc
 ```
 
-`npm run build` does not create `content.hoor`, and CI only runs `npm run build`, so a push alone deploys a site that cannot unlock. Deploy the encrypted package deliberately (for example copy `dist/content.hoor` into `public/` before committing) once you have decided that.
+`public/content.hoor` is the encrypted package (AES-256-GCM, PBKDF2 600k). Commit it so CI ships it; without it the site shows "دریافت کتاب طراحی انجام نشد" before any password check. Re-run `snapshot` + `encrypt` whenever the story or `content/*.json` change.
