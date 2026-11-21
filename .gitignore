@@ -50,6 +50,7 @@ projects/rade-hoor/artifacts/intro-films-20261119/**/.hyperframes/
 /gameStory/archive/
 /gameStory/redesign/*
 !/gameStory/redesign/v7-20261121/
+!/gameStory/redesign/v10-bible/
 /projects/rade-hoor/reports/
 
 # Machine-local caches, test scratch files, logs, and build products.
