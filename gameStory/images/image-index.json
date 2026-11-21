@@ -1,8 +1,8 @@
 {
   "date": "2026-11-21",
   "purpose": "Concept image staging inventory; the v7 documents own story canon.",
-  "image_count": 79,
-  "total_bytes": 199398736,
+  "image_count": 83,
+  "total_bytes": 208151606,
   "excluded_identical_local_copies": [
     "bahram-62-v1 - Copy.png",
     "camel-pack-v1 - Copy.png",
@@ -58,6 +58,42 @@
       "width": 1672,
       "height": 941,
       "sha256": "3c8f9dd043d65116886e1b6baf301afaf24fb67a576784a13faae256976d1fbe",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "daniyal-camel-riding-v2.png",
+      "bytes": 1997297,
+      "width": 1376,
+      "height": 768,
+      "sha256": "c20b90a803e9ce34242d7680846ff35b949aeb464b36f913f7e9a56974f5264e",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "daniyal-drone-v2.png",
+      "bytes": 2221285,
+      "width": 1376,
+      "height": 768,
+      "sha256": "bf980b38c6722b147c057ef906a06861c4f51e70a6e0a53aefe2f13960ffbe45",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "daniyal-motorcycle-v2.png",
+      "bytes": 2318563,
+      "width": 1376,
+      "height": 768,
+      "sha256": "f866c69d138897977766a394a53a0e6f056da90c000b6cfe188b6deccc511ebe",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "daniyal-quad-atv-v2.png",
+      "bytes": 2215725,
+      "width": 1376,
+      "height": 768,
+      "sha256": "461ee19a73dee8d76e0cf61e3d399fd3fa1d8a2f5f8562768092ec011ea09f27",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },

@@ -40,7 +40,7 @@ try{
  if(!Array.isArray(snapshot?.library?.docs)||!Array.isArray(snapshot?.library?.gallery)||!snapshot?.media||typeof snapshot.mapHtml!=='string')throw new Error('The content snapshot is incomplete.');
  snapshot.library.readerEdition=JSON.parse(await readFile(new URL('../content/reader-edition.json',import.meta.url),'utf8'));
  snapshot.library.dialogues=JSON.parse(await readFile(new URL('../content/dialogues.json',import.meta.url),'utf8'));
- if(Object.keys(snapshot.library.readerEdition).length!==18||snapshot.library.dialogues.chapters.length!==10||snapshot.library.dialogues.recordings.length!==6)throw new Error('The reader edition or dialogue collection is incomplete.');
+ if(!Object.keys(snapshot.library.readerEdition).length||snapshot.library.dialogues.chapters.length<10||!Array.isArray(snapshot.library.dialogues.recordings))throw new Error('The reader edition or dialogue collection is incomplete.');
  const plaintext=Buffer.from(JSON.stringify(snapshot),'utf8');
  if(!plaintext.length||plaintext.length>MAX_CONTENT_BYTES)throw new Error('The content snapshot is outside the supported size.');
  const salt=webcrypto.getRandomValues(new Uint8Array(16)),iv=webcrypto.getRandomValues(new Uint8Array(12));

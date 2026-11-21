@@ -1,0 +1,76 @@
+{
+  "version": "v11-aaa",
+  "art_direction": "Photorealistic AAA game concept art fusing Red Dead Redemption 2 desert western weight, GTA 6 modern underworld grit, and Resident Evil 2/4 Remake claustrophobic survival horror. Zero cartoonish orange filter; zero text or UI overlays.",
+  "assets": [
+    {
+      "id": "v11-keyart-lut-frontier",
+      "title_fa": "پوستر اصلی — دانیال، سارا، پیرمرد و درا بر فراز کلوت‌های لوت",
+      "category": "محیط",
+      "aspect_ratio": "16:9",
+      "prompt": "Cinematic AAA video game key art, 16:9 widescreen, Red Dead Redemption 2 meets GTA 6 in the Iranian Lut Desert. Rugged 38-year-old Iranian mechanic Daniyal in a dusty canvas work jacket, fingerless leather gloves, double-barrel shotgun on his back, NVG goggles around his neck, standing beside his battered heavy orange-grey 4x4 truck Pirmard on a dramatic Lut Kalut ridge at golden hour. Beside him, sharp 35-year-old Iranian female investigator Sara with short dusty dark hair, field vest, carbine and notebook. In foreground, noble desert camel Dara with leather saddlebags and strapped rifle. Vast ochre clay Kalut monoliths under harsh realistic desert sunlight and dust. Photorealistic cinematic grain, zero text or logos."
+    },
+    {
+      "id": "v11-action-kalut-convoy",
+      "title_fa": "کمینِ کاروانِ طوفان در کلوت‌ها — ماشین، موتور تریل و چهارچرخ",
+      "category": "وسیله",
+      "aspect_ratio": "16:9",
+      "prompt": "Cinematic AAA action keyframe, 16:9, GTA 6 meets Mad Max and RDR2 in the Iranian Lut Desert. High-speed sandstorm convoy ambush between towering ochre clay Kalut walls. A battered off-road SUV with welded steel bumper and jerrycans races alongside a nimble dirt bike and tactical off-road quad ATV, riders wearing dusty desert dastar headscarves firing toward a heavy armored mining truck ahead. Swirling amber dust, dramatic muzzle flashes, visceral sense of speed and weight. Photorealistic, zero text or logos."
+    },
+    {
+      "id": "v11-nightops-drone-nvg",
+      "title_fa": "عملیاتِ شبانهٔ نیروگاه — پهپادِ شناسایی، دید در شب و حرارتی",
+      "category": "محیط",
+      "aspect_ratio": "16:9",
+      "prompt": "Cinematic AAA tactical night-ops concept art, 16:9, Modern Warfare meets GTA 6 in the Iranian Lut Desert. On a dark rocky ridge overlooking a vast solar-mirror power plant and floodlit checkpoint under a breathtaking starry Milky Way sky. Foreground: Daniyal wearing white-phosphor night vision goggles holding a silenced bolt-action sniper rifle while a sleek tactical recon drone hovers silently with faint green status LEDs scanning the valley; Sara checks a glowing thermal monocular beside two parked off-road quads. Stark contrast of starry blue night, tactical cyan-green optics, and harsh white industrial searchlights. Photorealistic, zero UI or text."
+    },
+    {
+      "id": "v11-horror-retil-canyon",
+      "title_fa": "وحشتِ تالارِ دو سایه — بازطراحیِ آیکونیکِ رتیلِ هور (فصل ۶)",
+      "category": "جانور و هور",
+      "aspect_ratio": "16:9",
+      "prompt": "Terrifying AAA survival-horror concept art, 16:9, Resident Evil 2/4 Remake RE Engine lighting inside pitch-black wet black-salt subterranean depths of Tang-e Hoor canyon. Over-the-shoulder foreground: Daniyal aiming a pump-action shotgun with weapon flashlight upward at a massive stone pillar while a burning crimson emergency road flare lies on wet black salt rock. Clinging to the pillar above is an original geological body-horror creature (Retil of Hoor): an emaciated, elongated hunched human figure in tattered salt-crusted industrial worker coveralls with a faded cloth wristband reading 1; the upper half of its face and eyes are completely sealed shut by jagged black-grey salt crystals, lower jaw agape. Not a spider, not a generic zombie. Chilling volumetric spore mist, crimson flare light, zero text."
+    },
+    {
+      "id": "v11-boss-caravanserai-fire",
+      "title_fa": "حریقِ کاروانسرای رویا — نبرد با سرکرده و هلی‌کوپتر (فصل ۹)",
+      "category": "محیط",
+      "aspect_ratio": "16:9",
+      "prompt": "Cinematic AAA action keyframe, 16:9, RDR2 Braithwaite Manor fire meets GTA 6 desert underworld. An ancient Persian brick caravanserai in the Lut salt desert under heavy nighttime siege and raging orange flames. A black syndicate helicopter hovers through black smoke casting a blinding white searchlight beam into the burning arched brick courtyard where rugged fighters behind battered trucks exchange shotgun and rifle fire with armored masked mercenaries. Photorealistic firelight and sparks, zero text."
+    },
+    {
+      "id": "v11-climax-kamran-chamber",
+      "title_fa": "حجرهٔ رگه — دوئلِ نهاییِ دانیال و کامران در سپیده (فصل ۱۵)",
+      "category": "شخصیت",
+      "aspect_ratio": "16:9",
+      "prompt": "Cinematic AAA climax concept art, 16:9, Resident Evil meets RDR2 final showdown. Inside a colossal industrial-geological salt-vein chamber deep in Tang-e Hoor canyon as golden-pale dawn rays pierce a cracked roof shaft through venting steam and shattered glass tanks. Composed 46-year-old Iranian baron Kamran in a dust-streaked crisp linen shirt and vest gripping a tactical blade faces off against bloodied, bandaged Daniyal holding a tactical knife in brutal close-quarters duel. Intense chiaroscuro cinematic realism, zero text."
+    },
+    {
+      "id": "v11-dara-camel-sandstorm",
+      "title_fa": "شترسواری با درا در نبکاها و طوفانِ شنِ لوت",
+      "category": "جانور و هور",
+      "aspect_ratio": "16:9",
+      "prompt": "Cinematic RDR2-inspired desert exploration concept art, 16:9. Daniyal riding his noble desert camel Dara across vast golden Lut nebkha dunes as a towering amber sandstorm wall rolls across the horizon. Daniyal wears a dusty dastar headscarf pulled over his nose, bolt-action hunting rifle slung across his back, heavy leather saddlebags and water skins strapped to Dara. Poetic scale, wind-blown sand particles, photorealistic, zero text."
+    },
+    {
+      "id": "v11-portrait-kamran-v11",
+      "title_fa": "پرترهٔ سینماییِ کامران — بارونِ تجارتِ فراموشی",
+      "category": "شخصیت",
+      "aspect_ratio": "3:4",
+      "prompt": "Photorealistic AAA character portrait of Kamran, a charismatic 46-year-old Iranian operations baron (Dutch van der Linde meets Gus Fring). Immaculately clean light linen shirt and tailored desert vest contrasting against a dusty industrial glass office overlooking the Lut desert at dusk. Warm polite half-smile with chillingly cold calculating eyes, holding a small Persian tea glass. Ultra-detailed skin texture, cinematic chiaroscuro, zero text."
+    },
+    {
+      "id": "v11-steel-bridge-siege",
+      "title_fa": "محاصرهٔ پلِ فلزیِ اعماق — ایستادگیِ اسماعیل (فصل ۱۲)",
+      "category": "محیط",
+      "aspect_ratio": "16:9",
+      "prompt": "Cinematic Resident Evil 4 siege concept art, 16:9. A narrow rusted steel catwalk bridge suspended over a bottomless black chasm inside Tang-e Hoor canyon under flickering industrial floodlights and red flares. Rugged heroes firing shotguns and carbines to hold off salt-crusted blind humanoid Retil horrors surging from a dark quarantine gate on one side while masked syndicate mercenaries fire from the far end. Visceral desperation, sparks, smoke, photorealistic, zero text."
+    },
+    {
+      "id": "v11-six-vehicles-lineup",
+      "title_fa": "صفِ ۶ حالتِ حرکت — پیرمرد، SUV، موتور تریل، چهارچرخ و درا",
+      "category": "وسیله",
+      "aspect_ratio": "16:9",
+      "prompt": "Photorealistic AAA vehicle lineup concept sheet, 16:9, staged at a rugged Iranian Lut desert rock camp at golden afternoon light: (left to right) a battered heavy orange-grey 4x4 flatbed truck Pirmard with steel bullbar and winch, a dusty matte-olive off-road tactical SUV, a weathered motocross trail dirt bike, a rugged sand-tire off-road quad ATV with rear cargo rack and red jerrycans, and a saddled desert camel Dara standing beside Daniyal. Consistent grounded realism, zero text."
+    }
+  ]
+}

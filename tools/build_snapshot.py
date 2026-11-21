@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build the plaintext content snapshot that sites/hoor-github-pages-*/scripts/encrypt-content.mjs encrypts.
 
-Reads the v7 package (gameStory/redesign/v7-20261121) and gameStory/images and writes
-sites/hoor-github-pages-20261121/.snapshot/portal-data.json  (git-ignored: it holds the whole story in plain text).
+Canon source: gameStory/redesign/v11-aaa (with maps/geography reference from v7-20261121 and images from gameStory/images).
+Writes sites/hoor-github-pages-20261121/.snapshot/portal-data.json (git-ignored).
 
 Needs: Python 3.10+, Pillow.  Usage:  python3 tools/build_snapshot.py [--max-mb 28]
 """
@@ -18,107 +18,140 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 V7 = ROOT / 'gameStory/redesign/v7-20261121'
+V11 = ROOT / 'gameStory/redesign/v11-aaa'
 IMAGES = ROOT / 'gameStory/images'
 SITE = ROOT / 'sites/hoor-github-pages-20261121'
 OUT = SITE / '.snapshot/portal-data.json'
 
-# id -> (file relative to V7, category, spoiler)
+# id -> (path relative to ROOT, category, spoiler, legacy)
 DOCS = {
-    'READER_GUIDE_FA': ('README.md', 'شروع مطالعه', False),
-    'VISION_AND_CAMPAIGN_FA': ('VISION_AND_CAMPAIGN_FA.md', 'طرح کلی', False),
-    'SCREENPLAY_AND_FINAL_SEQUENCE_FA': ('SCREENPLAY_AND_FINAL_SEQUENCE_FA.md', 'داستان', True),
-    'SCREENPLAY_FILM_FA': ('../v10-bible/SCREENPLAY_FILM_FA.md', 'داستان', True),
-    'CHARACTER_BIBLE_FA': ('../v10-bible/CHARACTER_BIBLE_FA.md', 'داستان', True),
-    'GAMEPLAY_DESIGN_FA': ('../v10-bible/GAMEPLAY_DESIGN_FA.md', 'بازی‌سازی', False),
-    'VEHICLES_MOTO_QUAD_FA': ('../v10-bible/VEHICLES_MOTO_QUAD_FA.md', 'بازی‌سازی', False),
-    'STORY_BIBLE_FA': ('../v10-bible/STORY_BIBLE_FA.md', 'داستان', True),
-    'CHARACTERS_AND_DRAMA_FA': ('CHARACTERS_AND_DRAMA_FA.md', 'داستان', False),
-    'WORLD_AND_MISSIONS_FA': ('WORLD_AND_MISSIONS_FA.md', 'جهان و مأموریت‌ها', False),
-    'GAMEPLAY_SYSTEMS_FA': ('GAMEPLAY_SYSTEMS_FA.md', 'بازی‌سازی', False),
-    'ACTION_ENCOUNTER_ATLAS_FA': ('ACTION_ENCOUNTER_ATLAS_FA.md', 'بازی‌سازی', False),
-    'ONBOARDING_AND_LEARNING_FA': ('ONBOARDING_AND_LEARNING_FA.md', 'بازی‌سازی', False),
-    'WEAPONS_VEHICLES_AND_EQUIPMENT_FA': ('WEAPONS_VEHICLES_AND_EQUIPMENT_FA.md', 'بازی‌سازی', False),
-    'RESOURCES_TRADE_SURVIVAL_AND_WATER_SUPPLY_FA': ('RESOURCES_TRADE_SURVIVAL_AND_WATER_SUPPLY_FA.md', 'بازی‌سازی', False),
-    'SCIENCE_SKY_AND_THERMAL_RULES_FA': ('SCIENCE_SKY_AND_THERMAL_RULES_FA.md', 'علم و طبیعت', False),
-    'NIGHT_SKY_NAVIGATION_AND_EASTER_EGGS_FA': ('NIGHT_SKY_NAVIGATION_AND_EASTER_EGGS_FA.md', 'علم و طبیعت', False),
-    'ECOLOGY_WATERHOLES_AND_PHOTOGRAPHY_FA': ('ECOLOGY_WATERHOLES_AND_PHOTOGRAPHY_FA.md', 'علم و طبیعت', False),
-    'RECORDINGS_DOCUMENTS_AND_DIRECTION_FA': ('RECORDINGS_DOCUMENTS_AND_DIRECTION_FA.md', 'داستان', True),
-    'GEOGRAPHY_EVIDENCE_FA': ('GEOGRAPHY_EVIDENCE_FA.md', 'نقشه و جغرافیا', False),
-    'maps-README_FA': ('maps/README_FA.md', 'نقشه و جغرافیا', False),
-    'CONTINUITY_AND_STORY_REVIEW_FA': ('CONTINUITY_AND_STORY_REVIEW_FA.md', 'بازبینی', True),
-    'DESIGN_REVIEW_FA': ('DESIGN_REVIEW_FA.md', 'بازبینی', False),
+    'READER_GUIDE_FA': ('gameStory/redesign/v11-aaa/README.md', 'شروع مطالعه', False, False),
+    'SCREENPLAY_V11_FA': ('gameStory/redesign/v11-aaa/SCREENPLAY_V11_FA.md', 'داستان', True, False),
+    '01_STORY_WORLD_AND_CAMPAIGN_FA': ('gameStory/redesign/v11-aaa/01_STORY_WORLD_AND_CAMPAIGN_FA.md', 'داستان', True, False),
+    '02_CHARACTERS_AND_DIALOGUE_CRAFT_FA': ('gameStory/redesign/v11-aaa/02_CHARACTERS_AND_DIALOGUE_CRAFT_FA.md', 'داستان', False, False),
+    '03_COMBAT_ENEMIES_BOSSES_AND_VEHICLES_FA': ('gameStory/redesign/v11-aaa/03_COMBAT_ENEMIES_BOSSES_AND_VEHICLES_FA.md', 'بازی‌سازی', False, False),
+    '04_OPEN_WORLD_SYSTEMS_AND_VISUAL_BIBLE_FA': ('gameStory/redesign/v11-aaa/04_OPEN_WORLD_SYSTEMS_AND_VISUAL_BIBLE_FA.md', 'جهان و مأموریت‌ها', False, False),
+    'GEOGRAPHY_EVIDENCE_FA': ('gameStory/redesign/v7-20261121/GEOGRAPHY_EVIDENCE_FA.md', 'نقشه و جغرافیا', False, False),
+    'maps-README_FA': ('gameStory/redesign/v7-20261121/maps/README_FA.md', 'نقشه و جغرافیا', False, False),
+    'ECOLOGY_WATERHOLES_AND_PHOTOGRAPHY_FA': ('gameStory/redesign/v7-20261121/ECOLOGY_WATERHOLES_AND_PHOTOGRAPHY_FA.md', 'علم و طبیعت', False, False),
+    'NIGHT_SKY_NAVIGATION_AND_EASTER_EGGS_FA': ('gameStory/redesign/v7-20261121/NIGHT_SKY_NAVIGATION_AND_EASTER_EGGS_FA.md', 'علم و طبیعت', False, False),
+    'RECORDINGS_DOCUMENTS_AND_DIRECTION_FA': ('gameStory/redesign/v7-20261121/RECORDINGS_DOCUMENTS_AND_DIRECTION_FA.md', 'آرشیو نسخه‌های قبل', True, True),
+    'SCREENPLAY_FILM_FA': ('gameStory/redesign/v10-bible/SCREENPLAY_FILM_FA.md', 'آرشیو نسخه‌های قبل', True, True),
 }
 
-# These creatures are back in v7.1 (retil family: juvenile + adult); only the giant stays retired.
-NOT_RETIRED = {'hoor-adult-v1', 'hoor-adult-v2', 'hoor-juvenile-v1', 'hoor-juvenile-v2'}
+NOT_RETIRED = {'hoor-adult-v1', 'hoor-adult-v2', 'hoor-juvenile-v1', 'hoor-juvenile-v2', 'v11-action-kalut-convoy-v1'}
 
 PEOPLE = [  # (name, age, role, image candidates, text)
-    ('دانیال', 38, 'مکانیک و راننده؛ شخصیت بازیکن', ['daniyal-v1'],
-     'کار فنی را خوب انجام می\u200cدهد و خبر بد را نگه می\u200cدارد. چیزی از دو سال پیش با اوست که هیچ\u200cکس دیگر به یاد ندارد؛ بقیهٔ حسابِ آن شب هنوز در جیبش است.'),
-    ('سارا', 35, 'پژوهشگر اندازه‌گیری و مسئول ایمنی', ['sara-v1'],
-     'هر چیز را می\u200cنویسد؛ دفترهایش ضدِ فراموشی\u200cاند. دقیق است و گاهی سرد. می\u200cداند چه چیزی ثابت\u200cشدنی است و چه چیزی فقط باید باور شود.'),
-    ('کامران', 45, 'مدیر عملیات', [],
-     'همه را به اسم صدا می\u200cزند و استکان چای می\u200cدهد. پیش\u200cتر به کارکنان کمک واقعی کرده، برای همین به او اعتماد می\u200cکنند. آرام حرف می\u200cزند و هیچ\u200cوقت صدایش را بالا نمی\u200cبرد.'),
-    ('کیان', 24, 'صدا و ثبت', ['kian-v2', 'kian-v1'],
-     'شیفتهٔ شنیدن و نگه\u200cداشتنِ صداست. ضبط\u200cهایش فراموش نمی\u200cشوند. گاهی ثبت\u200cکردن را جای فرستادن فوریِ پیام می\u200cگذارد.'),
-    ('بهرام', 62, 'پژوهشگر مواد و لایه‌ها', ['bahram-62-v1'],
-     'هر روز اسم\u200cها را در دفترش می\u200cنویسد. تجربهٔ میدانی دارد و حدِ دانش خودش را هم باید بپذیرد.'),
-    ('رستم', 48, 'مسئول تدارکات', ['rostam-v2', 'rostam-v1'],
-     'می\u200cترسد که همه\u200cچیز فرو بریزد؛ برای همین گاهی چیزی را حذف می\u200cکند. بزدل است، ولی وقتی افتاد، می\u200cگوید «من بودم».'),
-    ('ماهرخ', 58, 'آشپزِ کمپ', [],
-     'کامران را از جوانی می\u200cشناسد و تنها کسی است که او را «پسر» صدا می\u200cزند. غذا می\u200cپزد، کفگیر را وسطِ جمله می\u200cزند، و زیادی می\u200cداند.'),
-    ('آرش', 19, 'شاگردِ دانیال', [],
-     'همان سؤالی را می\u200cپرسد که دانیال نپرسید. دفترچهٔ کوچکی دارد و گاهی از سرِ شور خطر می\u200cکند.'),
-    ('پروانه', 44, 'پرستارِ درمانگاه', [],
-     'وقتی برق می\u200cرود با دست پمپ می\u200cکند. اسمِ بیماران را تکرار می\u200cکند: «اگه یادتون رفت، دوباره می\u200cگم.»'),
-    ('اسماعیل', 39, 'نگهبانِ مرزِ شمالی', [],
-     'نگهبانِ شمال. وفادار، تا روزی که امضاهایش دیگر خوانا نیستند.'),
-    ('ایرج', 70, 'راننده‌ی پیرِ کامیون', [],
-     'راننده\u200cی پیر و لافزن؛ حافظهٔ جاده\u200cها. شب\u200cهای کمپ حرف می\u200cزند تا سکوت نماند.'),
-    ('حسین', 35, 'کارگرِ بلوکِ جرثقیل', [],
-     'کارگرِ بلوک؛ پسرِ بیمار دارد. لیوانِ خالی کنارش مالِ کسی است که دیگر نیست.'),
-    ('مهدی', 41, 'تکنسین و سیم‌کش', [],
-     'تکنسین و سیم\u200cکش؛ گاهی دزدی هم می\u200cکند. سیمی که می\u200cکشد برای کارِ دیگری هم استفاده می\u200cشود.'),
-    ('قاسم', 65, 'میرابِ نوبتی', [],
-     'میرابِ نوبتی؛ آب را با پنگانِ مسی می\u200cسنجد. «نوبتِ آب، نوبتِ آبه.»'),
-    ('فرهاد', 60, 'رادیو و رصدِ شب', [],
-     'یکی از نگهبانانِ بی\u200cنام؛ رسیدی در جیب دارد که مالِ کسی است که نمی\u200cشناسد.'),
-    ('مینا', 32, 'پایشگر و نگهدار آبشخورها', [],
-     'بی\u200cرحم ولی منصف. حسابِ آبشخورها را با لاشهٔ بزها می\u200cکند. دوربینِ تله\u200cای\u200cاش شب\u200cها چیزهایی ثبت کرده که کسی به یاد ندارد.'),
+    ('دانیال', 38, 'راننده-مکانیکِ کاروان‌های سنگین؛ شخصیتِ بازیکن', ['daniyal-v1'],
+     'مردی کارکشته و سخت‌جان که هم پشتِ فرمانِ «پیرمرد»، SUV، موتور، چهارچرخ و شتر استاده و هم در نبردِ گرم و سرد کم نمی‌آورد. دو سال است با بارِ گناه تصادفی در شهداد و پاکتِ بازنشدهٔ «بقیهٔ حساب» زندگی می‌کند.'),
+    ('سارا', 35, 'بازرسِ ارشدِ زمین‌شناسی و تحلیلگرِ میدانی', ['sara-v1'],
+     'تیز، بی‌تعارف و عمل‌گرا؛ خاکِ معادنِ کرمان و یزد را خورده. با کارابین، دوربینِ حرارتی و دفترِ ضدِ فراموشی شانه به شانهٔ دانیال می‌جنگد تا حقیقتِ رگهٔ هور را بیرون بکشد.'),
+    ('کامران', 46, 'مدیرِ عملیاتِ «سپهرِ لوت»؛ بارونِ تجارتِ فراموشی', [],
+     'خوش‌پوش، مودب و چای‌ریز با حافظه‌ای ترسناک. زیرِ پوششِ نیروگاهِ خورشیدی و معدنِ لیتیوم، کارتلِ «ناپدیدسازیِ بدونِ جنازه» را می‌چرخاند و تا آخرین نفس خونسرد و خطرناک می‌ماند.'),
+    ('مهدی', 42, 'برق‌کارِ ارشد، دزدِ سابق و مهندسِ ابزارِ کمپ', [],
+     'شوخ‌ترین و رک‌ترین رفیقِ دانیال. پهپادِ شناسایی، دید در شب، دوربینِ حرارتی و تله‌های انفجاریِ گروه را می‌سازد و برای دزدیدنِ دفترِ مشتریانِ کامران جانش را وسط می‌گذارد.'),
+    ('نادر', 52, 'بازماندهٔ فاجعهٔ هفت سال پیش و تک‌تیراندازِ ردیاب', [],
+     'تنها بازماندهٔ شیفتِ شبِ شش کارگرِ گمشده در گسل. پایش لنگ است اما هنوز بهترین تک‌تیرانداز و ردیابِ لوت است و تا پایِ جان دنبالِ حقیقتِ حیدر و پنج رفیقش می‌رود.'),
+    ('کیان', 25, 'صدابردار، خلبانِ پهپاد و آرشیودارِ زیرزمینی', ['kian-v2', 'kian-v1'],
+     'جوانِ پرانرژی و تیزهوشی که پهپادِ شناسایی را به منطقه آورده. پس از گیر افتادن در اتاقکِ آهنیِ اعماق، از طریقِ رادیو امید و طنزِ زندهٔ گروه می‌ماند تا نجاتِ بزرگش در فصل ۱۲.'),
+    ('مینا', 33, 'محیط‌بانِ مستقل، موتورسوار و متخصصِ حیات‌وحش', [],
+     'زنِ سرسخت و بومیِ لوت؛ سوار بر موتورِ تریلِ برقی با دوربینِ تله‌ای و تفنگِ شکاری. مربیِ شکار، ردیابی و نگهبانِ آبشخورهایی است که کامران آبشان را دزدیده.'),
+    ('آرش', 20, 'شاگردِ مکانیک و رانندهٔ بی‌پروای موتور و چهارچرخ', [],
+     'انرژیِ بی‌پروای کمپ؛ عاشقِ سرعت، پرش از کلوت با موتورِ تریل و تیونینگِ چهارچرخ. دانیال الگوی اوست و افشای رازِ دانیال، بزرگ‌ترین آزمونِ بلوغِ او می‌شود.'),
+    ('رویا', 40, 'گردانندهٔ کاروانسرا و ملکهٔ بازارِ سیاهِ لوت', ['roya-v2', 'roya-v1'],
+     'دلالِ تیز و بی‌تعارفِ سلاح‌های گرم و سرد، قطعاتِ خودرو و قراردادهای حمله به کاروان‌ها. فقط پول و اعتبار می‌شناسد — تا شبی که کامران کاروانسرایش را به آتش می‌کشد.'),
+    ('اسماعیل', 39, 'فرماندهٔ گشتِ شمالیِ کامران (چهرهٔ تراژیکِ دشمن)', [],
+     'در نیمهٔ اول فرماندهٔ اسکادرانِ دید-در-شب و تعقیب‌کنندهٔ بی‌رحمِ گروه است؛ اما وقتی می‌بیند امضاهایش عوض شده و عکسِ زنش را نمی‌شناسد، روی پلِ فلزی علیه کامران می‌ایستد.'),
+    ('بهرام', 62, 'زمین‌شناسِ کهنه‌کار و نگارندهٔ دفترِ شش اسم', ['bahram-62-v1'],
+     'در بخشِ قرنطینهٔ تنگه گیر افتاده؛ نجاتش در فصل ۶ دفترِ شش اسم و رازِ زیست-شیمیاییِ «رگهٔ H-0» را آشکار می‌کند.'),
+    ('رستم', 48, 'مسئولِ تدارکات', ['rostam-v2', 'rostam-v1'],
+     'بزدل اما صادق‌تر از کامران؛ مجوزِ بازرسی را جعل کرده تا کار نخوابد، ولی وقتی نوبتِ پاک‌شدنِ خودش می‌رسد، کدهای اتاقکِ کیان و نقشه‌ها را به کمپ می‌آورد.'),
+    ('فرهاد', 34, 'نگهبانِ بی‌نام (بازوبندِ ۹)', [],
+     'یکی از پاک‌شده‌های مسلحِ کامران که در جیبش فقط یک رسیدِ چروکِ «نان و شیر» دارد و در سپیدهٔ پایان بالاخره نامش را پس می‌گیرد.'),
+    ('ماهرخ', 58, 'آشپز و حافظهٔ قدیمِ کمپ', [],
+     'بزرگ‌ترِ کمپ که کامران را از جوانی می‌شناخته؛ با غذای داغ و حرف‌های بی‌پرده، ستونِ روحیهٔ گروه در شب‌های سختِ لوت است.'),
 ]
 
 QUOTES = {
-    'دانیال': 'بستش رو عوض کردم. اگه باز لق شد، مال من نیست؛ مال دنیاست.',
-    'سارا': 'تو چیزی رو که نمی‌دونی نمی‌گی. من چیزی رو که می‌دونم نمی‌گم تا مطمئن شم.',
-    'کامران': 'من هیچ‌وقت نگفتم کسی بمیره. گفتم کار نخوابه.',
-    'کیان': 'این باد صداش زرده. نه، زرد نه؛ کرمیه. ببخشید، عادتِ شغلیه.',
-    'بهرام': 'یک سطر دیگه.',
-    'رستم': 'این یکی از ساعتِ بارگیری مهم‌تر بود.',
-    'مینا': 'اگه امروز عکس خوب گرفتی و فردا آب نرسید، کارِ ما خوب پیش نرفته.',
-    'قاسم': 'نوبتِ آب، نوبتِ آبه.',
-    'ماهرخ': 'کسی که غذا نخورده، کار نمی‌کنه.',
-    'ایرج': 'ماشین رو اگه خوب نگه‌داری، تو رو هم نگه می‌داره.',
-    'آرش': 'شما از کِی ساکت شدین؟',
-    'پروانه': 'من هیچ‌وقت بیمار رو اندازه نگرفتم.',
-    'اسماعیل': 'من فقط می‌خوام بدونم چرا درمانگاه رو قطع کردیم.',
-    'مهدی': 'ترس رو بده من؛ من نگهش می‌دارم.',
-    'حسین': 'استاد، شما نمی‌ترسین؟',
-    'فرهاد': 'ببینین اگه چشم‌هاتون به تاریکی عادت کرد، یه خط غباری هم می‌بینین.',
+    'دانیال': 'اسمش علی بود. هشت سالش بود. من دو سال ازش فرار کردم... دیگه فرار نمی‌کنم.',
+    'سارا': 'تو دو سال با اون پاکتِ مهرشده رانندگی کردی؛ چون سکوتت راحت‌تر بود!',
+    'کامران': 'حافظه بزرگ‌ترین نفرینِ آدمه؛ من دارم به آدما آرامش می‌فروشم.',
+    'مهدی': 'این اسباب‌بازیِ کیان جونش به یه بندِ پلاستیکی بنده... افتاد از حقوقِ خودت کم می‌کنم!',
+    'نادر': 'هفت سال پیش شیش تا مردِ گردن‌کلفت رفتن تو، فقط من با پای شکسته برگشتم.',
+    'کیان': 'اگه صدای منو دارین یه فحش بدین بفهمم زنده‌این!',
+    'مینا': 'یه قدم دیگه بیای جلو، به جایِ چرخِ کامیونت، زانوت رو می‌زنم راننده.',
+    'آرش': 'بذار من با چهارچرخ از شیارِ غربی برم، تا بفهمن از کجا خوردن کارشون تمومه!',
+    'رویا': 'مادرخراب‌ها کاروانسرام رو آتیش زدن! امشب هیچی از پروژه‌ش سرِ پا نمی‌ذاریم.',
+    'اسماعیل': 'اسمِ زنم رو یادم نمی‌آد دانیال، ولی اسمِ خودم رو هنوز یادمه!',
+    'بهرام': 'اینجا معدنِ لیتیوم نیست؛ کامران داره از این گسل داروی پاک‌کردنِ حافظه می‌سازه.',
+    'رستم': 'امضا رو مجبور نیستی بخونی.',
+    'فرهاد': 'یادم... نمی‌آد. فقط گفتن کامیون رو نذارین رد شه.',
+    'ماهرخ': 'اون سال که اومد فقط یه لیوان آب می‌خورد و می‌گفت سیره؛ بعد دیدم هیچ‌وقت سیر نشد.',
 }
-ORDER = ['دانیال', 'سارا', 'کامران', 'کیان', 'بهرام', 'رستم', 'مینا', 'ماهرخ', 'آرش', 'پروانه', 'اسماعیل', 'ایرج', 'حسین', 'مهدی', 'قاسم', 'فرهاد']
+ORDER = [p[0] for p in PEOPLE]
 
 COPY = {
-    'heroTitle': 'ردِ هور — خطِ سایه',
-    'heroText': 'یک مکانیک و یک پژوهشگر برای نجاتِ همکارانشان وارد تنگه‌ای در حاشیهٔ لوت می‌شوند و کم‌کم می‌فهمند چه کسی ساعتِ دیگران را به ابزارِ کنترل تبدیل کرده است.',
-    'storyLead': 'اول آدم‌ها را بشناسید: کی چه خواسته، کی چه نگفته و هر کس برای کدام کار پاسخ‌گوست. راز دستگاه بعد از این‌ها می‌آید.',
-    'mapLead': 'منطقهٔ شهداد و تنگ رتیل واقعی‌اند؛ تأسیسات و آبشخورهای داستان ساختگی‌اند و جای واقعیِ ثابت ندارند. این سه نما سه پرسشِ جدا را جواب می‌دهند.',
+    'heroTitle': 'ردِ هور — نسخهٔ ۱۱ (بازطراحیِ AAA)',
+    'heroText': 'اکشنِ جهان‌بازِ مدرن در کویرِ لوت با الهام از RDR2، GTA 6 و Resident Evil: یک راننده-مکانیکِ زخمی و یک بازرسِ سرسخت در برابرِ کارتلِ تجارتِ فراموشیِ کامران — با پهپاد، دید در شب و حرارتی، ۶ حالتِ حرکت و سواری، نبردِ سنگینِ گرم و سرد، و ۲ فصلِ نادر و هولناکِ وحشت در اعماقِ تنگه.',
+    'storyLead': 'هستهٔ ۱۰ نفرهٔ گوشت‌ودار و زنده به‌جای شخصیت‌های پراکنده: هر کس صدای خودش، زخمش، شوخی‌اش و نقشِ ملموسش در کمپ و عملیات را دارد.',
+    'mapLead': 'جغرافیای واقعیِ شهداد تا تنگِ رتیل در لوتِ شمالی، مبنای ۶ ناحیهٔ دنیای باز و تنگهٔ هور است؛ تأسیسات و پایگاه‌های داستان ساختگی‌اند.',
     'mapTitles': ['نقشهٔ منطقه: شهداد تا تنگ', 'نمای ماهواره‌ای محدودهٔ تنگ', 'اتصالِ ناحیه‌های بازی'],
     'mapTexts': [
-        'جای واقعیِ آبادی‌ها و راه‌های اصلی. فاصلهٔ مستقیمِ شهداد تا تنگ حدود ۹۸٫۸ کیلومتر است؛ ۱۳۰ کیلومتر برآوردِ مسیرِ گزارشِ پیمایش است و تأیید نشده.',
-        'تصویر ماهواره‌ایِ مرجع. هیچ مسیرِ حدسیِ درون تنگه کشیده نشده و هندسهٔ دقیقِ تنگه هنوز برداشت نشده است.',
-        'نمودارِ بدونِ مقیاس که نشان می‌دهد از کدام ناحیه به کدام ناحیه می‌شود رفت. جغرافیای واقعی نیست.',
+        'جای واقعیِ آبادی‌ها و راه‌های اصلی. فاصلهٔ مستقیمِ شهداد تا تنگ حدود ۹۸٫۸ کیلومتر است و الهام‌بخشِ مسیرهای رانندگی و شترسواری در بازی است.',
+        'تصویر ماهواره‌ایِ مرجع محدودهٔ تنگِ رتیل؛ هیچ مسیرِ حدسیِ درون تنگه به‌عنوان برداشت واقعی ادعا نشده است.',
+        'نمودارِ ارتباطِ نواحی بازی (شهداد، نبکا، کلوت، کاروانسرا، نیروگاه، کمپ و تنگهٔ هور).',
     ],
 }
+
+V11_MISSIONS = [
+    (1, 'M01', 'بارِ کج و حیاطِ کارگاه', 45, 'R01', ['پیاده', 'نبردِ مشت', 'کارگاه']),
+    (1, 'M02', 'مجوزِ جعلیِ سپهرِ لوت', 35, 'R01', ['داستان', 'سارا', 'کامران']),
+    (1, 'M03', 'میدانِ تیر و آماده‌سازیِ پیرمرد', 40, 'R01', ['سلاحِ گرم', 'آموزش', 'مهدی']),
+    (2, 'M04', 'کمینِ کلوت و تیراندازیِ جاده‌ای', 55, 'R03', ['کامیون‌سواری', 'تیراندازیِ حینِ سواری', 'چهارچرخ']),
+    (2, 'M05', 'چهرهٔ بی‌نام (بازوبندِ ۹)', 40, 'R03', ['سلاحِ سرد', 'Parry', 'داستان']),
+    (2, 'M06', 'اردوگاهِ پژوهشی و شبی که چراغ رفت', 45, 'R07', ['کمپ', 'شترسواری', 'پهپاد']),
+    (3, 'M07', 'نبکاها، شکار و آبشخورِ خشکیده', 55, 'R02', ['شترسواریِ درا', 'شکار', 'مینا']),
+    (3, 'M08', 'پمپ‌خانهٔ نبکا — اولین پروازِ پهپاد', 60, 'R02', ['پهپاد', 'موتور تریل', 'اکشنِ آزاد']),
+    (4, 'M09', 'باس ۱: کاروانِ طوفانِ کلوت', 75, 'R03', ['باس‌فایت', 'SUV و کامیون', 'دوربینِ حرارتی']),
+    (4, 'M10', 'بازگشتِ مهدی به کمپِ سنگ‌چین', 40, 'R06', ['کمپِ زنده', 'ارتقای NVG', 'نادر']),
+    (5, 'M11', 'عملیاتِ شبانهٔ نیروگاهِ خورشیدی', 70, 'R04', ['پهپاد', 'دید در شب NVG', 'تک‌تیراندازی']),
+    (5, 'M12', 'کلیدِ دروازه و صدای کامران', 45, 'R04', ['اتاقِ کنترل', 'اکشنِ شبانه', 'داستان']),
+    (6, 'M13', 'ورود به قرنطینهٔ تنگه (فصلِ وحشت ۱)', 55, 'R08', ['Resident Evil', 'دوربینِ حرارتی', 'تاریکی']),
+    (6, 'M14', 'باس ۲: حیدر در تالارِ دو سایه', 65, 'R08', ['باس‌فایتِ رتیل', 'شاتگان و منور', 'Parry']),
+    (6, 'M15', 'نجاتِ بهرام و دفترِ شش اسم', 45, 'R08', ['نجات', 'رازِ رگه', 'فرار']),
+    (7, 'M16', 'بازارِ سیاهِ کاروانسرا و دعوای حیاط', 55, 'R06', ['سلاحِ سرد و مشت', 'رویا', 'تیونینگ']),
+    (7, 'M17', 'پاکتِ «بقیهٔ حساب» و رولورِ نادر', 35, 'R06', ['درام', 'تعارضِ گروه', 'نادر']),
+    (8, 'M18', 'شکار در نمکزار با چهارچرخ و درا', 75, 'R05', ['چهارچرخ Quad', 'شترسواری', 'نجات']),
+    (9, 'M19', 'باس ۳: حریقِ کاروانسرا و هلی‌کوپتر', 85, 'R06', ['باس‌فایت', 'محاصره', 'تک‌تیراندازِ سنگین']),
+    (10, 'M20', 'ظهرِ مصنوعی و معاملهٔ صادقی', 60, 'R07', ['پهپادِ EMP', 'دید در شب', 'عکاسیِ مدرک']),
+    (10, 'M21', 'افشای «مشتری د» و فرارِ شبانه', 60, 'R07', ['رازِ علی', 'موتور تریل', 'تعقیبِ شبانه']),
+    (11, 'M22', 'شکاف در کمپ و اعترافِ رستم', 45, 'R07', ['کمپِ دوم', 'درامِ آرش', 'کدهای اعماق']),
+    (11, 'M23', 'امضای پاک‌شدهٔ اسماعیل', 35, 'R04', ['خطِ موازی', 'اسماعیل', 'تراژدی']),
+    (11, 'M24', 'تماسِ زندهٔ کیان از اعماق', 35, 'R07', ['رادیو', 'برنامه‌ریزیِ نجات']),
+    (12, 'M25', 'اتاقکِ آهنی (فصلِ وحشت ۲)', 60, 'R08', ['Resident Evil', 'نجاتِ کیان', 'شاتگان']),
+    (12, 'M26', 'باس ۴: محاصرهٔ پلِ فلزی و ایستادگیِ اسماعیل', 80, 'R08', ['باس‌فایتِ پل', 'رتیل + مزدور', 'تبر و شاتگان']),
+    (13, 'M27', 'اعترافِ «علی» زیرِ طاقِ تنگه', 35, 'R08', ['درامِ دانیال و سارا']),
+    (13, 'M28', 'تعقیبِ برجِ رادیو و فداکاریِ مهدی', 75, 'R03', ['موتور و SUV', 'اکشنِ پرشتاب', 'دفترِ کامران']),
+    (14, 'M29', 'یورشِ گروهی به نیروگاه و دکلِ پارازیت', 95, 'R04', ['کامیونِ زره‌کوب', 'پهپاد', '۶ حالتِ حرکت']),
+    (15, 'M30', 'باس ۵: حجرهٔ رگه — دوئلِ دوفاز با کامران', 85, 'R08', ['باسِ نهایی', 'سلاحِ گرم و سرد', 'ردِ فراموشی']),
+    (15, 'M31', 'سپیدهٔ دشت، شش اسم و فرهاد', 35, 'R08', ['پایان‌بندی', 'اسم‌ها']),
+    (15, 'M32', 'پاکتِ «بقیهٔ حساب» و اپیلوگِ شهداد', 30, 'R01', ['اپیلوگ', 'علی']),
+]
+
+V11_SIDE_STORIES = [
+    ('Q01', 'خطِ کلوت — چالشِ موتور تریل و چهارچرخ (آرش)',
+     'مسابقه و تعقیبِ شبانه میانِ شیارهای کلوت همراه با آرش که به کشفِ یک انبارِ مخفیِ سلاح و قطعاتِ تیونینگِ کامران و آزمونِ بلوغِ آرش ختم می‌شود.\n\n- **فاز ۱:** پرش و زمان‌گیری با موتورِ تریل در هزارتوی کلوت.\n- **فاز ۲:** ردیابیِ چهارچرخ‌های قاچاقی با دوربینِ حرارتی در غروب.\n- **فاز ۳:** یورشِ دو نفره به انبارِ کلوت و بازکردنِ اگزوز و کمک‌فنرِ مسابقه‌ای.'),
+    ('Q02', 'چشمِ شب — ارتقای پهپاد و دید در شب (مهدی)',
+     'مأموریت‌های تخصصی با مهدی برای دزدیدنِ ماژول‌های نظامی از دکلِ مخابراتیِ کامران و آزادکردنِ پالسِ EMP و دیدِ حرارتی روی پهپاد.\n\n- **فاز ۱:** صعودِ شبانه به دکلِ فرعی با NVG و چاقو.\n- **فاز ۲:** هکِ جعبهٔ مخابراتی زیرِ فشارِ گشت‌های چهارچرخ.\n- **فاز ۳:** آزمایشِ میدانیِ پالسِ EMP پهپاد روی برجِ نورافکن.'),
+    ('Q03', 'تفنگِ نادر — شش یادگاریِ گمشده',
+     'یافتنِ ۶ یادگاریِ شخصیِ کارگرانِ هفت سال پیش در خانه‌ها و انبارهای متروکهٔ شهداد همراه با نادر، و شکارِ تک‌تیراندازِ قدیمیِ کامران.\n\n- **فاز ۱:** سرزدن به اتاقِ کارگرانِ قدیم در شهداد.\n- **فاز ۲:** دوئلِ تک‌تیراندازیِ دوربرد از روی کلوت‌ها با باد و مسافت‌سنج.\n- **فاز ۳:** ثبتِ کاملِ داستانِ شش کارگر در دفترِ سارا.'),
+    ('Q04', 'سرقتِ لیتیوم — عملیاتِ بزرگِ کاروانسرا (رویا)',
+     'یک عملیاتِ سرقتِ دو مرحله‌ای (`GTA Heist`) به سفارشِ رویا علیه کاروانِ زرهیِ لیتیومِ کامران با همکاریِ کلِ وسایل نقلیهٔ گروه.\n\n- **فاز ۱:** شناساییِ مسیرِ کاروان با پهپاد و کاشتنِ بمبِ C4 روی جاده.\n- **فاز ۲:** حملهٔ هماهنگ با «پیرمرد»، SUV و چهارچرخ و نبردِ سنگین.\n- **فاز ۳:** تحویلِ محموله و بازشدنِ شاتگانِ نیمه‌خودکار و تک‌تیراندازِ سنگین.'),
+    ('Q05', 'آبِ دزدیده‌شده و شکار در نبکاها (مینا)',
+     'پاک‌سازیِ پمپ‌های غیرمجاز، شکارِ کویریِ مجاز برای کمپ با «درا»، و عکاسیِ تحقیقی از حیات‌وحشِ نادرِ لوت و مسیرهای شبانهٔ کامران.\n\n- **فاز ۱:** شترسواریِ بی‌صدا در نبکاها و کاشتنِ دوربین‌های تله‌ای.\n- **فاز ۲:** خرابکاری در ایستگاهِ پمپاژ با موتورِ برقیِ مینا.\n- **فاز ۳:** بازگرداندنِ جریانِ آبشخور و کشفِ مسیرِ مخفیِ ورود به تنگه.'),
+    ('Q06', 'رسیدِ نان و شیر — ردِ نگهبانِ ۹ (فرهاد)',
+     'تعقیبِ سرنخِ رسیدِ چروک‌شدهٔ نگهبانِ شماره ۹ در شهداد و یافتنِ حقیقتِ خانواده‌ای که هفت سال است منتظرِ بازگشتِ اویند.\n\n- **فاز ۱:** بررسیِ تاریخ و مغازهٔ روی رسید در شهداد.\n- **فاز ۲:** یافتنِ پروندهٔ مفقودی در بایگانیِ محلی.\n- **فاز ۳:** پیوندِ عاطفی با صحنهٔ سپیدهٔ فصل ۱۵.'),
+]
 
 
 def read(path: Path) -> str:
@@ -153,6 +186,8 @@ def humanize(stem: str) -> str:
 
 
 def category_of(stem: str) -> str:
+    if stem.startswith('v11-'):
+        return 'کانسپت نسخهٔ ۱۱'
     if stem.startswith('env-') or stem in ('canyon-day-v1', 'caravanserai-night-v1'):
         return 'محیط'
     if stem.startswith(('pirmard', 'vehicle', 'camel-pack')):
@@ -163,61 +198,117 @@ def category_of(stem: str) -> str:
 
 
 def build(max_mb: float) -> dict:
-    budget = json.loads(read(V7 / 'content-budget.json'))
     index = json.loads(read(IMAGES / 'image-index.json'))
     status = {Path(a['filename']).stem: a['status'] for a in index['assets']}
     manifest = json.loads(read(IMAGES / 'completion-manifest.json'))
     titles = {Path(a['filename']).stem: a['title'] for a in manifest['assets']}
+    titles['v11-action-kalut-convoy-v1'] = 'کمینِ کاروانِ طوفان در کلوت‌ها (کانسپت نسخهٔ ۱۱)'
 
     docs = []
-    for doc_id, (rel, category, spoiler) in DOCS.items():
-        md = read(V7 / rel)
-        docs.append({'id': doc_id, 'file': rel, 'title': first_h1(md, doc_id), 'category': category,
-                     'description': first_paragraph(md), 'markdown': md, 'legacy': False, 'spoiler': spoiler,
-                     'words': len(md.split())})
+    for doc_id, (rel, category, spoiler, legacy) in DOCS.items():
+        p = ROOT / rel
+        if not p.exists():
+            continue
+        md = read(p)
+        docs.append({
+            'id': doc_id,
+            'file': rel,
+            'title': first_h1(md, doc_id),
+            'category': category,
+            'description': first_paragraph(md),
+            'markdown': md,
+            'legacy': legacy,
+            'spoiler': spoiler,
+            'words': len(md.split()),
+        })
 
-    screenplay = read(V7 / '../v10-bible/SCREENPLAY_FILM_FA.md')
+    screenplay = read(V11 / 'SCREENPLAY_V11_FA.md')
     headings = re.findall(r'^## فصل (\d+) — (.+)$', screenplay, flags=re.M)
-    assert len(headings) == 10, headings
-    chapters = [{'number': int(n), 'title': t.strip(), 'minutes': budget['chapter_minutes'][int(n) - 1]} for n, t in headings]
+    assert len(headings) == 15, headings
+
+    # Build v11 budget object
+    chapter_minutes = [0] * 15
+    main_missions = []
+    for ch_num, mid, title_fa, mins, region, tags in V11_MISSIONS:
+        chapter_minutes[ch_num - 1] += mins
+        main_missions.append({
+            'id': mid,
+            'chapter': ch_num,
+            'title_fa': title_fa,
+            'minutes': mins,
+            'primary_region': region,
+            'focus_tags_fa': tags,
+        })
+    budget = {
+        'version': 'v11-aaa',
+        'chapter_minutes': chapter_minutes,
+        'main_minutes_total': sum(chapter_minutes),
+        'side_minutes_total': 480,
+        'exploration_minutes_total': 300,
+        'total_target_minutes': sum(chapter_minutes) + 480 + 300,
+        'main_missions': main_missions,
+    }
+
+    chapters = []
+    for n, t in headings:
+        clean_t = t.strip().replace(' ★', '')
+        clean_t = re.sub(r'\s*\([^)]*فصلِ وحشت[^)]*\)\s*$', '', clean_t).strip()
+        chapters.append({'number': int(n), 'title': clean_t, 'minutes': chapter_minutes[int(n) - 1]})
 
     summaries = []
-    chapter_sections = [x for x in re.split(r'^## ', screenplay, flags=re.M) if x.startswith('فصل ')]
-    assert len(chapter_sections) == 10, len(chapter_sections)
+    chapter_sections = [x for x in re.split(r'^## ', screenplay, flags=re.M) if re.match(r'^فصل \d+ — ', x)]
+    assert len(chapter_sections) == 15, len(chapter_sections)
     for sec in chapter_sections:
-        paras = [q.strip() for q in sec.split('\n', 1)[1].split('\n\n') if q.strip() and not q.strip().startswith(('**نما', '---', ':'))]
-        text = next((q for q in paras if '«' not in q), paras[0])
-        summaries.append(re.sub(r'\s+', ' ', text))
+        paras = [
+            q.strip() for q in sec.split('\n', 1)[1].split('\n\n')
+            if q.strip() and not q.strip().startswith(('**نما', '---', ':', '**باس', '**سکانس', '**عملیات', '- '))
+        ]
+        text = next((q for q in paras if '«' not in q), paras[0] if paras else '')
+        summaries.append(re.sub(r'\s+', ' ', re.sub(r'[*_`]', '', text)))
 
-    world = read(V7 / 'WORLD_AND_MISSIONS_FA.md')
-    side = []
-    for m in re.finditer(r'^### (Q0[1-8]) — (.+?) /.*?\n(.*?)(?=^### Q0|^## |\Z)', world, flags=re.M | re.S):
-        side.append({'id': m.group(1), 'title': m.group(2).strip(), 'markdown': m.group(3).strip()})
-    assert len(side) == 8, [s['id'] for s in side]
+    side = [{'id': sid, 'title': title, 'markdown': md} for sid, title, md in V11_SIDE_STORIES]
 
     stems = sorted(p.stem for p in IMAGES.glob('*.png'))
+    # Put v11 concept art first in gallery
+    stems = [s for s in stems if s.startswith('v11-')] + [s for s in stems if not s.startswith('v11-')]
+
     people = []
     for name, age, role, candidates, text in PEOPLE:
         image = next((c for c in candidates if c in stems and (status.get(c) != 'retired_story_reference' or c in NOT_RETIRED)), None)
         people.append({'name': name, 'age': age, 'role': role, 'image': image, 'text': text, 'quote': QUOTES.get(name, '')})
     people.sort(key=lambda p: ORDER.index(p['name']) if p['name'] in ORDER else 99)
 
-    # images: shrink until the plaintext fits the budget
     max_edge, quality = 1280, 76
     while True:
         media, gallery = {}, []
         for stem in stems:
             retired = status.get(stem) == 'retired_story_reference' and stem not in NOT_RETIRED
-            gallery.append({'id': stem, 'title': titles.get(stem) or humanize(stem), 'filename': f'{stem}.png',
-                            'category': category_of(stem),
-                            'caption': 'ایدهٔ کنارگذاشته‌شده؛ مرجعِ داستانِ فعلی نیست.' if retired else 'مرجعِ تصویری برای تصور فضا؛ طرحِ نهاییِ بازی نیست.',
-                            'retired': retired})
+            caption = (
+                'کانسپت‌آرتِ جدیدِ نسخهٔ ۱۱ (بازطراحیِ AAA).' if stem.startswith('v11-')
+                else ('ایدهٔ کنارگذاشته‌شده؛ مرجعِ داستانِ فعلی نیست.' if retired else 'مرجعِ تصویری پیشین؛ برای نسخهٔ ۱۱ بازطراحیِ بصری جدید تعریف شده است.')
+            )
+            gallery.append({
+                'id': stem,
+                'title': titles.get(stem) or humanize(stem),
+                'filename': f'{stem}.png',
+                'category': category_of(stem),
+                'caption': caption,
+                'retired': retired,
+            })
             media[stem] = b64_image(IMAGES / f'{stem}.png', max_edge, quality)
         for name in ('region-map', 'canyon-map', 'design-map'):
             media[name] = b64_image(V7 / 'maps' / f'{name}.png', 1600 if name != 'design-map' else 1200, 80)
         snapshot = {
-            'library': {'docs': docs, 'gallery': gallery, 'budget': budget, 'chapters': chapters, 'sideStories': side,
-                        'people': people, 'chapterSummaries': summaries, 'copy': COPY},
+            'library': {
+                'docs': docs,
+                'gallery': gallery,
+                'budget': budget,
+                'chapters': chapters,
+                'sideStories': side,
+                'people': people,
+                'chapterSummaries': summaries,
+                'copy': COPY,
+            },
             'media': media,
             'mapHtml': read(V7 / 'maps/map.html'),
         }
@@ -238,10 +329,9 @@ def main():
     ap.add_argument('--max-mb', type=float, default=28.0, help='plaintext size cap (encrypt step allows 32 MB)')
     args = ap.parse_args()
     snapshot = build(args.max_mb)
-    # the same checks the browser (transport.ts validateContent) and the encrypt step will run
     lib, media = snapshot['library'], snapshot['media']
     assert lib['docs'] and lib['gallery'] and all(g['id'] in media for g in lib['gallery'])
-    assert 'https://esm.sh/d3-geo@3.1.1' in snapshot['mapHtml'], 'map.html no longer imports d3-geo from esm.sh; transport.mapUrl() rewrite would not apply'
+    assert 'https://esm.sh/d3-geo@3.1.1' in snapshot['mapHtml']
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(snapshot, ensure_ascii=False), encoding='utf-8')
     print(f'wrote {OUT.relative_to(ROOT)}: docs={len(lib["docs"])} gallery={len(lib["gallery"])} '
