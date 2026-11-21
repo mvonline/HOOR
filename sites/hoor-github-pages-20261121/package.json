@@ -7,7 +7,11 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build && node scripts/build-map.mjs",
     "preview": "vite preview --host 127.0.0.1",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "snapshot": "python3 ../../tools/build_snapshot.py",
+    "encrypt": "node scripts/encrypt-content.mjs",
+    "dialogues": "python3 -I ../../tools/sync_dialogues.py",
+    "verify": "python3 -I ../../tools/check_continuity.py"
   },
   "dependencies": {
     "react": "19.2.6",

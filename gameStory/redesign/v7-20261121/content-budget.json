@@ -155,8 +155,7 @@
       "title_fa": "پنجرهٔ نور را به اردوگاه برسان",
       "minutes": 35,
       "regions": [
-        "R03",
-        "R08-A"
+        "R03"
       ],
       "primary_region": "R03",
       "system_groups": [
@@ -1069,5 +1068,15 @@
     "area25km2": "aggregate design target of separated playable sectors, not continuous measured realarea",
     "canyon_geometry_or_GPX_verified": false,
     "fictional_facility_or_waterhole_GPS_assigned": false
+  },
+  "hazards": {
+    "hazard_family": "retil_R08_only",
+    "zones": [
+      "R08-B",
+      "R08-C",
+      "R08-D",
+      "R08-E"
+    ],
+    "note": "sound-driven, canyon-only, r=1 floors, never in A/R01-R07/waterholes"
   }
 }

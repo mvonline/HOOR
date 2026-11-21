@@ -4,7 +4,7 @@ import {gzipSync} from 'node:zlib';
 
 const MAGIC=Buffer.from('HOORPK01','ascii');
 const ITERATIONS=600000;
-const SOURCE=new URL('../../hoor-design-bible-20261121/worker/portal-data.json',import.meta.url);
+const SOURCE=new URL('../.snapshot/portal-data.json',import.meta.url);
 const OUTPUT=new URL('../dist/content.hoor',import.meta.url);
 const MAX_CONTENT_BYTES=32*1024*1024;
 
