@@ -84,3 +84,17 @@ Thumbs.db
 *.key
 *.p12
 *.pfx
+
+# Retired game-production framework; keep the repository focused on design.
+/studio/
+/ui/
+/tests/
+/pyproject.toml
+/requirements.txt
+/masterPrompt.md
+/projects/rade-hoor/analysis/
+/projects/rade-hoor/decisions/
+/projects/rade-hoor/planning/campaign-current.md
+/projects/rade-hoor/planning/production-plan.md
+/projects/rade-hoor/planning/production-plan.json
+/projects/rade-hoor/planning/quality-slice.md
