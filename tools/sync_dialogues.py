@@ -39,7 +39,7 @@ def clean_speaker(raw):
 
 # ---- parse screenplay -------------------------------------------------------
 chapter_re = re.compile(r'^## فصل (\d+) — (.+)$')
-scene_re = re.compile(r'^\*\*نما ([\d۰-۹]+) — ([^*]+?)\*\*\s*$')
+scene_re = re.compile(r'^\*\*نما ([\d۰-۹]+[ب]?) — ([^*]+?)\*\*\s*$')
 line_re = re.compile(r'^([^«»\n:]{1,60}):\s*«(.+)»\s*$')
 
 chapters = []
@@ -67,7 +67,7 @@ for raw in screenplay.splitlines():
         mm = re.search(r'\[([^\]]+)\]\s*$', head)
         tag = mm.group(1) if mm else ''
         place = re.sub(r'\s*\[[^\]]+\]\s*$', '', head)
-        sid = 'N' + num.zfill(2)
+        sid = 'N' + (num.zfill(2) if num.isdigit() else num[:-1].zfill(2) + 'b')
         title = place + (f' ({tag})' if tag else '')
         current_scene = {'id': sid, 'title': title, 'context': '', 'lines': [], 'intro': ''}
         current_chapter['scenes'].append(current_scene)

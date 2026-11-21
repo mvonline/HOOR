@@ -145,7 +145,7 @@ for ch in dlg['chapters']:
             lines_total += 1
             if norm(ln['text']) not in sc:
                 report('G site dialogues', f'ch{ch["number"]} {scene["id"]} line not in screenplay: {ln["text"][:70]}')
-        if not re.fullmatch(r'N\d+', scene['id']):
+        if not re.fullmatch(r'N\d+b?', scene['id']):
             report('G site dialogues', f'unknown scene id {scene["id"]}')
 fa_digits = str(lines_total).translate(str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹'))
 if fa_digits not in dlg['note']:
