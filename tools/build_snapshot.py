@@ -238,7 +238,7 @@ def humanize(stem: str) -> str:
 def category_of(stem: str) -> str:
     if stem.startswith('v11-'):
         return 'کانسپت نسخهٔ ۱۱'
-    if stem.startswith(('weapon-', 'prop-')):
+    if stem.startswith(('weapon-', 'prop-')) or 'armory' in stem:
         return 'سلاح و تجهیزات'
     if stem.startswith('env-') or stem in ('canyon-day-v1', 'caravanserai-night-v1'):
         return 'محیط'

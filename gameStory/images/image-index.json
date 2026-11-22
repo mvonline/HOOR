@@ -1,8 +1,8 @@
 {
   "date": "2026-11-21",
   "purpose": "Concept image staging inventory; the v7 documents own story canon.",
-  "image_count": 104,
-  "total_bytes": 237100866,
+  "image_count": 118,
+  "total_bytes": 259131095,
   "excluded_identical_local_copies": [
     "bahram-62-v1 - Copy.png",
     "camel-pack-v1 - Copy.png",
@@ -134,6 +134,15 @@
       "canon_authority": false
     },
     {
+      "filename": "env-armory-weapon-rack-v1.png",
+      "bytes": 1700367,
+      "width": 1376,
+      "height": 768,
+      "sha256": "0a93632dc04dd0f7f4860aca726ebda21f369508bc56b6679e38b59ae4ba82be",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "env-c02-expedition-camp-v1.png",
       "bytes": 2763841,
       "width": 1893,
@@ -206,6 +215,24 @@
       "canon_authority": false
     },
     {
+      "filename": "env-camp-sangchin-v1.png",
+      "bytes": 2020558,
+      "width": 1376,
+      "height": 768,
+      "sha256": "d014991a3d43d27de7eb282105b40477783a176b11098256062ef203b580b264",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-camp2-vehicle-parking-v1.png",
+      "bytes": 1883595,
+      "width": 1376,
+      "height": 768,
+      "sha256": "a98066afc45a93c0e4de564f8f99563c74cc41d1b00649cfe9c16cb90bd789b1",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "env-campfire-night-v1.png",
       "bytes": 1611524,
       "width": 1376,
@@ -220,6 +247,24 @@
       "width": 1672,
       "height": 941,
       "sha256": "9d906c83f995a6bcfdfdc25f6febbcd6a0b26d0f99a83e93a9a0d02fd17711ff",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-kamancheh-player-day-v1.png",
+      "bytes": 1938534,
+      "width": 1376,
+      "height": 768,
+      "sha256": "5aaab0947fce37f40ed68be05eaa3bc4900afa0095f202eac2255688ad2ccc5b",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-kamancheh-player-night-v1.png",
+      "bytes": 1489369,
+      "width": 1376,
+      "height": 768,
+      "sha256": "13e114350ecefa2182683838b1a361479ec1f728c75fdd9362cbd1b8eb835793",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -323,6 +368,24 @@
       "canon_authority": false
     },
     {
+      "filename": "env-night-sky-stars-saltflat-v1.png",
+      "bytes": 1488423,
+      "width": 1376,
+      "height": 768,
+      "sha256": "09c662066aa9b03f4d99a1e51240e32d3a3949b3fb7b8fe272c0d1deb22ebee9",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-night-sky-stars-zenith-v1.png",
+      "bytes": 1750694,
+      "width": 1376,
+      "height": 768,
+      "sha256": "4341ef136345d4eee8f44f9187f1bd33ddad285700d798731d98564c85fba524",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "env-o01-service-yard-v1.png",
       "bytes": 2779750,
       "width": 1983,
@@ -346,6 +409,15 @@
       "width": 1672,
       "height": 941,
       "sha256": "19ed3145c86956425676cfb5c97ea1f8b345c102a3363fe7e526fd64ee0baab6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-shahdad-clinic-workshop-v1.png",
+      "bytes": 1789752,
+      "width": 1376,
+      "height": 768,
+      "sha256": "cffbcfdbfd955ffce0c20155d5bfc870fb442d16bd4022346ec214034e8018b9",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -395,6 +467,15 @@
       "canon_authority": false
     },
     {
+      "filename": "env-solar-plant-v1.png",
+      "bytes": 1582599,
+      "width": 1376,
+      "height": 768,
+      "sha256": "10b4f31c0d0d587a3cd939e424e1fc5a1f98b6545aa7fbee3607748a179e925b",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "env-tree-lone-gaz-v1.png",
       "bytes": 1877748,
       "width": 1376,
@@ -418,6 +499,24 @@
       "width": 1376,
       "height": 768,
       "sha256": "3d130e4a3f8d305321c3466d8e3ced81936129d858401f7443b59b0ac5659e9f",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "esmaeil-v1.png",
+      "bytes": 1136597,
+      "width": 848,
+      "height": 1264,
+      "sha256": "c5d47c585940a2fe1957d2d18c6a7bbb4fd902ab701f71414df1c291db2d01a0",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "farhad-guard-v1.png",
+      "bytes": 1220646,
+      "width": 848,
+      "height": 1264,
+      "sha256": "8a0c685e187918c94e7e8496b77d63e020137d219e043ff6d81023f5b4bcd74a",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -526,6 +625,15 @@
       "width": 848,
       "height": 1264,
       "sha256": "f78f7e6a02a87a01298d3e5dfe819b9d7cf01a3e3e60151c3f4262374e7f6b8c",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "mehdi-v1.png",
+      "bytes": 1092563,
+      "width": 848,
+      "height": 1264,
+      "sha256": "c97fbc585f563509dffb6f81b3011bdedf7aefe61ac5bd4b1681121f76bd1ab7",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -728,6 +836,15 @@
       "canon_authority": false
     },
     {
+      "filename": "pouya-v1.png",
+      "bytes": 1105912,
+      "width": 848,
+      "height": 1264,
+      "sha256": "fca3926320ed601798e4aa4958304237f9a048e47614797f49d3681e76dffc79",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "prop-kamancheh-solo-v1.png",
       "bytes": 1063240,
       "width": 1376,
@@ -796,6 +913,15 @@
       "width": 1024,
       "height": 1536,
       "sha256": "4ad77c72c1af3965858f4873d4441233f5f3c04d0c539a09e89272f1437657d0",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "v11-retil-Hirad-v1.png",
+      "bytes": 1830620,
+      "width": 848,
+      "height": 1264,
+      "sha256": "9895c14859a8501eb3cb79d9b4f92f3c91055a5fdebdeba6c2dfe9a71e31136b",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },

@@ -2,7 +2,7 @@
   "tool": "built-in image_gen",
   "status": "completed",
   "completed": "2026-11-02T15:05:50Z",
-  "assetCount": 81,
+  "assetCount": 95,
   "assets": [
     {
       "id": "CH11",
@@ -731,6 +731,132 @@
       "filename": "env-campfire-night-v1.png",
       "bytes": 1611524,
       "sha256": "0A2EEEC2BDA651B9720A2BA5F677D597FBFECD17EA2EF175E43A442AB07BE6B6",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-KAMAN-DAY",
+      "group": "environments",
+      "title": "نوازندهٔ کمانچه (نادر) در روز — زیر سایهٔ گزِ تنهای لوت",
+      "filename": "env-kamancheh-player-day-v1.png",
+      "bytes": 1938534,
+      "sha256": "5AAAB0947FCE37F40ED68BE05EAA3BC4900AFA0095F202EAC2255688AD2CCC5B",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-KAMAN-NIGHT",
+      "group": "environments",
+      "title": "نوازندهٔ کمانچه (نادر) در شب — کنار آتشِ کمپ زیر آسمان لوت",
+      "filename": "env-kamancheh-player-night-v1.png",
+      "bytes": 1489369,
+      "sha256": "13E114350ECEFA2182683838B1A361479EC1F728C75FDD9362CBD1B8EB835793",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-STARS-KALUT",
+      "group": "environments",
+      "title": "آسمان شب پرستارهٔ واقعی کویر لوت — نمای کلوت‌ها و کهکشان راه شیری",
+      "filename": "env-night-sky-stars-zenith-v1.png",
+      "bytes": 1750694,
+      "sha256": "4341EF136345D4EEE8F44F9187F1BD33DDAD285700D798731D98564C85FBA524",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-STARS-SALT",
+      "group": "environments",
+      "title": "آسمان شب پرستارهٔ واقعی کویر لوت — دشت نمک و رمل‌ها (مسیریابی نجومی)",
+      "filename": "env-night-sky-stars-saltflat-v1.png",
+      "bytes": 1488423,
+      "sha256": "09C662066AA9B03F4D99A1E51240E32D3A3949B3FB7B8FE272C0D1DEB22EBEE9",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-SOLAR",
+      "group": "environments",
+      "title": "نیروگاه خورشیدی و رصدگاه کامران — پنل‌ها، ساختمان کنترل و دکل مخابرات",
+      "filename": "env-solar-plant-v1.png",
+      "bytes": 1582599,
+      "sha256": "10B4F31C0D0D587A3CD939E424E1FC5A1F98B6545AA7FBEE3607748A179E925B",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-PARKING-C2",
+      "group": "environments",
+      "title": "پارکینگ وسایل کمپِ دوم — سایه‌بان، چالهٔ سرویس و ناوگان خودروها و موتورها",
+      "filename": "env-camp2-vehicle-parking-v1.png",
+      "bytes": 1883595,
+      "sha256": "A98066AFC45A93C0E4DE564F8F99563C74CC41D1B00649CFE9C16CB90BD789B1",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-SANGCHIN",
+      "group": "environments",
+      "title": "کمپِ سنگ‌چین — پایگاه گروه در پناه دیوارهٔ صخره‌ای با چادرها و درا",
+      "filename": "env-camp-sangchin-v1.png",
+      "bytes": 2020558,
+      "sha256": "D014991A3D43D27DE7EB282105B40477783A176B11098256062EF203B580B264",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-SHAHDAD-BLD",
+      "group": "environments",
+      "title": "ساختمان‌های حاشیهٔ شهداد — درمانگاه صحرایی، کوچهٔ کاهگلی و بناهای محلی",
+      "filename": "env-shahdad-clinic-workshop-v1.png",
+      "bytes": 1789752,
+      "sha256": "CFFBCFDBFD955FFCE0C20155D5BFC870FB442D16BD4022346EC214034E8018B9",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-ARMORY-RACK",
+      "group": "weapons",
+      "title": "قفسهٔ نگهداری اسلحه‌ها و میز کارگاه کمپ — زرادخانهٔ کامل ردِ هور",
+      "filename": "env-armory-weapon-rack-v1.png",
+      "bytes": 1700367,
+      "sha256": "0A93632DC04DD0F7F4860ACA726EBDA21F369508BC56B6679E38B59AE4BA82BE",
+      "status": "generated"
+    },
+    {
+      "id": "CH-RAMIN",
+      "group": "characters",
+      "title": "رامین — برق‌کار ارشد و مهندس ابزار کمپ (۴۲ ساله)",
+      "filename": "mehdi-v1.png",
+      "bytes": 1092563,
+      "sha256": "C97FBC585F563509DFFB6F81B3011BDEDF7AEFE61AC5BD4B1681121F76BD1AB7",
+      "status": "generated"
+    },
+    {
+      "id": "CH-SOREN",
+      "group": "characters",
+      "title": "سورن — فرماندهٔ گشت شمالی کامران (۳۹ ساله)",
+      "filename": "esmaeil-v1.png",
+      "bytes": 1136597,
+      "sha256": "C5D47C585940A2FE1957D2D18C6A7BBB4FD902AB701F71414DF1C291DB2D01A0",
+      "status": "generated"
+    },
+    {
+      "id": "CH-POUYA",
+      "group": "characters",
+      "title": "پویا — تورلیدر سافاری لوت (۳۲ ساله)",
+      "filename": "pouya-v1.png",
+      "bytes": 1105912,
+      "sha256": "FCA3926320ED601798E4AA4958304237F9A048E47614797F49D3681E76DFFC79",
+      "status": "generated"
+    },
+    {
+      "id": "CH-FARHAD9",
+      "group": "characters",
+      "title": "فرهاد — نگهبان بی‌نام با بازوبند ۹ (۳۴ ساله)",
+      "filename": "farhad-guard-v1.png",
+      "bytes": 1220646,
+      "sha256": "8A0C685E187918C94E7E8496B77D63E020137D219E043FF6D81023F5B4BCD74A",
+      "status": "generated"
+    },
+    {
+      "id": "V11-RETIL-01",
+      "group": "creatures",
+      "title": "رتیلِ هور — هیراد (شماره ۱) — بازطراحی وحشت نسخهٔ ۱۱",
+      "filename": "v11-retil-Hirad-v1.png",
+      "bytes": 1830620,
+      "sha256": "9895C14859A8501EB3CB79D9B4F92F3C91055A5FDEBDEBA6C2DFE9A71E31136B",
       "status": "generated"
     }
   ]
