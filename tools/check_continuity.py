@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 V7 = ROOT / 'gameStory/redesign/v7-20261121'
+V10 = ROOT / 'gameStory/redesign/v10-bible'
 STORY = ROOT / 'gameStory'
 SITE = ROOT / 'sites/hoor-github-pages-20261121'
 
@@ -171,7 +172,14 @@ if len(heads_sc) != len(dlg['chapters']):
 reader = json.loads(read(SITE / 'content/reader-edition.json'))
 for key in reader:
     stem = key.replace('maps-README_FA', 'maps/README_FA')
-    exists = (V7 / f'{stem}.md').exists() or (V11 / f'{stem}.md').exists() or key == 'READER_GUIDE_FA'
+    external_sources = {
+        'RAD_E_HOOR_NOVEL_FA': ROOT / 'novel/RAD_E_HOOR_NOVEL_FA.md',
+        'NOVEL_BIBLE_FA': ROOT / 'novel/00_NOVEL_BIBLE_AND_CHAPTER_PLAN.md',
+        'SCREENPLAY_FILM_FA': V10 / 'SCREENPLAY_FILM_FA.md',
+        'DIRECTOR_PRINCIPLES_FA': V11 / '08_DIRECTOR_PRINCIPLES_FA.md',
+        'PLACES_OF_LOT_FA': V11 / '09_PLACES_OF_LOT_FA.md',
+    }
+    exists = (V7 / f'{stem}.md').exists() or (V11 / f'{stem}.md').exists() or key == 'READER_GUIDE_FA' or (key in external_sources and external_sources[key].exists())
     if not exists:
         report('G site reader', f'reader key {key} has no source doc')
 for key, val in reader.items():

@@ -132,7 +132,8 @@ if epilogue_chapter:
 
 assert len(main_chapters) == 15, f'Expected 15 chapters, got {len(main_chapters)}'
 fa = lambda n: str(n).translate(str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹'))
-n_lines = sum(len(s['lines']) for s in scenes_out)
+scene_count = sum(len(ch['scenes']) for ch in main_chapters)
+n_lines = sum(len(s['lines']) for ch in main_chapters for s in ch['scenes'])
 
 # Keep archive recordings from v7 reference cleanly
 bodies = {}
@@ -148,10 +149,10 @@ out = {
     'recordings': recs,
     'note': (
         f'این بخش گفت‌وگوهای مستقیمِ فیلم‌نامهٔ نسخهٔ ۱۱ (بازطراحیِ AAA) را در ۱۵ فصل گردآوری می‌کند: '
-        f'{fa(n_lines)} خط دیالوگِ زنده در {fa(len(scenes_out))} صحنه. '
+        f'{fa(n_lines)} خط دیالوگِ زنده در {fa(scene_count)} صحنه. '
         'پیش‌درآمد در ابتدای فصل ۱ و اپیلوگ در انتهای فصل ۱۵ آمده است. '
         'خواندن فصل‌های میانی و پایانی، رازها و پایان داستان را افشا می‌کند.'
     ),
 }
 (CONTENT / 'dialogues.json').write_text(json.dumps(out, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-print(f'dialogues.json (v11): chapters={len(main_chapters)} scenes={len(scenes_out)} lines={n_lines}')
+print(f'dialogues.json (v11): chapters={len(main_chapters)} scenes={scene_count} lines={n_lines}')

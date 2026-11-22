@@ -112,3 +112,51 @@
 @media(max-width:900px){.novel-layout{grid-template-columns:minmax(0,1fr);gap:18px}.novel-nav{position:static;max-height:none;display:flex;gap:12px;overflow-x:auto;border-bottom:1px solid var(--line);padding-bottom:12px}.novel-nav section{display:flex;flex:0 0 auto;align-items:stretch;max-width:280px;margin:0}.novel-nav strong{white-space:nowrap;border:0;padding-inline:8px}.novel-nav button{white-space:nowrap}.novel-reader .prose{font-size:17px;line-height:2.05}}
 @media(max-width:580px){.novel-intro{align-items:stretch;flex-direction:column;padding:20px}.novel-intro>.secondary{align-self:flex-start}.novel-reader{padding:22px 18px}.novel-reader .prose{font-size:16px;line-height:2}.novel-reader .reader-pager{gap:7px;font-size:12px}.novel-reader .reader-pager button{padding:8px 10px;font-size:12px}}
 @media print{.novel-nav,.novel-intro>.secondary,.novel-section .spoiler-gate{display:none!important}.novel-layout{display:block}.novel-reader{padding:0;border:0;box-shadow:none}.novel-reader .prose{max-width:none;font-size:11pt;line-height:1.9}}
+
+/* 2026 reader and character portrait refinements */
+.person-image-button{display:flex;align-items:center;justify-content:center;width:100%;height:320px;padding:12px;border:0;border-radius:0;background:var(--soft);cursor:zoom-in}
+.person-image-button img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
+.person-image-button:focus-visible{outline:3px solid var(--teal);outline-offset:-4px}
+.cast-card img{object-fit:contain;object-position:center;padding:8px}
+.script-intro{display:flex;justify-content:space-between;align-items:center;gap:26px;margin:0 0 28px;padding:26px 30px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--shadow)}
+.script-intro h1{margin:4px 0 8px;font-size:clamp(25px,3vw,36px)}
+.script-intro p{margin:0;color:var(--muted);line-height:1.9}
+.script-facts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.script-facts>span{padding:9px 13px;border:1px solid var(--line);border-radius:9px;color:var(--muted);white-space:nowrap}
+.script-facts b{color:var(--teal);font-size:18px}
+.reader-nav{max-height:calc(100vh - 120px);overflow:auto;padding-inline-end:4px}
+.reader-prose h3.scene{padding:12px 15px;margin-top:40px;border-inline-start:4px solid var(--amber);border-radius:8px;background:var(--soft);line-height:1.9}
+.reader-prose h3.scene:first-child{margin-top:22px}
+.reader-prose .dlg{padding:14px 18px;border:1px solid var(--line);border-inline-start:4px solid var(--teal);border-radius:10px;background:var(--card)}
+.director-page .prose{max-width:900px;margin:28px auto;font-size:17px;line-height:2.1}
+.director-page .prose h2{margin-top:34px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.director-callout{max-width:900px;margin:26px auto;padding:20px 24px;border:1px solid var(--line);border-inline-start:4px solid var(--amber);border-radius:12px;background:var(--card)}
+.director-callout p{margin:6px 0 0;color:var(--muted);line-height:2}
+.release-stamp{display:flex;align-items:center;gap:10px;width:max-content;margin-top:18px;padding:6px 10px;border:1px solid #ffffff55;border-radius:999px;background:#10191e99;color:#f6f3eb;font-size:12px;letter-spacing:.04em;direction:ltr}
+.release-stamp b{font-size:13px;color:#f4c67b}.release-stamp span{opacity:.82}
+@media(max-width:860px){.script-intro{align-items:flex-start;flex-direction:column}.script-facts{justify-content:flex-start}.reader-nav{max-height:none}}
+@media(max-width:480px){.person-image-button{height:100%;min-height:210px;padding:6px}.script-intro{padding:21px 18px}.script-facts>span{font-size:13px}}
+
+/* 2026 reader and character portrait refinements */
+.person-image-button{display:flex;align-items:center;justify-content:center;width:100%;height:320px;padding:12px;border:0;border-radius:0;background:var(--soft);cursor:zoom-in}
+.person-image-button img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
+.person-image-button:focus-visible{outline:3px solid var(--teal);outline-offset:-4px}
+.cast-card img{object-fit:contain;object-position:center;padding:8px}
+.script-intro{display:flex;justify-content:space-between;align-items:center;gap:26px;margin:0 0 28px;padding:26px 30px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--shadow)}
+.script-intro h1{margin:4px 0 8px;font-size:clamp(25px,3vw,36px)}
+.script-intro p{margin:0;color:var(--muted);line-height:1.9}
+.script-facts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.script-facts>span{padding:9px 13px;border:1px solid var(--line);border-radius:9px;color:var(--muted);white-space:nowrap}
+.script-facts b{color:var(--teal);font-size:18px}
+.reader-nav{max-height:calc(100vh - 120px);overflow:auto;padding-inline-end:4px}
+.reader-prose h3.scene{padding:12px 15px;margin-top:40px;border-inline-start:4px solid var(--amber);border-radius:8px;background:var(--soft);line-height:1.9}
+.reader-prose h3.scene:first-child{margin-top:22px}
+.reader-prose .dlg{padding:14px 18px;border:1px solid var(--line);border-inline-start:4px solid var(--teal);border-radius:10px;background:var(--card)}
+.director-page .prose{max-width:900px;margin:28px auto;font-size:17px;line-height:2.1}
+.director-page .prose h2{margin-top:34px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.director-callout{max-width:900px;margin:26px auto;padding:20px 24px;border:1px solid var(--line);border-inline-start:4px solid var(--amber);border-radius:12px;background:var(--card)}
+.director-callout p{margin:6px 0 0;color:var(--muted);line-height:2}
+@media(max-width:860px){.script-intro{align-items:flex-start;flex-direction:column}.script-facts{justify-content:flex-start}.reader-nav{max-height:none}}
+@media(max-width:480px){.person-image-button{height:100%;min-height:210px;padding:6px}.script-intro{padding:21px 18px}.script-facts>span{font-size:13px}}
+
+.places-page .prose{max-width:900px;margin:28px auto;font-size:17px;line-height:2.1}.places-page .prose h2{margin-top:34px;padding-bottom:8px;border-bottom:1px solid var(--line)}.places-page .prose h3{margin-top:24px;color:var(--teal)}

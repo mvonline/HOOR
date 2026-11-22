@@ -9,7 +9,7 @@ scope remain to be decided when this work is scheduled.
 Moving sand gradually obscures footprints and makes navigation harder. Some
 characters have exceptional, learned tracking skills: reading print edges,
 drift direction, depth, stride and marks on firmer surfaces. Daniyal can learn
-these observations through play. RDR2 is a reference for investigation flow.
+these observations through play. Investigation should reward close observation, linking interrupted tracks, and testing a route before committing to it.
 
 Proposed mechanics:
 
