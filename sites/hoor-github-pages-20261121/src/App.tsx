@@ -11,7 +11,7 @@ type DialogueScene={id:string;title:string;context:string;lines:{speaker:string;
 type DialogueRecording={id:string;title:string;context:string;markdown:string;source:SourceLink};
 type Library={readerEdition?:Record<string,{title:string;markdown:string}>;dialogues?:{chapters:{number:number;title:string;scenes:DialogueScene[]}[];recordings:DialogueRecording[];note:string};docs:Doc[];gallery:Picture[];budget:any;chapters:{number:number,title:string,minutes:number}[];sideStories:{id:string,title:string,markdown:string}[];people:{name:string,age:number,role:string,image:string|null,text:string,quote?:string}[];chapterSummaries:string[];copy:{heroTitle:string,heroText:string,storyLead:string,mapLead:string,mapTitles:string[],mapTexts:string[]}};
 const fa=(n:number)=>n.toLocaleString('fa-IR');
-const release={content:'v11',major:1,minor:3,patch:0,build:'20261122.3'};
+const release={content:'v11',major:1,minor:3,patch:1,build:'20261122.4'};
 const normalize=(s:string)=>s.replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/[\u200c\u064b-\u065f]/g,'').toLowerCase();
 const labels=[['home','شروع',BookOpen],['tango','تنگهٔ رتیل',MapIcon],['read','فیلم‌نامه',BookOpen],['novel','رمان',BookOpen],['story','آدم‌ها',Users],['places','محل‌ها',MapPin],['direction','اصول کارگردانی',Eye],['dialogues','گفت‌وگوها',MessageSquare],['gallery','تصاویر',Images],['maps','نقشه',MapIcon],['missions','فصل‌ها و مأموریت‌ها',Compass],['library','اسناد طراحی',Shield]] as const;
 const introUrl=(f:string)=>new URL('./media/intro/'+f,document.baseURI).pathname;

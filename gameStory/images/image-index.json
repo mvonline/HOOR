@@ -1,8 +1,8 @@
 {
   "date": "2026-11-21",
   "purpose": "Concept image staging inventory; the v7 documents own story canon.",
-  "image_count": 92,
-  "total_bytes": 218597326,
+  "image_count": 104,
+  "total_bytes": 237100866,
   "excluded_identical_local_copies": [
     "bahram-62-v1 - Copy.png",
     "camel-pack-v1 - Copy.png",
@@ -206,6 +206,15 @@
       "canon_authority": false
     },
     {
+      "filename": "env-campfire-night-v1.png",
+      "bytes": 1611524,
+      "width": 1376,
+      "height": 768,
+      "sha256": "0a2eeec2bda651b9720a2ba5f677d597fbfecd17ea2ef175e43a442ab07be6b6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "env-dune-rest-stop-v1.png",
       "bytes": 2396674,
       "width": 1672,
@@ -337,6 +346,78 @@
       "width": 1672,
       "height": 941,
       "sha256": "19ed3145c86956425676cfb5c97ea1f8b345c102a3363fe7e526fd64ee0baab6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-sky-crescent-moon-v1.png",
+      "bytes": 1557475,
+      "width": 1376,
+      "height": 768,
+      "sha256": "cbd033bc8b4e3d5011d8b97801b9783eadd76c098a6bda7673cb85b64e6580e4",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-sky-full-moon-v1.png",
+      "bytes": 1675296,
+      "width": 1376,
+      "height": 768,
+      "sha256": "d4d1f4e46bcecbeb8a0d7d9c75d9f7f461c770c42fac1da60a4170ae7e54ab18",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-sky-scorching-noon-v1.png",
+      "bytes": 1724160,
+      "width": 1376,
+      "height": 768,
+      "sha256": "42a328dcf57400a19756d59e02b1001d072e4ead531673ffd39fc7dd5342f673",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-sky-sunrise-v1.png",
+      "bytes": 1435780,
+      "width": 1376,
+      "height": 768,
+      "sha256": "f62f020eafaba805ab370853942cdc0dcaa878e193f7a12b83d033b06a6811f6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-sky-sunset-v1.png",
+      "bytes": 1388030,
+      "width": 1376,
+      "height": 768,
+      "sha256": "db3c58ebab6f51db53ad9279de448ecb2a565ec111d8986c8831f406b3bd8c17",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-tree-lone-gaz-v1.png",
+      "bytes": 1877748,
+      "width": 1376,
+      "height": 768,
+      "sha256": "d24f419518db11db63a079652b6f1c5ffe7147a3d4bdcde34c107bc54b66b851",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-tree-lone-kahoor-nebkha-v1.png",
+      "bytes": 1827422,
+      "width": 1376,
+      "height": 768,
+      "sha256": "eebc49005c5a20a9b07d80a9da0b80217b6435f79d93f948369a19f522018e39",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-tree-old-palm-ab-anbar-v1.png",
+      "bytes": 1758160,
+      "width": 1376,
+      "height": 768,
+      "sha256": "3d130e4a3f8d305321c3466d8e3ced81936129d858401f7443b59b0ac5659e9f",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -647,6 +728,15 @@
       "canon_authority": false
     },
     {
+      "filename": "prop-kamancheh-solo-v1.png",
+      "bytes": 1063240,
+      "width": 1376,
+      "height": 768,
+      "sha256": "fe4ba514ed08a00c48e7b36ce741dc2547afcc7e8e4954c5ebf4bfa6ec3f6d18",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "qasem-v1.png",
       "bytes": 1957828,
       "width": 1024,
@@ -773,6 +863,15 @@
       "canon_authority": false
     },
     {
+      "filename": "vehicle-quad-atv-v1.png",
+      "bytes": 1419249,
+      "width": 1264,
+      "height": 848,
+      "sha256": "90789386aef13abb5c9a18f116633c5f1c487b2a624d3dde05994b65f27b67ad",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "vehicle-research-pickup-v1.png",
       "bytes": 2527857,
       "width": 1536,
@@ -823,6 +922,15 @@
       "width": 1376,
       "height": 768,
       "sha256": "48bb40a203949307c0e01ffd1fdb6a55667085b0291cce08f3fc03cfbf5b461d",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "weapon-special-melee-v1.png",
+      "bytes": 1165456,
+      "width": 1376,
+      "height": 768,
+      "sha256": "f563b66fb66120164194d27490fade7917f117f9a85a1b0fcffe15fc42f98491",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },

@@ -2,7 +2,7 @@
   "tool": "built-in image_gen",
   "status": "completed",
   "completed": "2026-11-02T15:05:50Z",
-  "assetCount": 69,
+  "assetCount": 81,
   "assets": [
     {
       "id": "CH11",
@@ -623,6 +623,114 @@
       "filename": "weapon-rifles-v1.png",
       "bytes": 1207607,
       "sha256": "69328DD745BDAE027C638D1F53DDF826DE40B7B208BD1DC1AAC89D234979326B",
+      "status": "generated"
+    },
+    {
+      "id": "VH-QUAD",
+      "group": "vehicles",
+      "title": "موتور چهارچرخ صحرایی (ATV) — طراحی استودیویی",
+      "filename": "vehicle-quad-atv-v1.png",
+      "bytes": 1419249,
+      "sha256": "90789386AEF13ABB5C9A18F116633C5F1C487B2A624D3DDE05994B65F27B67AD",
+      "status": "generated"
+    },
+    {
+      "id": "WP-SPECIAL",
+      "group": "weapons",
+      "title": "سلاح‌های ویژه، سرد و تاکتیکی: کمان بی‌صدا، منور، آچار، چاقو، کوکتل و تلهٔ صوتی",
+      "filename": "weapon-special-melee-v1.png",
+      "bytes": 1165456,
+      "sha256": "F563B66FB66120164194D27490FADE7917F117F9A85A1B0FCFFE15FC42F98491",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-SUNRISE",
+      "group": "environments",
+      "title": "کویر لوت — طلوع خورشید و سایه‌های سرد سپیده‌دم روی کلوت‌ها",
+      "filename": "env-sky-sunrise-v1.png",
+      "bytes": 1435780,
+      "sha256": "F62F020EAFABA805AB370853942CDC0DCAA878E193F7A12B83D033B06A6811F6",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-NOON",
+      "group": "environments",
+      "title": "کویر لوت — درخشش حداکثری و گرمای سوزان ظهر روی نمکزار و کلوت‌ها",
+      "filename": "env-sky-scorching-noon-v1.png",
+      "bytes": 1724160,
+      "sha256": "42A328DCF57400A19756D59E02B1001D072E4EAD531673FFD39FC7DD5342F673",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-SUNSET",
+      "group": "environments",
+      "title": "کویر لوت — غروب آتشین و سایه‌های کشیده روی رمل‌ها و کلوت‌ها",
+      "filename": "env-sky-sunset-v1.png",
+      "bytes": 1388030,
+      "sha256": "DB3C58EBAB6F51DB53AD9279DE448ECB2A565EC111D8986C8831F406B3BD8C17",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-FULLMOON",
+      "group": "environments",
+      "title": "کویر لوت — شبِ ماه کامل و درخشش نقره‌ای روی نمکزار",
+      "filename": "env-sky-full-moon-v1.png",
+      "bytes": 1675296,
+      "sha256": "D4D1F4E46BCECBEB8A0D7D9C75D9F7F461C770C42FAC1DA60A4170AE7E54AB18",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-CRESCENT",
+      "group": "environments",
+      "title": "کویر لوت — هلال باریک ماه و کهکشان راه شیری بر فراز کلوت‌ها",
+      "filename": "env-sky-crescent-moon-v1.png",
+      "bytes": 1557475,
+      "sha256": "CBD033BC8B4E3D5011D8B97801B9783EADD76C098A6BDA7673CB85B64E6580E4",
+      "status": "generated"
+    },
+    {
+      "id": "PROP-KAMANCHEH",
+      "group": "props",
+      "title": "کمانچهٔ کهنهٔ کرمانی و آرشه — مطالعهٔ استودیویی ساز",
+      "filename": "prop-kamancheh-solo-v1.png",
+      "bytes": 1063240,
+      "sha256": "FE4BA514ED08A00C48E7B36CE741DC2547AFCC7E8E4954C5EBF4BFA6EC3F6D18",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-TREE-GAZ",
+      "group": "environments",
+      "title": "گزِ تنها — تک‌درخت سبز کنار آبراهه و آب‌انبار قدیمی (نماد ادامهٔ زندگی)",
+      "filename": "env-tree-lone-gaz-v1.png",
+      "bytes": 1877748,
+      "sha256": "D24F419518DB11DB63A079652B6F1C5FFE7147A3D4BDCDE34C107BC54B66B851",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-TREE-PALM",
+      "group": "environments",
+      "title": "نخلِ پیرِ آب‌انبار — تک‌درخت سبز در کنارهٔ آبادی متروک (نماد ادامهٔ زندگی)",
+      "filename": "env-tree-old-palm-ab-anbar-v1.png",
+      "bytes": 1758160,
+      "sha256": "3D130E4A3F8D305321C3466D8E3CED81936129D858401F7443B59B0AC5659E9F",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-TREE-KAHOOR",
+      "group": "environments",
+      "title": "تک‌درخت سبزِ کهور روی تپهٔ نبکا — نماد استقامت و زندگی در دل لوت",
+      "filename": "env-tree-lone-kahoor-nebkha-v1.png",
+      "bytes": 1827422,
+      "sha256": "EEBC49005C5A20A9B07D80A9DA0B80217B6435F79D93F948369A19F522018E39",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-CAMPFIRE",
+      "group": "environments",
+      "title": "آتش شبانهٔ کمپ در کویر لوت با کتری دودزده و استکان چای زیر آسمان پرستاره",
+      "filename": "env-campfire-night-v1.png",
+      "bytes": 1611524,
+      "sha256": "0A2EEEC2BDA651B9720A2BA5F677D597FBFECD17EA2EF175E43A442AB07BE6B6",
       "status": "generated"
     }
   ]
