@@ -62,13 +62,13 @@
 .reader-prose h3.scene span{font-size:12px;border:1px solid var(--line);background:var(--soft);color:var(--muted);border-radius:6px;padding:0 8px;line-height:1.9;font-weight:600;direction:ltr}
 .reader-prose h3.scene.camp{color:var(--amber)}
 .reader-prose .dlg{margin:14px 0 20px;padding:4px 18px;border-inline-start:3px solid var(--line)}
-.reader-prose .dlg p{display:flex;gap:12px;margin:0 0 .45em;line-height:2}
-.reader-prose .dlg b{flex:0 0 auto;min-width:74px;font-weight:700;color:var(--teal);font-size:16px}
-.reader-prose .dlg span{flex:1 1 auto}
+.reader-prose .dlg p{display:block;margin:0 0 .8em;line-height:2}
+.reader-prose .dlg b{display:block;min-width:0;margin:0 0 .2em;font-weight:700;color:var(--teal);font-size:15px;line-height:1.85}
+.reader-prose .dlg span{display:block;min-width:0}
 .chapter-hero{margin:0 0 26px}.chapter-hero img{width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:var(--radius)}
 .chapter-hero figcaption{font-size:12px;color:var(--muted);margin-top:6px}
 .reader-pager{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:48px 0 8px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-@media (max-width:860px){.reader-layout{grid-template-columns:1fr;gap:18px}.reader-nav{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px}.reader-nav strong{display:none}.reader-nav button{white-space:nowrap}.reader-prose{font-size:18px}.reader-prose .dlg b{min-width:58px}}
+@media (max-width:860px){.reader-layout{grid-template-columns:1fr;gap:18px}.reader-nav{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px}.reader-nav strong{display:none}.reader-nav button{white-space:nowrap}.reader-prose{font-size:18px}.reader-prose .dlg b{min-width:0}}
 
 /* ---- تنگهٔ رتیل: صفحهٔ معرفی و پخش‌کنندهٔ تمام‌صفحه ---- */
 .tg-lead{max-width:62ch;font-size:1.18rem;line-height:2.1;margin:1rem 0 1.2rem;border-inline-start:3px solid var(--accent,#c27a3f);padding-inline-start:1rem}
