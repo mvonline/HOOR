@@ -1,8 +1,8 @@
 {
   "date": "2026-11-21",
   "purpose": "Concept image staging inventory; the v7 documents own story canon.",
-  "image_count": 84,
-  "total_bytes": 209274368,
+  "image_count": 92,
+  "total_bytes": 218597326,
   "excluded_identical_local_copies": [
     "bahram-62-v1 - Copy.png",
     "camel-pack-v1 - Copy.png",
@@ -413,6 +413,15 @@
       "canon_authority": false
     },
     {
+      "filename": "kamran-v1.png",
+      "bytes": 1001093,
+      "width": 848,
+      "height": 1264,
+      "sha256": "f3aecdea4439f3183792a30e430f0200ac474ee71b83ce8f3b34f927955f2f84",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "kian-v1.png",
       "bytes": 2119980,
       "width": 1024,
@@ -427,6 +436,24 @@
       "width": 1024,
       "height": 1536,
       "sha256": "2f605ff75ed177f2848394e26b7920c6d8b829327ac421312afa4255250914a6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "mahrokh-v1.png",
+      "bytes": 1136254,
+      "width": 848,
+      "height": 1264,
+      "sha256": "f78f7e6a02a87a01298d3e5dfe819b9d7cf01a3e3e60151c3f4262374e7f6b8c",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "mina-v1.png",
+      "bytes": 1248499,
+      "width": 848,
+      "height": 1264,
+      "sha256": "911bd1029d354ff1d8a03fce9c5d9d98d5bfc5ce59a139d32e073e715a18d358",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -517,6 +544,15 @@
       "width": 1024,
       "height": 1536,
       "sha256": "b0b7340a8f56f5ca37166c67b5d6a2421a6f64671116be42afbf16fc820f8644",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "parvaneh-v1.png",
+      "bytes": 1153267,
+      "width": 848,
+      "height": 1264,
+      "sha256": "bdc03cb958c39e960318eb7ffece0f305b3d40bfe2009222b677869d4e6a72c6",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -710,6 +746,15 @@
       "canon_authority": false
     },
     {
+      "filename": "vehicle-motocross-v1.png",
+      "bytes": 1375994,
+      "width": 1264,
+      "height": 848,
+      "sha256": "0c25eab8f433f92516afaa103a2a27af81c760e9bf54dd0c556a9ff9077f36c7",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "vehicle-old-camp-v1.png",
       "bytes": 2619642,
       "width": 1536,
@@ -751,6 +796,33 @@
       "width": 1536,
       "height": 1024,
       "sha256": "6511292ab5c8c6ec99a8972ea1d0cc0ab58509069e2891f9693a9b8c8b26e8a9",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "weapon-rifles-v1.png",
+      "bytes": 1207607,
+      "width": 1376,
+      "height": 768,
+      "sha256": "69328dd745bdae027c638d1f53ddf826de40b7b208bd1dc1aac89d234979326b",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "weapon-shotguns-v1.png",
+      "bytes": 1017572,
+      "width": 1376,
+      "height": 768,
+      "sha256": "3dee903e558054923b2355c33b57a9460edb11a245d4723627e4171131014ab9",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "weapon-sidearms-v1.png",
+      "bytes": 1182672,
+      "width": 1376,
+      "height": 768,
+      "sha256": "48bb40a203949307c0e01ffd1fdb6a55667085b0291cce08f3fc03cfbf5b461d",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },

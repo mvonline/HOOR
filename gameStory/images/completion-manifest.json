@@ -2,7 +2,7 @@
   "tool": "built-in image_gen",
   "status": "completed",
   "completed": "2026-11-02T15:05:50Z",
-  "assetCount": 61,
+  "assetCount": 69,
   "assets": [
     {
       "id": "CH11",
@@ -551,6 +551,78 @@
       "filename": "arash-v1.png",
       "bytes": 1122762,
       "sha256": "7839853D686112CD51D0C662F63B5E651B6F59E0F352296E8293B51D04CFAF38",
+      "status": "generated"
+    },
+    {
+      "id": "CH-MINA",
+      "group": "characters",
+      "title": "مینا — محیط‌بان و پایشگر آبشخورها (۳۳ ساله)",
+      "filename": "mina-v1.png",
+      "bytes": 1248499,
+      "sha256": "911BD1029D354FF1D8A03FCE9C5D9D98D5BFC5CE59A139D32E073E715A18D358",
+      "status": "generated"
+    },
+    {
+      "id": "CH-MAHROKH",
+      "group": "characters",
+      "title": "ماهرخ — آشپز و حافظهٔ قدیم کمپ (۵۸ ساله)",
+      "filename": "mahrokh-v1.png",
+      "bytes": 1136254,
+      "sha256": "F78F7E6A02A87A01298D3E5DFE819B9D7CF01A3E3E60151C3F4262374E7F6B8C",
+      "status": "generated"
+    },
+    {
+      "id": "CH-PARVANEH",
+      "group": "characters",
+      "title": "پروانه — پرستار درمانگاه کمپ (۴۴ ساله)",
+      "filename": "parvaneh-v1.png",
+      "bytes": 1153267,
+      "sha256": "BDC03CB958C39E960318EB7FFECE0F305B3D40BFE2009222B677869D4E6A72C6",
+      "status": "generated"
+    },
+    {
+      "id": "CH-KAMRAN",
+      "group": "characters",
+      "title": "کامران — مدیر عملیات «سپهر لوت» (۴۶ ساله)",
+      "filename": "kamran-v1.png",
+      "bytes": 1001093,
+      "sha256": "F3AECDEA4439F3183792A30E430F0200AC474EE71B83CE8F3B34F927955F2F84",
+      "status": "generated"
+    },
+    {
+      "id": "VH-MOTO",
+      "group": "vehicles",
+      "title": "موتور کراس / تریل کویری — طراحی استودیویی",
+      "filename": "vehicle-motocross-v1.png",
+      "bytes": 1375994,
+      "sha256": "0C25EAB8F433F92516AFAA103A2A27AF81C760E9BF54DD0C556A9FF9077F36C7",
+      "status": "generated"
+    },
+    {
+      "id": "WP-SIDEARMS",
+      "group": "weapons",
+      "title": "سلاح‌های کمری: کلت ۹ میلی‌متری خفه‌کن‌دار و رولور ۳۵۷ نادر",
+      "filename": "weapon-sidearms-v1.png",
+      "bytes": 1182672,
+      "sha256": "48BB40A203949307C0E01FFD1FDB6A55667085B0291CCE08F3FC03CFBF5B461D",
+      "status": "generated"
+    },
+    {
+      "id": "WP-SHOTGUNS",
+      "group": "weapons",
+      "title": "شاتگان‌ها: دولولِ «پیرمرد» و شاتگان پمپی ۱۲-گیج چراغ‌قوه‌دار",
+      "filename": "weapon-shotguns-v1.png",
+      "bytes": 1017572,
+      "sha256": "3DEE903E558054923B2355C33B57A9460EDB11A245D4723627E4171131014AB9",
+      "status": "generated"
+    },
+    {
+      "id": "WP-RIFLES",
+      "group": "weapons",
+      "title": "تفنگ‌های بلند: شکاری ۳۰۸ دوربین‌دار و کارابین کوتاه قاچاقی",
+      "filename": "weapon-rifles-v1.png",
+      "bytes": 1207607,
+      "sha256": "69328DD745BDAE027C638D1F53DDF826DE40B7B208BD1DC1AAC89D234979326B",
       "status": "generated"
     }
   ]

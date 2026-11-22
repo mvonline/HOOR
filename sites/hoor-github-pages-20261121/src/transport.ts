@@ -42,7 +42,7 @@ async function download(progress?:Progress){
  progress?.('در حال دریافت بستهٔ کتاب طراحی…');
  pendingDownload=(async()=>{
   try{
-   const response=await fetch(new URL('content.hoor',baseUrl()),{cache:'no-store',credentials:'omit'});
+   const response=await fetch(new URL(`content.hoor?v=${__CONTENT_VERSION__}`,baseUrl()),{cache:'no-store',credentials:'omit'});
    if(!response.ok)throw failure('network');
    const declared=Number(response.headers.get('content-length'));
    if(declared>MAX_DOWNLOAD)throw failure('format');
@@ -86,7 +86,7 @@ function clearPlaintext(){
  if(mapObjectUrl)URL.revokeObjectURL(mapObjectUrl);mapObjectUrl=null;decrypted=null;
 }
 
-export function lock(){epoch++;clearPlaintext();}
+export function lock(){epoch++;ciphertext=null;clearPlaintext();}
 export function getLibrary(){return decrypted?.library??null;}
 
 export async function unlock(password:string,onProgress?:Progress){
