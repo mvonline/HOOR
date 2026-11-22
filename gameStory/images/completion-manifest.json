@@ -736,7 +736,7 @@
     {
       "id": "ENV-KAMAN-DAY",
       "group": "environments",
-      "title": "نوازندهٔ کمانچه (نادر) در روز — زیر سایهٔ گزِ تنهای لوت",
+      "title": "نوازندهٔ کمانچه (کاوه) در روز — زیر سایهٔ گزِ تنهای لوت",
       "filename": "env-kamancheh-player-day-v1.png",
       "bytes": 1938534,
       "sha256": "5AAAB0947FCE37F40ED68BE05EAA3BC4900AFA0095F202EAC2255688AD2CCC5B",
@@ -745,7 +745,7 @@
     {
       "id": "ENV-KAMAN-NIGHT",
       "group": "environments",
-      "title": "نوازندهٔ کمانچه (نادر) در شب — کنار آتشِ کمپ زیر آسمان لوت",
+      "title": "نوازندهٔ کمانچه (کاوه) در شب — کنار آتشِ کمپ زیر آسمان لوت",
       "filename": "env-kamancheh-player-night-v1.png",
       "bytes": 1489369,
       "sha256": "13E114350ECEFA2182683838B1A361479EC1F728C75FDD9362CBD1B8EB835793",
