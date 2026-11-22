@@ -86,6 +86,8 @@ Write-Host '7/8  Staging tracked changes and the two new canonical design docume
 if ($LASTEXITCODE -ne 0) { throw 'Could not stage tracked project changes.' }
 & git -C $RepoRoot add -- gameStory/redesign/v11-aaa/08_DIRECTOR_PRINCIPLES_FA.md gameStory/redesign/v11-aaa/09_PLACES_OF_LOT_FA.md tools/publish_hoor_site.ps1
 if ($LASTEXITCODE -ne 0) { throw 'Could not stage the new canonical documents and publisher script.' }
+& git -C $RepoRoot add -- sites/hoor-github-pages-20261121/public/media/gallery
+if ($LASTEXITCODE -ne 0) { throw 'Could not stage the new gallery video and music files.' }
 & git -C $RepoRoot diff --cached --check
 if ($LASTEXITCODE -ne 0) { throw 'Staged changes failed git diff --check.' }
 & git -C $RepoRoot diff --cached --stat

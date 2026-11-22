@@ -1,7 +1,7 @@
 import React,{useCallback,useEffect,useRef,useState} from 'react';
 import {X,ChevronLeft,ChevronRight,RotateCcw,RotateCw,Maximize2,Play} from 'lucide-react';
 
-type Clip={n:number;title:string;note:string;rot:number;mins:string};
+export type Clip={n:number;title:string;note:string;rot:number;mins:string};
 // rot = degrees the footage must be turned to stand upright (the files were shot or exported sideways).
 export const CLIPS:Clip[]=[
  {n:0,title:'شکاف از بالا',note:'کاروان در دلِ شکاف، از ارتفاع',rot:0,mins:'۰:۲۴'},
