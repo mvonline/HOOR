@@ -2,7 +2,7 @@
   "tool": "built-in image_gen",
   "status": "completed",
   "completed": "2026-11-02T15:05:50Z",
-  "assetCount": 95,
+  "assetCount": 101,
   "assets": [
     {
       "id": "CH11",
@@ -857,6 +857,60 @@
       "filename": "v11-retil-Hirad-v1.png",
       "bytes": 1830620,
       "sha256": "9895C14859A8501EB3CB79D9B4F92F3C91055A5FDEBDEBA6C2DFE9A71E31136B",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-KESHIT-ROAD",
+      "group": "environments",
+      "title": "جادهٔ واحهٔ کویری با نهر و نخلستان در دو طرف — الهام از روستای کشیت در لوت",
+      "filename": "env-keshit-oasis-road-v1.png",
+      "bytes": 2088091,
+      "sha256": "D7F5E61DF890A0DF7AE4F2F0DE33D56EA70B1D02138F7A4C18FD816308CC1327",
+      "status": "generated"
+    },
+    {
+      "id": "V11-BIKERS-KALUT",
+      "group": "action",
+      "title": "موتورسواران مسلح و صورت‌پوشیده با دستار در کلوت‌های لوت",
+      "filename": "v11-action-masked-bikers-kalut-v1.png",
+      "bytes": 1647146,
+      "sha256": "E2A99858B64F80A01687488CCDF26E4AA2478EBDCFB9535DCA4957B899100F30",
+      "status": "generated"
+    },
+    {
+      "id": "V11-BIKERS-DUSK",
+      "group": "action",
+      "title": "موتورسواران مسلح و صورت‌پوشیده در گرگ‌ومیش غروب لوت — نمای نزدیک تعقیب",
+      "filename": "v11-action-masked-bikers-dusk-v1.png",
+      "bytes": 1523192,
+      "sha256": "3652F443A8F3B697AD3960080073AD8495521B98A734CF846FB4F0DFED82A448",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-KESHIT-VALLEY",
+      "group": "environments",
+      "title": "درهٔ نخلستان، نهرهای جاری و قلعهٔ خشتی در دل کویر — الهام از روستای کشیت",
+      "filename": "env-keshit-valley-palms-stream-v1.png",
+      "bytes": 1686985,
+      "sha256": "CA089B44528F6AD44E92817261D32A80CE676749A018A4D16E60A642EC086852",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-PALM-HAMMOCK",
+      "group": "environments",
+      "title": "استراحت در ننو بسته به پشت خودروی آفرود کنار نخلِ پیرِ آب‌انبار",
+      "filename": "env-palm-offroad-hammock-rest-v1.png",
+      "bytes": 1865327,
+      "sha256": "667E87A9AB3DA53F5FD099EF58CD51F9579FC33C0A17555E58431FCB05D8A791",
+      "status": "generated"
+    },
+    {
+      "id": "ENV-DUNE-TWO-BIKES",
+      "group": "environments",
+      "title": "دو موتور تریل ایستاده روبه‌روی هم با چراغ‌های روشن روی یال تپهٔ شنی در غروب لوت",
+      "filename": "env-dune-two-bikes-facing-sunset-v1.png",
+      "bytes": 1371480,
+      "sha256": "28FCD37BE4EA406753A5566D416028D7D12F7E5DBEB17DC50C2C072B879B9B06",
       "status": "generated"
     }
   ]

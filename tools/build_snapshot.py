@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Build the plaintext content snapshot that sites/hoor-github-pages-*/scripts/encrypt-content.mjs encrypts.
 
-Canon source: gameStory/redesign/v11-aaa (with maps/geography reference from v7-20261121 and images from gameStory/images).
+Bundles BOTH:
+  - v12 (International Action — current canon): gameStory/redesign/v12-international + novel/v12
+  - v11 (Domestic Drama Archive — AAA): gameStory/redesign/v11-aaa + novel/
+With shared maps/geography reference from v7-20261121 and images from gameStory/images.
 Writes sites/hoor-github-pages-20261121/.snapshot/portal-data.json (git-ignored).
 
 Needs: Python 3.10+, Pillow.  Usage:  python3 tools/build_snapshot.py [--max-mb 28]
@@ -19,12 +22,13 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 V7 = ROOT / 'gameStory/redesign/v7-20261121'
 V11 = ROOT / 'gameStory/redesign/v11-aaa'
+V12 = ROOT / 'gameStory/redesign/v12-international'
 IMAGES = ROOT / 'gameStory/images'
 SITE = ROOT / 'sites/hoor-github-pages-20261121'
 OUT = SITE / '.snapshot/portal-data.json'
 
 # id -> (path relative to ROOT, category, spoiler, legacy)
-DOCS = {
+V11_DOCS = {
     'READER_GUIDE_FA': ('gameStory/redesign/v11-aaa/README.md', 'شروع مطالعه', False, False),
     'RAD_E_HOOR_NOVEL_FA': ('novel/RAD_E_HOOR_NOVEL_FA.md', 'رمانِ کامل (حدود ۲۶۵ صفحه)', True, False),
     'NOVEL_BIBLE_FA': ('novel/00_NOVEL_BIBLE_AND_CHAPTER_PLAN.md', 'طرح اولیهٔ رمان', False, False),
@@ -46,9 +50,32 @@ DOCS = {
     'SCREENPLAY_FILM_FA': ('gameStory/redesign/v10-bible/SCREENPLAY_FILM_FA.md', 'آرشیو نسخه‌های قبل', True, True),
 }
 
+V12_DOCS = {
+    'READER_GUIDE_FA': ('gameStory/redesign/v12-international/README.md', 'شروع مطالعه', False, False),
+    'RAD_E_HOOR_NOVEL_V12_FA': ('novel/v12/RAD_E_HOOR_NOVEL_V12_FA.md', 'رمانِ کامل (نسخهٔ ۱۲)', True, False),
+    'NOVEL_BIBLE_V12_FA': ('novel/v12/00_NOVEL_BIBLE_AND_CHAPTER_PLAN.md', 'طرح اولیهٔ رمان', False, False),
+    'SCREENPLAY_V12_FA': ('gameStory/redesign/v12-international/SCREENPLAY_V12_FA.md', 'داستان', True, False),
+    'DIRECTOR_PRINCIPLES_FA': ('gameStory/redesign/v12-international/08_DIRECTOR_PRINCIPLES_FA.md', 'اصول کارگردانی', False, False),
+    'PLACES_OF_LOT_FA': ('gameStory/redesign/v12-international/09_PLACES_OF_LOT_FA.md', 'محل‌ها', False, False),
+    '01_STORY_WORLD_AND_CAMPAIGN_FA': ('gameStory/redesign/v12-international/01_STORY_WORLD_AND_CAMPAIGN_FA.md', 'داستان', True, False),
+    '02_CHARACTERS_AND_DIALOGUE_CRAFT_FA': ('gameStory/redesign/v12-international/02_CHARACTERS_AND_DIALOGUE_CRAFT_FA.md', 'داستان', False, False),
+    '03_COMBAT_ENEMIES_BOSSES_AND_VEHICLES_FA': ('gameStory/redesign/v12-international/03_COMBAT_ENEMIES_BOSSES_AND_VEHICLES_FA.md', 'بازی‌سازی', False, False),
+    '04_OPEN_WORLD_SYSTEMS_AND_VISUAL_BIBLE_FA': ('gameStory/redesign/v12-international/04_OPEN_WORLD_SYSTEMS_AND_VISUAL_BIBLE_FA.md', 'جهان و مأموریت‌ها', False, False),
+    '05_DIRECTION_MISE_EN_SCENE_AND_EASTER_EGGS_FA': ('gameStory/redesign/v12-international/05_DIRECTION_MISE_EN_SCENE_AND_EASTER_EGGS_FA.md', 'کارگردانی و ایستر‌اگ', False, False),
+    '06_WEAPONS_CRAFTING_AND_WORKSHOP_FA': ('gameStory/redesign/v12-international/06_WEAPONS_CRAFTING_AND_WORKSHOP_FA.md', 'سلاح، ورکشاپ و تیونینگ', False, False),
+    '07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA': ('gameStory/redesign/v12-international/07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA.md', 'جهان و مأموریت‌ها', False, False),
+    '10_LEVEL_DESIGN_15_CHAPTERS_FA': ('production/levels/v12-15-chapters/layout.md', 'طراحی ۱۵ مرحله', True, False),
+    '11_CHAPTER_INTRO_VIDEOS_V12_FA': ('gameStory/redesign/v12-international/11_CHAPTER_INTRO_VIDEOS_V12_FA.md', 'ویدیوهای اینترو (۳۰ سناریو)', True, False),
+    'GEOGRAPHY_EVIDENCE_FA': ('gameStory/redesign/v7-20261121/GEOGRAPHY_EVIDENCE_FA.md', 'نقشه و جغرافیا', False, False),
+    'maps-README_FA': ('gameStory/redesign/v7-20261121/maps/README_FA.md', 'نقشه و جغرافیا', False, False),
+    'ECOLOGY_WATERHOLES_AND_PHOTOGRAPHY_FA': ('gameStory/redesign/v7-20261121/ECOLOGY_WATERHOLES_AND_PHOTOGRAPHY_FA.md', 'علم و طبیعت', False, False),
+    'NIGHT_SKY_NAVIGATION_AND_EASTER_EGGS_FA': ('gameStory/redesign/v7-20261121/NIGHT_SKY_NAVIGATION_AND_EASTER_EGGS_FA.md', 'علم و طبیعت', False, False),
+}
+
 NOT_RETIRED = {'hoor-adult-v1', 'hoor-adult-v2', 'hoor-juvenile-v1', 'hoor-juvenile-v2', 'v11-action-kalut-convoy-v1'}
 
-PEOPLE = [  # (name, age, role, image candidates, text)
+# ==================== v11 DATA ====================
+V11_PEOPLE = [  # (name, age, role, image candidates, text)
     ('دانیال', 38, 'راننده-مکانیکِ کاروان‌های سنگین؛ شخصیتِ بازیکن', ['daniyal-v2', 'daniyal-v1'],
      'مردی کارکشته و سخت‌جان که هم پشتِ فرمانِ «پیرمرد»، SUV، موتور، چهارچرخ و شتر استاده و هم در نبردِ گرم و سرد کم نمی‌آورد. دو سال است با بارِ گناه تصادفی در شهداد و پاکتِ بازنشدهٔ «بقیهٔ حساب» زندگی می‌کند.'),
     ('سارا', 35, 'بازرسِ ارشدِ زمین‌شناسی و تحلیلگرِ میدانی', ['sara-v2', 'sara-v1'],
@@ -85,7 +112,7 @@ PEOPLE = [  # (name, age, role, image candidates, text)
      'همراهِ بی‌صدای دانیال در نبکاها و طوفانِ شنِ کور (پیوندِ سطح ۱ تا ۴). خورجینِ سلاح و دارو حمل می‌کند و قبل از هر دستگاهی حضورِ فراموش‌شده‌ها را حس می‌کند.'),
 ]
 
-QUOTES = {
+V11_QUOTES = {
     'دانیال': 'اسمش سام بود. هشت سالش بود. من دو سال ازش فرار کردم... دیگه فرار نمی‌کنم.',
     'سارا': 'تو دو سال با اون پاکتِ مهرشده رانندگی کردی؛ چون سکوتت راحت‌تر بود!',
     'کامران': 'حافظه بزرگ‌ترین نفرینِ آدمه؛ من دارم به آدما آرامش می‌فروشم.',
@@ -104,11 +131,10 @@ QUOTES = {
     'پویا': 'بچه‌ها اسپیکر رو بدین بالا، قلیونا رو چاق کنین، یه استوریِ مشتی از طوفانِ واقعیِ لوت بگیریم!',
     'درا': 'گوش‌ها عقب می‌رود؛ شتر قبل از هر دستگاهی حضورِ خطر را در تاریکیِ تنگه حس می‌کند.',
 }
-ORDER = [p[0] for p in PEOPLE]
 
-COPY = {
+V11_COPY = {
     'heroTitle': 'ردِ هور',
-    'heroText': 'اکشنِ نیمه‌نیمه‌نیمه‌جهان‌بازِ مدرن در کویرِ لوت: یک راننده-مکانیکِ زخمی و یک بازرسِ سرسخت در برابرِ کارتلِ تجارتِ فراموشیِ کامران — با پهپاد، دید در شب و حرارتی، ۶ حالتِ حرکت و سواری، نبردِ سنگینِ گرم و سرد، سنگ‌نگاره‌های مرموز و ۲ فصلِ متمایز و هولناکِ وحشت در اعماقِ تنگه.',
+    'heroText': 'اکشنِ نیمه‌جهان‌بازِ مدرن در کویرِ لوت: یک راننده-مکانیکِ زخمی و یک بازرسِ سرسخت در برابرِ کارتلِ تجارتِ فراموشیِ کامران — با پهپاد، دید در شب و حرارتی، ۶ حالتِ حرکت و سواری، نبردِ سنگینِ گرم و سرد، سنگ‌نگاره‌های مرموز و ۲ فصلِ متمایز و هولناکِ وحشت در اعماقِ تنگه.',
     'storyLead': 'هستهٔ ۱۰ نفرهٔ گوشت‌ودار و زنده به‌جای شخصیت‌های پراکنده: هر کس صدای خودش، زخمش، شوخی‌اش و نقشِ ملموسش در کمپ و عملیات را دارد.',
     'mapLead': 'جغرافیای واقعیِ شهداد تا تنگِ رتیل در لوتِ شمالی، مبنای شش ناحیهٔ پیوستهٔ جهانِ نیمه‌باز است؛ تأسیسات و پایگاه‌های داستانی ساختگی‌اند.',
     'mapTitles': ['نقشهٔ منطقه: شهداد تا تنگ', 'نمای ماهواره‌ای محدودهٔ تنگ', 'اتصالِ ناحیه‌های بازی'],
@@ -204,6 +230,164 @@ V11_SIDE_STORIES = [
 ]
 
 
+# ==================== v12 DATA (INTERNATIONAL ACTION) ====================
+V12_PEOPLE = [  # (name, age, role, image candidates, text)
+    ('دانیال', 38, 'فرماندهٔ سابقِ عملیاتِ سیاهِ کامران؛ شکارچیِ بی‌رحمِ لوت (شخصیتِ بازیکن)', ['daniyal-v2', 'daniyal-v1'],
+     'ضدقهرمانِ خاکستریِ تیره؛ با میلِ خودش فرماندهٔ کاروان‌ها و عملیاتِ سیاهِ کامران بود تا وقتی کامران به او شلیک کرد و ۴۸ ساعت از حافظه‌اش را با H-0 پاک کرد. با «درایوِ ۴۸ ساعت» پنهان‌شده در کابینِ «پیرمرد»، پشتِ فرمانِ کامیون، موتورِ تریل، چهارچرخ و شترِ «درا» دنبالِ تسویه‌حسابِ سرد و نابودیِ دارایی‌های کامران است.'),
+    ('سارا', 35, 'ممیزِ سابقِ امنیتِ پرریسک و حل‌وفصل‌کنندهٔ ریسکِ بیمه (Corporate Fixer)', ['sara-v2', 'sara-v1'],
+     'ضدقهرمانِ یخ‌زده و محاسبه‌گر؛ ممیزِ سابقِ امنیتِ پرریسک و استخدام‌شدهٔ یک غولِ بیمهٔ بین‌المللی. نه دنبالِ نجاتِ دنیاست و نه قهرمان‌بازی؛ با کارابین و اپتیکِ حرارتی واردِ خطِ آتش شده تا محمولهٔ H-0 را بازیابی یا نابود کند، خسارتِ میلیارددلاری را ببندد و پاداشِ نجومیِ خودش را نقد کند.'),
+    ('کامران', 46, 'معمارِ برنامهٔ تسلیحاتیِ H-0 و دلالِ تسلیحاتِ PMC', ['kamran-v1'],
+     'مدیرِ سرد، منظم و بی‌احساسِ «سپهرِ لوت». زیرِ پوششِ نیروگاهِ خورشیدی و معدنِ لیتیوم، سلاحِ عصبی-زیستیِ H-0 (نسل‌های Mk-1 و Mk-2) را برای فروش به شرکت‌های نظامیِ خصوصی تولید می‌کند و برای پاک‌کردنِ شواهد، حتی به انفجارِ سربازانِ Mk-2ِ خودش در فصل ۱۴ دستور می‌دهد.'),
+    ('رامین', 42, 'دزدِ سابقِ کارتل؛ متخصصِ موادِ منفجره و جنگِ سیگنال (EMP)', ['mehdi-v1'],
+     'مغزِ فنی و کله‌شقِ کمپ با طنزِ سیاهِ مزدورانه؛ از هر دو طرفِ معامله دزدی می‌کرده و پهپاد، NVG، دوربینِ حرارتی و اخلالگرِ EMP تیم را می‌سازد. در فصل ۱۳ در پیِ خیانتِ مستقیمِ بهرام در برجِ رادیو محاصره می‌شود و تا آخرین فشنگ برای قطعِ پارازیتِ باندِ نمکزار می‌جنگد و کشته می‌شود.'),
+    ('کاوه', 52, 'بازماندهٔ تلخِ Mk-1 (هفت سال پیش) و تک‌تیراندازِ قاتل', ['nader-v3', 'nader-v2', 'nader-seated-v2', 'nader-seated-v1'],
+     'تنها بازماندهٔ نشتِ عمدیِ هفت سال پیش در عمقِ گسل. تک‌تیراندازِ سرد و بدبین با عصای آهنی و تفنگِ ۳۰۸ که فقط سرِ کامران را می‌خواهد — و اگر دانیال بوی ریسک بدهد آمادهٔ شلیک است. کمانچهٔ کهنه‌اش صرفاً عادتِ خشکِ مهارِ اعصاب پیش از ماشه است.'),
+    ('کیان', 25, 'هکرِ مزدورِ پهپاد، متخصصِ SIGINT و دلالِ اطلاعات', ['kian-v2', 'kian-v1'],
+     'مزدورِ دیجیتالِ بی‌رحم که اطلاعات را به بالاترین پیشنهاد می‌فروشد و فقط به‌خاطرِ حکمِ حذفِ کامران هم‌مسیرِ تیم شده است. پس از نجات از زونِ D در فصل ۱۲، «درایوِ ۴۸ ساعت» را می‌شکند و در پایانِ سرد فایلِ Site 01 را به‌عنوانِ اهرمِ فشارِ بعدی نگه می‌دارد.'),
+    ('مینا', 33, 'ردیابِ قلمروطلبِ لوت و شکارچیِ متجاوزانِ آبشخورها', ['mina-v1'],
+     'نه حامیِ طبیعت است و نه همراهِ نجیبِ تیم؛ صاحبِ قلمرو و مسیرهای آبشخور (WH01–WH04) است و با موتورِ تریلِ برقی و تله‌های سیم‌کشی‌شده هر متجاوزی را — از نیروهای کامران تا آدم‌های دانیال — شکار می‌کند. تا وقتی پمپ‌های کامران کار می‌کنند، معاملهٔ موقت دارد.'),
+    ('آرش', 20, 'قاچاقچیِ معتاد به آدرنالین و رانندهٔ آفرود ★ چرخشِ سفید #۳', ['arash-v2', 'arash-v1'],
+     'رانندهٔ جوانِ اوراقی-چاپ‌شاپ و عاشقِ سرعت و باروت؛ نه از گذشتهٔ کثیفِ دانیال جا می‌خورد نه موعظه می‌کند، فقط به عملِ میدانی احترام می‌گذارد. در فصل ۱۴–۱۵ تمامِ هیاهویش می‌ریزد و با چرخشِ سفیدِ خالص، مثل یک جنگجوی سرد با RPG به دلِ آتشِ باند می‌زند تا ارابهٔ فرودِ جلوی هواپیمای H-0 را متلاشی کند.'),
+    ('رویا', 40, 'اربابِ بی‌رحمِ بازارِ سیاهِ سلاح و کاروانسرا ★ چرخشِ سفید #۲', ['roya-v2', 'roya-v1'],
+     'فرماندهٔ کاروانسرای مسلح و دلالِ پولِ خون، سلاح‌های سنگین و ترورهای قراردادیِ کویر. پس از حریقِ کاروانسرا در فصل ۹، نقطهٔ اوجِ چرخشِ سفیدِ خالصش در فصل ۱۴ است: میلیون‌ها دلار پولِ نقدِ کانتینرهای آشیانه و راهِ فرارِ آسان را رها می‌کند و اسکادرانِ چهارچرخ‌هایش را به دلِ آتشِ باند برمی‌گرداند تا دانیال را پوشش دهد.'),
+    ('سورن', 39, 'فرماندهٔ خونسردِ گشتِ PMC ★ چرخشِ سفید #۱', ['esmaeil-v1'],
+     'آنتاگونیستِ سیاه و بی‌رحمِ نیمهٔ اول که پس از کشفِ میکرودوزِ پنهانِ H-0 در سرُم‌هایش، در فصل ۱۲ روی پلِ فلزی علیه کامران شورش می‌کند. در فصل ۱۴ به چرخشِ سفیدِ خالص می‌رسد: وقتی کامران دستورِ انفجارِ سربازانِ Mk-2ِ خودش را می‌دهد، سورن با صفر سودِ شخصی یک‌تنه وسطِ آتشِ متقابل می‌ایستد تا مسیرِ نفوذ باز بماند.'),
+    ('پویا', 32, 'دلالِ دیوانه و طماعِ «کلوتِ لاشه‌ها» (Drone Graveyard) ☠ خیانتِ سیاه #۲', ['pouya-v1'],
+     'لاشخورِ بیش‌فعال، بی‌رحم و مین‌گذارِ بازارِ سیاهِ قطعاتِ پهپاد و جمر (BM01–BM04، قفل پیش از D04). در خیانتِ سیاهِ مطلقِ D04، مختصاتِ دقیقِ کمپِ ۱ را برای یک کیفِ پولِ نقد به کامران می‌فروشد و حریقِ انبار را رقم می‌زند؛ دانیال او را گیر می‌اندازد با انتخابِ بی‌رحمانهٔ اعدامِ فوری یا اجبار زیرِ لولهٔ اسلحه به هکِ رادارِ باندِ نمکزار در فصل ۱۴.'),
+    ('بهرام', 62, 'خالقِ علمیِ واقعیِ H-0 و سازندهٔ فرمولِ Mk-3 ☠ خیانتِ سیاه #۱', ['bahram-62-v1'],
+     'هرگز قربانی نبود: زیرِ نقابِ دانشمندِ ترسو و ساختِ «خنثی‌ساز» در کمپ ۱ و ۲، مخفیانه فرمولِ پایدار و مرگبارِ Mk-3 H-0 را تکمیل می‌کرد. در خیانتِ سیاهِ فصل ۱۳–۱۴، خودش موقعیتِ برجِ رادیوییِ رامین را به کامران لو می‌دهد (باعثِ مرگِ رامین) تا با فرمولِ Mk-3 سوارِ هواپیمای باربریِ ویکتور کروز شود.'),
+    ('رستم', 48, 'موشِ تدارکاتی و خبرچینِ خودخواه (لجستیکِ سپهر)', ['rostam-v2', 'rostam-v1'],
+     'فرصت‌طلب و بزدل بدونِ هیچ وفاداری؛ از پردهٔ اول اطلاعاتِ کاروان‌ها را به‌عنوانِ بیمهٔ جانش به دانیال و سارا می‌فروشد و در فصل ۱۱ برای نجاتِ پوستِ خودش فرار می‌کند و نقشهٔ تونلِ زونِ D را به کمپِ ۲ می‌آورد.'),
+    ('سوژه-۰۹ (فرهاد)', 34, 'سربازِ Mk-2 با پلاکِ فلزی SUBJ-09 (شاهدِ زندهٔ شکستِ H-0)', ['farhad-guard-v1', 'farhad-v3'],
+     'مزدورِ Mk-2 که دوزِ H-0 حافظه‌اش را خورده اما رفلکسِ کشتارش هنوز قفل است؛ مثل یک اسلحهٔ خراب در میدانِ نبرد که به سارا کابوسِ بیمه‌ایِ H-0 و به دانیال سرنوشتِ احتمالیِ ۴۸ ساعتِ پاک‌شده‌اش را نشان می‌دهد.'),
+    ('ماهرخ', 58, 'تدارکاتچیِ سنگدل و قاچاقچیِ سابقِ سوخت و مهمات', ['mahrokh-v1'],
+     'انبارِ آب، سوخت و مهماتِ کمپ را با مشتِ آهنین و سهم‌خواهیِ دقیق می‌چرخاند. انبارِ او هدفِ مستقیمِ شبیخونِ D04 (در پیِ فروشِ مختصاتِ کمپِ ۱ توسطِ پویا) است که تیم را مجبور به تخلیه و کوچ به کمپِ ۲ می‌کند.'),
+    ('ویکتور کروز', 47, 'خریدارِ بین‌المللیِ PMC و مسئولِ تحویلِ محمولهٔ H-0 و Mk-3', [],
+     'دلالِ مسلح و یخ‌زدهٔ شرکت‌های نظامیِ خصوصی که برای تحویلِ کانتینرهای صادراتیِ H-0 و سوارکردنِ بهرام با فرمولِ Mk-3 از باندِ مخفیِ نمکزار به لوت آمده است؛ هدفِ کلیدیِ یورشِ فصل ۱۴ و ۱۵.'),
+    ('درا', 9, 'شترِ کویریِ دانیال — مرکبِ بی‌صدا بدونِ ردپایِ حرارتی', ['dara-camel-tack-v1', 'dara-camel-base-v1'],
+     'ابزارِ تاکتیکیِ بی‌صدا، مقاوم در طوفانِ شنِ کور و بدونِ امضایِ حرارتیِ موتور. خورجینِ سلاح و مهمات حمل می‌کند و در نفوذ به نبکاها و نمکزار (فصل ۳، ۸ و رخداد D03) برتریِ عملیاتیِ کامل می‌دهد.'),
+]
+
+V12_QUOTES = {
+    'دانیال': 'درایوِ ۴۸ ساعت زیرِ داشبوردِ پیرمرد قفل بود؛ دو سال پیش اشتباه کردی که تیرِ دوم رو نزدی کامران.',
+    'سارا': 'قراردادِ بیمهٔ من برای قهرمان‌بازی پاداش نمی‌ده؛ محمولهٔ H-0 می‌سوزه و فاکتورم تسویه می‌شه.',
+    'کامران': 'اون ۴۸ ساعت یه خطایِ ترازنامه بود؛ درست مثلِ سربازهای Mk-2 که قبل از تیک‌آف باید پاک شن.',
+    'رامین': 'بهرام مختصاتِ برج رو فروخت دانیال... دکلِ پارازیت خوابید، پنجره بازه. معطل نکن!',
+    'کاوه': 'هفت سال پیش درِ قرنطینه رو بست. سرِ کامران مالِ منه — یه حرکتِ مشکوک ببینی، ۳۰۸ بعدی مالِ خودته.',
+    'کیان': 'درایوِ ۴۸ ساعت باز شد؛ فرکانسِ باندِ نمکزار دستمونه... و یه فایلِ Site 01 که قیمتش خیلی بالاست.',
+    'مینا': 'جنگِ کثیفت با رئیست به من ربطی نداره؛ پمپ‌ها رو خاموش کن، از خطِ آبشخورم رد شی می‌زنمت.',
+    'آرش': 'به درک که برای کامران آدم می‌کشتی؛ الان ارابهٔ جلوی اون هواپیما مالِ RPG منه — پوشش بده!',
+    'رویا': 'بذار دلارها تو آشیانه بسوزن! چهارچرخ‌ها رو برگردونین وسطِ باند؛ اون هواپیما امشب تیک‌آف نمی‌کنه.',
+    'سورن': 'سربازهای خودت رو هم برای پاک‌کردنِ شواهد می‌ترکونی کامران؟ خط رو نگه می‌دارم، رد شو دانیال.',
+    'پویا': 'یه کیف پولِ نقد داد کامران، من دفترِ اخلاق باز نکردم! لوله رو بکش عقب تا رادارِ باند رو هک کنم!',
+    'بهرام': 'خنثی‌ساز؟ احمق‌ها، H-0 اثرِ منه! فرمولِ Mk-3 روی هواپیما می‌شینه و برجِ رامین فقط هزینهٔ خروج بود.',
+    'رستم': 'کدهای زونِ D اینجاست؛ فقط این معامله بیمهٔ جونِ منه، نذار سورن بفهمه.',
+    'سوژه-۰۹ (فرهاد)': 'کدِ محموله... خطا. فرمانِ جدید... دریافت نشد. شلیک.',
+    'ماهرخ': 'پویا مختصاتِ سنگ‌چین رو فروخته. هرچی سالمه بارِ پیرمرد کنین؛ امشب می‌ریم کمپِ ۲.',
+    'ویکتور کروز': 'کانتینرها و دکتر بهرام تا سپیده باید توی هواپیما باشن کامران؛ مشتری‌های من بهانه نمی‌خرن.',
+    'درا': 'بی‌صدا، بدونِ امضایِ حرارتیِ موتور — تنها مرکبِ قابلِ اعتماد در طوفانِ شنِ کور.',
+}
+
+V12_COPY = {
+    'heroTitle': 'ردِ هور',
+    'heroText': 'اکشن-تریلرِ تاکتیکیِ نیمه‌جهان‌باز در کویرِ لوت (MGSV + Mad Max + Sicario + RE4): ضدقهرمانانِ خاکستریِ تیره با ۵ پیچشِ دوقطبی‌شدنِ سیاه/سفید — فرماندهٔ سابقِ عملیاتِ سیاه با درایوِ ۴۸ ساعت در برابرِ کارتلِ زیست‌سلاحِ H-0 و خریدارانِ PMC، با پهپاد، NVG و حرارتی، ۶ حالتِ حرکت، باندِ نمکزار و ۲ قلهٔ فشردهٔ وحشتِ بقا.',
+    'storyLead': 'صفر قهرمانِ کلاسیک، صفر ملودرام: تیمی از ضدقهرمانانِ خاکستریِ تیره با دستِ آلوده که در پرده‌های پایانی با ۲ خیانتِ سیاهِ مطلق (بهرام، پویا) و ۳ چرخشِ سفیدِ خالص (سورن، رویا، آرش) به دو قطبِ تمام‌عیار می‌شکنند.',
+    'mapLead': 'جغرافیای واقعیِ شهداد تا تنگِ رتیل در لوتِ شمالی، مبنای شش ناحیهٔ پیوستهٔ جهانِ نیمه‌باز و باندِ پروازِ مخفیِ نمکزار است؛ تأسیسات و پایگاه‌های داستانی ساختگی‌اند.',
+    'mapTitles': ['نقشهٔ منطقه: شهداد تا تنگ', 'نمای ماهواره‌ای محدودهٔ تنگ', 'اتصالِ ناحیه‌های بازی'],
+    'mapTexts': [
+        'جای واقعیِ آبادی‌ها و راه‌های اصلی. فاصلهٔ مستقیمِ شهداد تا تنگ حدود ۹۸٫۸ کیلومتر است و الهام‌بخشِ مسیرهای رانندگی، تعقیبِ کاروان و شترسواری در بازی است.',
+        'تصویر ماهواره‌ایِ مرجع محدودهٔ تنگِ رتیل؛ هیچ مسیرِ حدسیِ درون تنگه به‌عنوان برداشت واقعی ادعا نشده است.',
+        'نمودارِ ارتباطِ نواحی بازی (شهداد، نبکا، کلوت، کاروانسرا، نیروگاه، کمپ‌ها، باندِ پروازِ نمکزار و تنگهٔ هور).',
+    ],
+}
+
+V12_MISSIONS = [
+    (1, 'M01', 'پیرمرد، درایوِ ۴۸ ساعت (مخفی در کابین) و ورودِ سردِ کامران', 45, 'R01', ['نبردِ تن‌به‌تن', 'درایوِ ۴۸ ساعت', 'کارگاه']),
+    (1, 'M02', 'ورودِ سارا (ممیزِ ریسک) و کاشتِ رستم', 35, 'R01', ['داستان', 'سارا', 'رستم']),
+    (1, 'M03', 'استانداردسازیِ سلاح و آزمونِ میدانِ تیر', 40, 'R01', ['سلاحِ گرم', 'آموزش', 'تجهیزات']),
+    (2, 'M04', 'جادهٔ کلوت و تعقیبِ سنگین با پیرمرد', 55, 'R03', ['کامیون‌سواری', 'تیراندازیِ جاده‌ای', 'چهارچرخ']),
+    (2, 'M05', 'رویاروییِ تن‌به‌تن با سوژه-۰۹ (فرهاد)', 40, 'R03', ['سلاحِ سرد', 'Parry', 'Mk-2']),
+    (2, 'M06', 'اردوگاهِ تحقیقاتی، ردیابیِ ستاره‌ای و یورشِ سپیده', 45, 'R07', ['کمپ', 'ستاره‌یابی', 'پهپاد']),
+    (3, 'M07', 'نبکاها با «درا»، مینا و کلوتِ لاشه‌ها (پویا)', 55, 'R02', ['شترسواریِ درا', 'مینا', 'پویا']),
+    (3, 'M08', 'پمپ‌خانهٔ WH01 — اولین پروازِ پهپاد و سرنخِ کاروان', 60, 'R02', ['پهپاد', 'موتور تریل', 'آبشخور WH01']),
+    (4, 'M09', 'باس ۱: کاروانِ زرهیِ طوفان و ورودِ رامین', 75, 'R03', ['باس‌فایت', 'SUV و کامیون', 'دوربینِ حرارتی']),
+    (4, 'M10', 'ورکشاپِ NVG کمپِ ۱ و معاملهٔ اخلالگر با پویا (BM01–BM04)', 45, 'R06', ['کمپِ ۱', 'ارتقای NVG', 'پویا']),
+    (5, 'M11', 'عملیاتِ شبانهٔ نیروگاهِ خورشیدی', 70, 'R04', ['پهپاد', 'دید در شب NVG', 'تک‌تیراندازی']),
+    (5, 'M12', 'اتاقِ کنترل، قطعِ برقِ تنگه و صدای کامران', 45, 'R04', ['اتاقِ کنترل', 'اکشنِ شبانه', 'کامران']),
+    (6, 'M13', 'سقوط به بخشِ قرنطینهٔ Mk-1 (وحشتِ بقا ۱)', 55, 'R08', ['وحشتِ بقا', 'دوربینِ حرارتی', 'تاریکی']),
+    (6, 'M14', 'دهلیزِ تهویه و شکستِ حرارتی مقابلِ رتیل‌های هور', 60, 'R08', ['وحشتِ بقا', 'شاتگان و منور', 'Mk-1']),
+    (6, 'M15', 'باس ۲: نمونهٔ آلفای Mk-1 («هیراد») و استخراجِ بهرام', 55, 'R08', ['باس‌فایت', 'نجاتِ بهرام', 'فرار']),
+    (7, 'M16', 'کاروانسرای بازارِ سیاهِ رویا، تیونینگ و درگیریِ حیاط', 55, 'R06', ['سلاحِ سرد و مشت', 'رویا', 'تیونینگ']),
+    (7, 'M17', 'رویاروییِ سردِ کاوه با دانیال و نقابِ «خنثی‌سازِ» بهرام', 35, 'R06', ['تعارضِ تاکتیکی', 'کاوه', 'بهرام']),
+    (8, 'M18', 'شکارِ چهارچرخ‌ها در نمکزار با مینا و درا', 75, 'R05', ['چهارچرخ Quad', 'شترسواری', 'نجات']),
+    (9, 'M19', 'باس ۳: حریقِ کاروانسرا، زره‌پوش و هلی‌کوپترِ PMC', 85, 'R06', ['باس‌فایت', 'محاصرهٔ NVG', 'تک‌تیراندازِ سنگین']),
+    (10, 'M20', 'نفوذِ شبانه با پهپادِ EMP و معاملهٔ ویکتور کروز', 60, 'R07', ['پهپادِ EMP', 'ویکتور کروز', 'عکاسیِ مدرک']),
+    (10, 'M21', 'افشای ۴۸ ساعت، خیانتِ پویا در D04 و انتخابِ اعدام یا هکِ رادار', 65, 'R07', ['افشای ۴۸ ساعت', 'خیانتِ پویا (D04)', 'انتخابِ بی‌رحمانه']),
+    (11, 'M22', 'کمپِ ۲ پس از حریقِ D04: پارانویای تاکتیکی و فرارِ رستم', 45, 'R07', ['کمپِ ۲', 'رستم', 'کدهای زون D']),
+    (11, 'M23', 'پاسگاهِ شمالی: کشفِ میکرودوزِ پنهانِ H-0 در سرُم‌های سورن', 35, 'R04', ['خطِ موازی', 'سورن', 'دوزِ H-0']),
+    (11, 'M24', 'تماسِ زندهٔ کیان از زونِ D و آماده‌سازیِ زرادخانه', 35, 'R07', ['رادیو', 'ورکشاپ', 'برنامه‌ریزیِ نجات']),
+    (12, 'M25', 'نفوذِ خفه‌کن‌دار به زونِ D و نجاتِ کیان (وحشتِ بقا ۲)', 60, 'R08', ['وحشتِ بقا', 'نجاتِ کیان', 'شاتگان']),
+    (12, 'M26', 'باس ۴: محاصرهٔ دوطرفهٔ پلِ فلزی و آغازِ چرخشِ سفیدِ سورن', 80, 'R08', ['باس‌فایتِ پل', 'چرخشِ سفیدِ سورن', 'رتیل + PMC']),
+    (13, 'M27', 'جمع‌بندیِ سردِ تاکتیکی زیرِ طاق و رمزگشاییِ نهاییِ درایو', 35, 'R08', ['تاکتیک', 'درایوِ ۴۸ ساعت', 'دانیال و سارا']),
+    (13, 'M28', 'خیانتِ سیاهِ بهرام (فرمولِ Mk-3)، برجِ رادیو و نبردِ پایانیِ رامین', 75, 'R03', ['خیانتِ بهرام (Mk-3)', 'برجِ رادیو', 'رامین']),
+    (14, 'M29', 'یورش به نیروگاه و باندِ نمکزار: چرخشِ سفیدِ سورن، رویا و آرش', 95, 'R05', ['چرخشِ سفیدِ سورن/رویا/آرش', 'باندِ پرواز', '۶ حالتِ حرکت']),
+    (15, 'M30', 'باس ۵: حجرهٔ رگه — نبردِ دوفازِ نهایی با کامران', 85, 'R08', ['باسِ نهایی', 'سلاحِ گرم و سرد', 'انهدامِ H-0']),
+    (15, 'M31', 'فرارِ انفجاری از تنگه و انهدامِ هواپیمای H-0 و فرمولِ Mk-3 بهرام', 45, 'R05', ['انهدامِ Mk-3 و هواپیما', 'ویکتور کروز', 'باندِ پرواز']),
+    (15, 'M32', 'پایانِ سرد: پروندهٔ «سایت ۰۱» و حرکت به افقِ لوت', 30, 'R05', ['اپیلوگِ سرد', 'سایت ۰۱', 'جادهٔ باز']),
+]
+
+V12_SIDE_STORIES = [
+    ('C01', 'کاروانسرا: شبِ مشت و آهن (رینگِ زیرزمینیِ رویا)',
+     '۳ راندِ مبارزهٔ تن‌به‌تن (مشت و سلاحِ سرد) در پشتِ اصطبلِ کاروانسرا علیه قلدرهای جاده و مزدورهای فراریِ PMC.\n\n- **پاداش:** پولِ نقد، اعتبارِ کاروانسرا و **قمهٔ تاکتیکیِ دست‌سازِ رویا**.'),
+    ('C02', 'کاروانسرا: سرقتِ کاروانِ لیتیوم (عملیاتِ دو مرحله‌ای)',
+     'عملیاتِ دو مرحله‌ای به سفارشِ رویا علیه تریلیِ زرهیِ لیتیوم و مهماتِ کامران.\n\n- **فاز ۱:** شناساییِ مسیر با پهپاد و کاشتنِ C4.\n- **فاز ۲:** کمینِ هماهنگ با «پیرمرد»، SUV و چهارچرخ ← بازشدنِ **شاتگانِ نیمه‌خودکار و تک‌تیراندازِ سنگین**.'),
+    ('C03', 'کاروانسرا: خبرچینِ نمکزار',
+     'تعقیبِ پرسرعتِ خبرچینی که مسیرِ قاچاقِ رویا را به PMC فروخته با **چهارچرخ یا SUV** و ردیابیِ ردِ لاستیک با دوربینِ حرارتی در غروب.'),
+    ('C04', 'کاروانسرا: گروگانِ ایست‌بازرسی (نجاتِ مکانیکِ رویا)',
+     'نفوذِ شبانه با **دید در شب (NVG) و کلتِ خفه‌کن‌دار** برای آزادکردنِ مکانیکِ رویا بدونِ آژیر ← تخفیفِ دائمی در گاراژِ تیونینگِ آفرود.'),
+    ('C05', 'کاروانسرا: پروندهٔ نمونهٔ ۹ (مانیفستِ خریدارانِ PMC)',
+     'ردیابیِ کدِ پلاکِ `SUBJ-09` در شبکهٔ لجستیکیِ رویا و کشفِ مانیفستِ خریدارانِ PMC و آزمایش‌های Mk-2 ← بازشدنِ فایلِ اطلاعاتیِ مخفی دربارهٔ پروژهٔ H-0 پیش از فصل ۱۵ (تکمیلِ `C01–C05` اسکادرانِ چهارچرخِ رویا را در چرخشِ سفیدِ فصل ۱۴ به اوجِ قدرت می‌رساند).'),
+    ('K01', 'کمپ: خطِ کلوت — چالشِ موتور تریل و چهارچرخ (آرش)',
+     'مسابقه و پرش روی تیغه‌های کلوت با آرش که به کشفِ انبارِ سوخت و قطعاتِ PMC و بازشدنِ **کیتِ پرش و اگزوزِ مسابقه‌ایِ موتور تریل** ختم می‌شود.'),
+    ('K02', 'کمپ: چشمِ شب — ارتقای پهپاد و ماژولِ EMP (رامین)',
+     'صعودِ شبانه به دکلِ مخابراتی همراه با رامین برای دزدیدنِ **ماژولِ پالسِ EMP و دیدِ حرارتیِ پهپاد** پیش از عملیات‌های نیمهٔ دوم و خیانتِ فصل ۱۳.'),
+    ('K03', 'کمپ: پلاک‌های نسلِ اول و دوئلِ کلوت (کاوه)',
+     'یافتنِ پلاک‌های شش کارگرِ حادثهٔ هفت سال پیش در خرابه‌های حاشیهٔ تنگه، تعمیرِ کمانچهٔ کهنهٔ کاوه + دوئلِ تک‌تیراندازیِ واقعی در کلوت ← **تفنگِ ارتقایافتهٔ کاوه**.'),
+    ('K04', 'کمپ: شکارِ عصر، آبشخور و شترسواری (مینا و درا)',
+     'گشتِ بی‌صدا با «درا» در نبکاها برای تامینِ آذوقهٔ کمپ + ثبتِ گربهٔ شنی با دوربینِ حرارتی کنارِ **آبشخورِ WH02** ← خورجینِ بی‌صدای مهمات برای «درا».'),
+    ('K05', 'کمپ: شبِ گزِ تنها (ماهرخ، کاوه و کیان)',
+     'تامینِ آبِ شیرین و سوختِ ژنراتورِ کمپ و شنیدنِ سابقهٔ عملیاتِ اولیهٔ کامران در لوت کنارِ آتشِ کمپ + شنودِ فرکانس‌های دوربردِ باندِ نمکزار.'),
+    ('WS01', 'ورکشاپ (WS01): قلبِ تازه برای «پیرمرد» (توربو و رادیاتورِ دوگانه)',
+     'یافتن و یدک‌کشیدنِ توربوی نظامی و رادیاتورِ دوگانه از لاشهٔ کامیونی در کلوت و نصبِ آن در ورکشاپ ← ضدجوش‌شدن و قدرتِ بالای «پیرمرد».'),
+    ('WS02', 'ورکشاپ (WS02): سپرِ دروازه‌شکن (آماده‌سازیِ یورشِ فصل ۱۴)',
+     'جمع‌آوریِ ۴ صفحهٔ فولادی از معدن و جوشکاریِ **سپرِ فولادیِ گاردشکن و توریِ پنجره** روی «پیرمرد» برای شکستنِ مستقیمِ خطِ دفاعیِ باندِ پرواز در فصل ۱۴.'),
+    ('WS03', 'ورکشاپ (WS03): کراس‌بوِ تاکتیکیِ بی‌صدا (کرفتِ سلاحِ مخفی‌کاری)',
+     'جمع‌آوریِ کابلِ فولادی، فنرِ کامپوزیت و خازنِ ولتاژ بالا برای ساختِ **کراس‌بوِ تاکتیکیِ بی‌صدا (Tactical Crossbow)** با پیکان‌های شوک‌دهنده و ضدزره روی میزِ ورکشاپ.'),
+    ('WS04', 'ورکشاپ (WS04): بازسازیِ هیولای رمل (تیونینگِ کاملِ آفرود)',
+     'نجاتِ یک موتورِ تریلِ رالیِ متروکه از حاشیهٔ نمکزار و بازسازیِ کاملِ کمک‌فنر، تایرهای رمل و چراغِ IR در گاراژ.'),
+    ('BM01', 'بازارِ سیاهِ پویا (BM01): غارتِ لاشه زیرِ آتش *(قفل پیش از D04)*',
+     '*(پنجرهٔ زمانی: فقط پیش از خیانتِ پویا در D04)* — پویا، دلالِ دیوانهٔ «کلوتِ لاشه‌ها»، مختصاتِ یک پهپادِ ساقط‌شدهٔ PMC را می‌فروشد اما هم‌زمان تیمِ بازیابیِ سورن می‌رسد! برداشتنِ جعبهٔ سنسور زیرِ آتش و بازشدنِ فروشگاهِ سیاهِ پویا.'),
+    ('BM02', 'بازارِ سیاهِ پویا (BM02): سرقتِ اخلالگرِ متحرک (Signal Hijacker) *(قفل پیش از D04)*',
+     '*(پنجرهٔ زمانی: فقط پیش از خیانتِ پویا در D04)* — عملیاتِ مشترک و پرآشوب با پویا برای دزدیدنِ ماژولِ **Signal Hijacker** از کامیونِ پارازیتِ PMC در جادهٔ کلوت ← بازشدنِ هکِ پهپادهای دشمن.'),
+    ('BM03', 'بازارِ سیاهِ پویا (BM03): خیانت در نمکزار (کمینِ معاملهٔ قاچاق) *(قفل پیش از D04)*',
+     '*(پنجرهٔ زمانی: فقط پیش از خیانتِ پویا در D04)* — پویا در معاملهٔ قطعاتِ IR در حاشیهٔ نمکزار دوطرفه بازی می‌کند و پایِ گشتِ چهارچرخِ PMC باز می‌شود؛ شکستنِ کمین و گرفتنِ لنزِ حرارتیِ نسلِ جدید.'),
+    ('BM04', 'بازارِ سیاهِ پویا (BM04): مختصاتِ باندِ پرواز *(قفل پیش از D04)*',
+     '*(پنجرهٔ زمانی: فقط پیش از خیانتِ پویا در D04)* — اسکادرانِ PMC پویا را در ایست‌بازرسیِ حاشیهٔ نمکزار به دام انداخته تا جدولِ پروازِ ویکتور کروز لو نرود؛ نفوذِ شبانه با پهپاد و NVG برای ضبطِ **دیسکِ برنامهٔ پروازِ باندِ نمکزار** پیش از آنکه پویا در D04 کمپِ ۱ را بفروشد.'),
+    ('D01', 'دفاع از پایگاه: سرقتِ رادیوی رمزنگاری‌شدهٔ کمپ',
+     'پیش از فصل ۵، دو موتوریِ نقاب‌دار سیمِ آنتنِ کمپِ ۱ را می‌برند و فرستندهٔ رمزدار را می‌دزدند! ردیابیِ ردِ لاستیک با پهپاد و دوربینِ حرارتی تا غارِ کلوت و بازپس‌گیریِ رادیو پیش از استخراجِ کدها.'),
+    ('D02', 'دفاع از پایگاه: سرقتِ خودروی آفرود از سایبانِ کمپ',
+     'قاچاقچی‌های اجیرشده نیمه‌شب SUV تیون‌شده را از کمپِ ۱ می‌دزدند؛ تعقیبِ خطِ روغن و عاجِ لاستیک با «پیرمرد»، تیراندازی به لاستیک و بازپس‌گیریِ خودرو پیش از ایست‌بازرسی.'),
+    ('D03', 'دفاع از پایگاه: ناپدیدشدنِ «درا» (شترِ دانیال)',
+     'طنابِ مهارِ «درا» شبانه بریده شده و شتر با خورجینِ نقشه‌های کلوت ناپدید است؛ ردیابیِ دقیقِ ردپا با مینا میانِ نبکاها تا آغلِ قاچاقچی‌ها و نجاتِ بی‌صدای «درا».'),
+    ('D04', 'دفاع از پایگاه: خیانتِ پویا و حریقِ انبارِ ماهرخ (کوچ به کمپِ ۲)',
+     'بلافاصله پس از افشای ۴۸ ساعت در فصل ۱۰، **پویا مختصاتِ کمپِ ۱ را در ازای یک کیفِ پولِ نقد به کامران می‌فروشد** (مأموریت‌های `BM01–BM04` قفل می‌شوند). خرابکاران انبارِ ماهرخ را به آتش می‌کشند؛ نجاتِ بهرام (که مخفیانه یادداشت‌های **Mk-3** را نجات می‌دهد)، پس‌گرفتنِ تانکرِ آب، تخلیهٔ قطعی به کمپِ ۲، و گیرانداختنِ پویا در کلوتِ لاشه‌ها با **انتخابِ بی‌رحمانهٔ بازیکن: اعدامِ فوری یا اجبار زیرِ لولهٔ اسلحه به هکِ رادارِ باندِ نمکزار در فصل ۱۴**.'),
+    ('WH01', 'آبشخورهای لوت: احیای ۴ منبعِ آب و عکاسیِ میدانی (WH01–WH04)',
+     'قطعِ پمپ‌های غیرمجازِ کامران و آبرسانی با تانکرِ «پیرمرد» در ۴ منبعِ کلیدیِ نقشه: **WH01 (آبشخورِ بادگیر)**، **WH02 (چشمهٔ سنگ‌دور)**، **WH03 (آب‌انبارِ کاروانسرا)** و **WH04 (پسابِ شورِ حاشیهٔ تنگه)** ← احیای حیات‌وحش، سیراب‌کردنِ «درا» و رادیاتورها و ثبتِ ۱۲ عکسِ میدانی و تحقیقی.'),
+    ('R01', 'معمای محیطی: ۶ سنگ‌نگاره و حکاکیِ میدانی (R01–R06)',
+     'ثبت و عکاسی از سنگ‌نگارهٔ باستانیِ «تنگهٔ بی‌صورت‌ها»، نقاشیِ زغالیِ `۱۰:۱۷` در **آبشخورِ WH01**، حکاکیِ کدهای تیمِ Mk-1 در تالارِ دو سایه، نقشهٔ زغالیِ باندِ پرواز پشتِ کمدِ سورن و خط‌خطی‌های زونِ D ← بازشدنِ **غارِ نقشه‌برداریِ اولیهٔ کامران (R06)**!'),
+]
+
+
 def read(path: Path) -> str:
     return path.read_text(encoding='utf-8-sig')
 
@@ -237,7 +421,7 @@ def humanize(stem: str) -> str:
 
 def category_of(stem: str) -> str:
     if stem.startswith('v11-'):
-        return 'کانسپت نسخهٔ ۱۱'
+        return 'کانسپتِ اکشن'
     if stem.startswith(('weapon-', 'prop-')) or 'armory' in stem:
         return 'سلاح و تجهیزات'
     if stem.startswith('env-') or stem in ('canyon-day-v1', 'caravanserai-night-v1'):
@@ -249,15 +433,9 @@ def category_of(stem: str) -> str:
     return 'شخصیت'
 
 
-def build(max_mb: float) -> dict:
-    index = json.loads(read(IMAGES / 'image-index.json'))
-    status = {Path(a['filename']).stem: a['status'] for a in index['assets']}
-    manifest = json.loads(read(IMAGES / 'completion-manifest.json'))
-    titles = {Path(a['filename']).stem: a['title'] for a in manifest['assets']}
-    titles['v11-action-kalut-convoy-v1'] = 'کمینِ کاروانِ طوفان در کلوت‌ها (کانسپت نسخهٔ ۱۱)'
-
+def parse_docs(doc_map: dict) -> list:
     docs = []
-    for doc_id, (rel, category, spoiler, legacy) in DOCS.items():
+    for doc_id, (rel, category, spoiler, legacy) in doc_map.items():
         p = ROOT / rel
         if not p.exists():
             continue
@@ -273,15 +451,13 @@ def build(max_mb: float) -> dict:
             'spoiler': spoiler,
             'words': len(md.split()),
         })
+    return docs
 
-    screenplay = read(V11 / 'SCREENPLAY_V11_FA.md')
-    headings = re.findall(r'^## فصل (\d+) — (.+)$', screenplay, flags=re.M)
-    assert len(headings) == 15, headings
 
-    # Build v11 budget object
+def build_budget(version: str, missions_spec: list) -> tuple[dict, list[int]]:
     chapter_minutes = [0] * 15
     main_missions = []
-    for ch_num, mid, title_fa, mins, region, tags in V11_MISSIONS:
+    for ch_num, mid, title_fa, mins, region, tags in missions_spec:
         chapter_minutes[ch_num - 1] += mins
         main_missions.append({
             'id': mid,
@@ -292,7 +468,7 @@ def build(max_mb: float) -> dict:
             'focus_tags_fa': tags,
         })
     budget = {
-        'version': 'v11-aaa',
+        'version': version,
         'chapter_minutes': chapter_minutes,
         'main_minutes_total': sum(chapter_minutes),
         'side_minutes_total': 480,
@@ -300,7 +476,12 @@ def build(max_mb: float) -> dict:
         'total_target_minutes': sum(chapter_minutes) + 480 + 300,
         'main_missions': main_missions,
     }
+    return budget, chapter_minutes
 
+
+def parse_chapters_and_summaries(screenplay: str, chapter_minutes: list[int]) -> tuple[list, list]:
+    headings = re.findall(r'^## فصل (\d+) — (.+)$', screenplay, flags=re.M)
+    assert len(headings) == 15, headings
     chapters = []
     for n, t in headings:
         clean_t = t.strip().replace(' ★', '')
@@ -313,22 +494,146 @@ def build(max_mb: float) -> dict:
     for sec in chapter_sections:
         paras = [
             q.strip() for q in sec.split('\n', 1)[1].split('\n\n')
-            if q.strip() and not q.strip().startswith(('**نما', '---', ':', '**باس', '**سکانس', '**عملیات', '- '))
+            if q.strip() and not q.strip().startswith(('**نما', '---', ':', '**باس', '**سکانس', '**عملیات', '- ', '*('))
         ]
         text = next((q for q in paras if '«' not in q), paras[0] if paras else '')
         summaries.append(re.sub(r'\s+', ' ', re.sub(r'[*_`]', '', text)))
+    return chapters, summaries
 
-    side = [{'id': sid, 'title': title, 'markdown': md} for sid, title, md in V11_SIDE_STORIES]
+
+def build_people(people_spec: list, quotes: dict, stems: list[str], status: dict) -> list:
+    order = [p[0] for p in people_spec]
+    people = []
+    for name, age, role, candidates, text in people_spec:
+        image = next(
+            (c for c in candidates if c in stems and (status.get(c) != 'retired_story_reference' or c in NOT_RETIRED)),
+            None,
+        )
+        people.append({'name': name, 'age': age, 'role': role, 'image': image, 'text': text, 'quote': quotes.get(name, '')})
+    people.sort(key=lambda p: order.index(p['name']) if p['name'] in order else 99)
+    return people
+
+
+def parse_v12_dialogues(screenplay: str) -> dict:
+    """Automatically extract dialogue scenes per chapter (1..15) from SCREENPLAY_V12_FA.md."""
+    chapter_sections = [x for x in re.split(r'^## ', screenplay, flags=re.M) if re.match(r'^فصل \d+ — ', x)]
+    assert len(chapter_sections) == 15, f'expected 15 v12 chapters, got {len(chapter_sections)}'
+
+    line_re = re.compile(r'^([^:\n]{1,180}?):\s*«(.+?)»\s*$')
+    scene_hdr_re = re.compile(r'^\*\*(نما\s*[\d۰-۹]+ب?\s*—\s*[^\n]+?)\*\*\s*$', flags=re.M)
+    fa_digits = str.maketrans('۰۱۲۳۴۵۶۷۸۹', '0123456789')
+
+    chapters_out = []
+    for sec in chapter_sections:
+        header_line, body = sec.split('\n', 1)
+        m_ch = re.match(r'^فصل (\d+) — (.+)$', header_line.strip())
+        assert m_ch, header_line
+        ch_num = int(m_ch.group(1))
+        ch_title = m_ch.group(2).strip().replace(' ★', '')
+
+        matches = list(scene_hdr_re.finditer(body))
+        scenes_out = []
+        for idx, sm in enumerate(matches):
+            raw_hdr = sm.group(1).strip()
+            start = sm.end()
+            end = matches[idx + 1].start() if idx + 1 < len(matches) else len(body)
+            scene_body = body[start:end].strip()
+
+            # Scene number for ID
+            m_num = re.search(r'نما\s*([\d۰-۹]+ب?)', raw_hdr)
+            raw_num = m_num.group(1).translate(fa_digits) if m_num else str(idx + 1)
+            scene_id = f'V12-C{ch_num:02d}-N{raw_num}'
+
+            # Extract context (first descriptive non-dialogue paragraph) and dialogue lines
+            context = ''
+            lines = []
+            for raw_line in scene_body.splitlines():
+                s = raw_line.strip()
+                if not s or s.startswith('---'):
+                    continue
+                dm = line_re.match(s)
+                if dm:
+                    raw_speaker = re.sub(r'[*_`]', '', dm.group(1)).strip()
+                    # Keep speaker concise (name before comma) while preserving cue in text if needed
+                    if '،' in raw_speaker:
+                        speaker_name, cue = raw_speaker.split('،', 1)
+                        speaker_name = speaker_name.strip()
+                        cue = cue.strip()
+                        dlg_text = f'({cue}) {dm.group(2).strip()}' if cue else dm.group(2).strip()
+                    else:
+                        speaker_name = raw_speaker
+                        dlg_text = dm.group(2).strip()
+                    lines.append({'speaker': speaker_name, 'text': dlg_text})
+                elif not context and not s.startswith('*(') and not s.startswith('>'):
+                    context = re.sub(r'\s+', ' ', re.sub(r'[*_`]', '', s))[:260]
+
+            if lines:
+                scenes_out.append({
+                    'id': scene_id,
+                    'title': raw_hdr,
+                    'context': context or raw_hdr,
+                    'lines': lines,
+                    'source': {'docId': 'SCREENPLAY_V12_FA', 'section': raw_hdr},
+                })
+
+        chapters_out.append({
+            'number': ch_num,
+            'title': ch_title,
+            'scenes': scenes_out,
+        })
+
+    return {
+        'chapters': chapters_out,
+        'recordings': [],
+        'note': 'گفت‌وگوهای نسخهٔ ۱۲ (بازار بین‌المللی — اکشنِ خالص) به‌طور مستقیم از فیلم‌نامهٔ ۱۵ فصلیِ v12 استخراج شده‌اند: سرد، کوتاه، عملیاتی و بدونِ ملودرام.',
+    }
+
+
+def build(max_mb: float) -> dict:
+    index = json.loads(read(IMAGES / 'image-index.json'))
+    status = {Path(a['filename']).stem: a['status'] for a in index['assets']}
+    manifest = json.loads(read(IMAGES / 'completion-manifest.json'))
+    titles = {Path(a['filename']).stem: a['title'] for a in manifest['assets']}
+    titles['v11-action-kalut-convoy-v1'] = 'کمینِ کاروانِ طوفان در کلوت‌ها'
 
     stems = sorted(p.stem for p in IMAGES.glob('*.png'))
-    # Put v11 concept art first in gallery
     stems = [s for s in stems if s.startswith('v11-')] + [s for s in stems if not s.startswith('v11-')]
 
-    people = []
-    for name, age, role, candidates, text in PEOPLE:
-        image = next((c for c in candidates if c in stems and (status.get(c) != 'retired_story_reference' or c in NOT_RETIRED)), None)
-        people.append({'name': name, 'age': age, 'role': role, 'image': image, 'text': text, 'quote': QUOTES.get(name, '')})
-    people.sort(key=lambda p: ORDER.index(p['name']) if p['name'] in ORDER else 99)
+    # Build v11 edition
+    v11_docs = parse_docs(V11_DOCS)
+    v11_screenplay = read(V11 / 'SCREENPLAY_V11_FA.md')
+    v11_budget, v11_ch_mins = build_budget('v11-aaa', V11_MISSIONS)
+    v11_chapters, v11_summaries = parse_chapters_and_summaries(v11_screenplay, v11_ch_mins)
+    v11_side = [{'id': sid, 'title': title, 'markdown': md} for sid, title, md in V11_SIDE_STORIES]
+    v11_people = build_people(V11_PEOPLE, V11_QUOTES, stems, status)
+    v11_edition = {
+        'docs': v11_docs,
+        'budget': v11_budget,
+        'chapters': v11_chapters,
+        'sideStories': v11_side,
+        'people': v11_people,
+        'chapterSummaries': v11_summaries,
+        'copy': V11_COPY,
+    }
+
+    # Build v12 edition
+    v12_docs = parse_docs(V12_DOCS)
+    v12_screenplay = read(V12 / 'SCREENPLAY_V12_FA.md')
+    v12_budget, v12_ch_mins = build_budget('v12-international', V12_MISSIONS)
+    v12_chapters, v12_summaries = parse_chapters_and_summaries(v12_screenplay, v12_ch_mins)
+    v12_side = [{'id': sid, 'title': title, 'markdown': md} for sid, title, md in V12_SIDE_STORIES]
+    v12_people = build_people(V12_PEOPLE, V12_QUOTES, stems, status)
+    v12_dialogues = parse_v12_dialogues(v12_screenplay)
+    v12_edition = {
+        'docs': v12_docs,
+        'budget': v12_budget,
+        'chapters': v12_chapters,
+        'sideStories': v12_side,
+        'people': v12_people,
+        'chapterSummaries': v12_summaries,
+        'copy': V12_COPY,
+        'dialogues': v12_dialogues,
+    }
 
     max_edge, quality = 1280, 76
     while True:
@@ -336,8 +641,8 @@ def build(max_mb: float) -> dict:
         for stem in stems:
             retired = status.get(stem) == 'retired_story_reference' and stem not in NOT_RETIRED
             caption = (
-                'کانسپت‌آرتِ جدیدِ نسخهٔ ۱۱ (بازطراحیِ AAA).' if stem.startswith('v11-')
-                else ('ایدهٔ کنارگذاشته‌شده؛ مرجعِ داستانِ فعلی نیست.' if retired else 'مرجعِ تصویری پیشین؛ برای نسخهٔ ۱۱ بازطراحیِ بصری جدید تعریف شده است.')
+                'کانسپت‌آرتِ اکشنِ کلوت‌ها و کاروان.' if stem.startswith('v11-')
+                else ('ایدهٔ کنارگذاشته‌شده؛ مرجعِ داستانِ فعلی نیست.' if retired else 'مرجعِ تصویریِ محیط، شخصیت یا وسیله در کویرِ لوت.')
             )
             gallery.append({
                 'id': stem,
@@ -352,14 +657,19 @@ def build(max_mb: float) -> dict:
             media[name] = b64_image(V7 / 'maps' / f'{name}.png', 1600 if name != 'design-map' else 1200, 80)
         snapshot = {
             'library': {
-                'docs': docs,
+                # Top-level defaults to v12 so encrypt-content.mjs validation passes seamlessly
+                'docs': v12_docs,
                 'gallery': gallery,
-                'budget': budget,
-                'chapters': chapters,
-                'sideStories': side,
-                'people': people,
-                'chapterSummaries': summaries,
-                'copy': COPY,
+                'budget': v12_budget,
+                'chapters': v12_chapters,
+                'sideStories': v12_side,
+                'people': v12_people,
+                'chapterSummaries': v12_summaries,
+                'copy': V12_COPY,
+                'editions': {
+                    'v12': v12_edition,
+                    'v11': v11_edition,
+                },
             },
             'media': media,
             'mapHtml': read(V7 / 'maps/map.html'),
@@ -383,11 +693,20 @@ def main():
     snapshot = build(args.max_mb)
     lib, media = snapshot['library'], snapshot['media']
     assert lib['docs'] and lib['gallery'] and all(g['id'] in media for g in lib['gallery'])
+    assert 'v11' in lib['editions'] and 'v12' in lib['editions']
     assert 'https://esm.sh/d3-geo@3.1.1' in snapshot['mapHtml']
+    v12 = lib['editions']['v12']
+    v11 = lib['editions']['v11']
+    v12_dlg_scenes = sum(len(c['scenes']) for c in v12['dialogues']['chapters'])
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(snapshot, ensure_ascii=False), encoding='utf-8')
-    print(f'wrote {OUT.relative_to(ROOT)}: docs={len(lib["docs"])} gallery={len(lib["gallery"])} '
-          f'chapters={len(lib["chapters"])} side={len(lib["sideStories"])} people={len(lib["people"])}')
+    size_mb = OUT.stat().st_size / 1048576
+    print(f'wrote {OUT.relative_to(ROOT)} ({size_mb:.2f} MB):')
+    print(f'  v12: docs={len(v12["docs"])} chapters={len(v12["chapters"])} missions={len(v12["budget"]["main_missions"])} '
+          f'side={len(v12["sideStories"])} people={len(v12["people"])} dialogue_chapters={len(v12["dialogues"]["chapters"])} dialogue_scenes={v12_dlg_scenes}')
+    print(f'  v11: docs={len(v11["docs"])} chapters={len(v11["chapters"])} missions={len(v11["budget"]["main_missions"])} '
+          f'side={len(v11["sideStories"])} people={len(v11["people"])}')
+    print(f'  shared: gallery={len(lib["gallery"])} media={len(media)}')
 
 
 if __name__ == '__main__':

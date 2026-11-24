@@ -1,8 +1,8 @@
 {
   "date": "2026-11-21",
   "purpose": "Concept image staging inventory; the v7 documents own story canon.",
-  "image_count": 118,
-  "total_bytes": 259131095,
+  "image_count": 124,
+  "total_bytes": 269313316,
   "excluded_identical_local_copies": [
     "bahram-62-v1 - Copy.png",
     "camel-pack-v1 - Copy.png",
@@ -251,6 +251,15 @@
       "canon_authority": false
     },
     {
+      "filename": "env-dune-two-bikes-facing-sunset-v1.png",
+      "bytes": 1371480,
+      "width": 1376,
+      "height": 768,
+      "sha256": "28fcd37be4ea406753a5566d416028d7d12f7e5dbeb17dc50c2c072b879b9b06",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
       "filename": "env-kamancheh-player-day-v1.png",
       "bytes": 1938534,
       "width": 1376,
@@ -265,6 +274,24 @@
       "width": 1376,
       "height": 768,
       "sha256": "13e114350ecefa2182683838b1a361479ec1f728c75fdd9362cbd1b8eb835793",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-keshit-oasis-road-v1.png",
+      "bytes": 2088091,
+      "width": 1376,
+      "height": 768,
+      "sha256": "d7f5e61df890a0df7ae4f2f0de33d56ea70b1d02138f7a4c18fd816308cc1327",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-keshit-valley-palms-stream-v1.png",
+      "bytes": 1686985,
+      "width": 1376,
+      "height": 687,
+      "sha256": "ca089b44528f6ad44e92817261d32a80ce676749a018a4d16e60a642ec086852",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -409,6 +436,15 @@
       "width": 1672,
       "height": 941,
       "sha256": "19ed3145c86956425676cfb5c97ea1f8b345c102a3363fe7e526fd64ee0baab6",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "env-palm-offroad-hammock-rest-v1.png",
+      "bytes": 1865327,
+      "width": 1376,
+      "height": 768,
+      "sha256": "667e87a9ab3da53f5fd099ef58cd51f9579fc33c0a17555e58431fcb05d8a791",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
@@ -913,6 +949,24 @@
       "width": 1024,
       "height": 1536,
       "sha256": "4ad77c72c1af3965858f4873d4441233f5f3c04d0c539a09e89272f1437657d0",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "v11-action-masked-bikers-dusk-v1.png",
+      "bytes": 1523192,
+      "width": 1376,
+      "height": 768,
+      "sha256": "3652f443a8f3b697ad3960080073ad8495521b98a734cf846fb4f0dfed82a448",
+      "status": "visual_reference_not_final_v7",
+      "canon_authority": false
+    },
+    {
+      "filename": "v11-action-masked-bikers-kalut-v1.png",
+      "bytes": 1647146,
+      "width": 1376,
+      "height": 768,
+      "sha256": "e2a99858b64f80a01687488ccdf26e4aa2478ebdcfb9535dca4957b899100f30",
       "status": "visual_reference_not_final_v7",
       "canon_authority": false
     },
