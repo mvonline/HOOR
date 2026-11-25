@@ -1,0 +1,89 @@
+{
+  "purpose": "8 pending concept images (quad rider with GoPro, 6 Lut Desert waterhole wildlife scenes from 07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA.md & ECOLOGY_WATERHOLES_AND_PHOTOGRAPHY_FA.md, and Kaveh v11 action studio portrait) queued while gemini-3.1-flash-image weekly quota resets at 2026-11-28T21:41:43Z.",
+  "destination_folder": "gameStory/images/",
+  "images": [
+    {
+      "id": "V11-QUAD-GOPRO",
+      "group": "action",
+      "filename": "v11-action-quad-rider-gopro-v1.png",
+      "title": "موتور چهارچرخ‌سوار با لباس کامل ایمنی، کلاه کاسکت و دوربین گوپرو متصل به کلاه در کویر لوت",
+      "references": [
+        "gameStory/images/vehicle-quad-atv-v1.png",
+        "gameStory/images/env-l05-kalut-markers-v1.png"
+      ],
+      "prompt": "16:9 widescreen 35mm live-action desert action film still of an off-road rider driving a rugged, dust-caked 4-wheel quad bike (ATV) across golden-ochre Lut Desert dunes and rocky kalut tracks, wearing full professional desert off-road protective safety gear (armored earth-tone/charcoal riding jacket, chest/shoulder protectors, knee guards, motocross boots, armored gloves, full-face off-road helmet with tinted dust goggles) with a compact matte-black GoPro-style action camera clearly mounted on the helmet. Backlit spray of fine golden desert sand against towering Shahdad kalut cliffs under late-afternoon sun. Zero text or brand logos."
+    },
+    {
+      "id": "ENV-WILDLIFE-FOX",
+      "group": "environments",
+      "filename": "env-wildlife-sand-fox-waterhole-v1.png",
+      "title": "روباه شنی (شاه‌روباه) در حال نوشیدن آب از آبشخورِ بادگیر در غروب لوت",
+      "references": [
+        "gameStory/images/env-o02-salt-flat-branch-v1.png"
+      ],
+      "prompt": "16:9 widescreen 35mm telephoto wildlife documentary cinema still of an Iranian Rüppell's sand fox (Vulpes rueppellii — pale sandy-cream coat, oversized alert triangular ears, bushy white-tipped tail) crouching cautiously at the weathered stone rim of the desert wildlife waterhole basin (W01) at dusk, lapping clear water with delicate ripples while scanning the twilight desert, with tamarisk shrubs, damp pawprinted sand, old mud-brick windcatcher edge, and purple-gold Lut Desert kalut mountains in the background. Zero text."
+    },
+    {
+      "id": "ENV-WILDLIFE-IBEX",
+      "group": "environments",
+      "filename": "env-wildlife-ibex-gazelle-waterhole-v1.png",
+      "title": "کل و بز کوهی و جبیر ایرانی کنار چشمهٔ سنگ‌دور در صبح زود",
+      "references": [
+        "gameStory/images/env-o02-salt-flat-branch-v1.png"
+      ],
+      "prompt": "16:9 widescreen 35mm telephoto wildlife documentary cinema still at early morning golden hour showing an adult Persian desert Bezoar ibex (wild goat with long curved scimitar horns and dark beard) standing alert on a sandstone ledge beside a natural stone-rimmed desert spring pool (W02) while two slender Iranian jebeer gazelles (Gazella bennettii) drink from the clear water below, framed by tall weathered boulders, damp hoofprinted sand, and hazy Lut Desert kalut ridges. Zero text."
+    },
+    {
+      "id": "ENV-WILDLIFE-SANDCAT",
+      "group": "environments",
+      "filename": "env-wildlife-sand-cat-night-v1.png",
+      "title": "گربهٔ شنی (Felis margarita) در حاشیهٔ رمل و بوته‌های تاغ نزدیک آبشخور در شب",
+      "references": [
+        "gameStory/images/env-o02-salt-flat-branch-v1.png"
+      ],
+      "prompt": "16:9 widescreen 35mm night wildlife cinema still of a rare Iranian desert sand cat (Felis margarita — compact pale sandy-buff coat, broad low-set ears, dark stripes on legs, large luminous eyes) crouching low among gnarled desert saxaul/tamarisk roots and wind-rippled sand dunes near the rocky edge of a moonlit Lut Desert waterhole at night under silver moonlight and starry sky. Zero text."
+    },
+    {
+      "id": "ENV-WILDLIFE-CARACAL",
+      "group": "environments",
+      "filename": "env-wildlife-caracal-dawn-v1.png",
+      "title": "کاراکال (سیاه‌گوش کویری) روی صخرهٔ مشرف به آبشخور و نبکاها در سحرگاه",
+      "references": [
+        "gameStory/images/env-o02-salt-flat-branch-v1.png"
+      ],
+      "prompt": "16:9 widescreen 35mm telephoto wildlife documentary cinema still at pale rose-gold desert dawn showing a sleek Iranian desert caracal (Caracal caracal — tawny-russet coat, long black-tufted ears, sharp amber eyes) perched alertly on a weathered sandstone outcrop overlooking a quiet desert waterhole basin and sand nebkha mounds in Iran's Lut Desert. Zero text."
+    },
+    {
+      "id": "ENV-WILDLIFE-BIRDS",
+      "group": "environments",
+      "filename": "env-wildlife-houbara-pleske-jay-v1.png",
+      "title": "زاغ‌بور ایرانی (پرندهٔ بومی کویر ایران) و هوبره کنار بوته‌های گز و آبشخور",
+      "references": [
+        "gameStory/images/env-o02-salt-flat-branch-v1.png"
+      ],
+      "prompt": "16:9 widescreen 35mm telephoto wildlife documentary cinema still in crisp morning desert sunlight showing an endemic Iranian ground jay / Pleske's ground jay (Podoces pleskei — sandy-pinkish plumage, black bib patch, slightly curved bill, long running legs) foraging on damp earth beside a desert stone waterhole while a camouflaged Asian houbara bustard (Chlamydotis macqueenii) walks among low green tamarisk and saxaul shrubs in the middle distance against hazy Lut kaluts. Zero text."
+    },
+    {
+      "id": "ENV-WILDLIFE-MONITOR",
+      "group": "environments",
+      "filename": "env-wildlife-monitor-jerboa-waterhole-v1.png",
+      "title": "بزمجهٔ بیابانی روی سنگ‌های آفتاب‌خوردهٔ لبهٔ آبشخور و کلوت‌های لوت",
+      "references": [
+        "gameStory/images/env-o02-salt-flat-branch-v1.png"
+      ],
+      "prompt": "16:9 widescreen 35mm wildlife documentary cinema still in warm desert sunlight showing a large, patterned Iranian desert monitor lizard (Varanus griseus — sandy-ochre skin with dark transverse bands, forked tongue sensing the air) basking on a sun-baked sandstone rock slab beside the damp edge of a desert waterhole and dry rocky wash in Iran's Lut Desert, with towering eroded kalut cliffs in the background. Zero text."
+    },
+    {
+      "id": "CH-KAVEH-V11",
+      "group": "characters",
+      "filename": "nader-v3.png",
+      "title": "کاوه — پرترهٔ تمام‌قد نسخهٔ اکشن ۱۱ با عصا، تفنگ ۳۰۸، رولور ۳۵۷ و کمانچهٔ کرمانی",
+      "references": [
+        "gameStory/images/nader-seated-v2.png",
+        "gameStory/images/prop-kamancheh-solo-v1.png",
+        "gameStory/images/daniyal-v1.png"
+      ],
+      "prompt": "Vertical 2:3 full-body photorealistic studio character portrait of Kaveh (age 52, same man as nader-seated-v2.png with fuller silver-streaked beard) on a seamless warm-gray studio cyclorama backdrop matching daniyal-v1.png, wearing a dusty dark olive-charcoal field coat over a gray-olive work shirt, loose desert scarf, brown cargo trousers, and dusty desert boots, leaning slightly on a battered wooden/iron crutch in his left hand, with a walnut-stock .308 scoped bolt-action rifle slung across his right shoulder, a .357 revolver holstered at his hip, and his aged walnut Kerman kamancheh and horsehair bow strapped in a canvas sling diagonally across his back. Zero text."
+    }
+  ]
+}

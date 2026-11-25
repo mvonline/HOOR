@@ -66,7 +66,7 @@ type DialogueRecording = {
   markdown: string;
   source: SourceLink;
 };
-type EditionKey = 'v12' | 'v11';
+type EditionKey = 'v13' | 'v12' | 'v11';
 type EditionBundle = {
   docs: Doc[];
   budget: any;
@@ -102,7 +102,7 @@ type Library = EditionBundle & {
 };
 
 const fa = (n: number) => n.toLocaleString('fa-IR');
-const release = { major: 1, minor: 6, patch: 0, build: '20261124.1' };
+const release = { major: 1, minor: 7, patch: 0, build: '20261125.1' };
 const normalize = (s: string) =>
   s
     .replace(/ي/g, 'ی')
@@ -223,7 +223,19 @@ function storyChapters(md: string) {
   const chs = parts.filter((p) => /^## فصل [\d۰-۹]+ —/.test(p));
   if (pro && chs.length) {
     const [h, ...r] = chs[0].split('\n');
-    chs[0] = h + '\n\n' + pro.split('\n').slice(1).join('\n').trim() + '\n\n---\n\n' + r.join('\n').trim();
+    const [proHeadRaw, ...proRest] = pro.split('\n');
+    const proHead = proHeadRaw.replace(/^##\s*/, '### ');
+    const ch1SubHead = '### ' + h.replace(/^##\s*/, '');
+    chs[0] =
+      h +
+      '\n\n' +
+      proHead +
+      '\n\n' +
+      proRest.join('\n').trim() +
+      '\n\n---\n\n' +
+      ch1SubHead +
+      '\n\n' +
+      r.join('\n').trim();
   }
   if (epi && chs.length) {
     chs[chs.length - 1] = chs[chs.length - 1] + '\n\n---\n\n' + epi;
@@ -286,7 +298,11 @@ function markdownHTML(markdown: string, breaks = false, story = false) {
     lang === 'mermaid'
       ? `<figure><img src="${media('design-map')}" alt="نمودار اتصال مناطق"/><figcaption>شماتیک اتصال مناطق؛ نقشهٔ جغرافیایی نیست.</figcaption></figure>`
       : `<pre dir="auto">${text.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</pre>`;
-  const screenplay = story ? markdown.replace(/^\*\*(نما\s*[\d۰-۹]+ب?\s*—\s*[^\n]+)\*\*\s*$/gm, '### $1') : markdown;
+  const screenplay = story
+    ? markdown
+        .replace(/^\*\*(نما\s*[\d۰-۹]+ب?\s*—\s*[^\n]+)\*\*\s*$/gm, '### $1')
+        .replace(/^\*\[([^\n]+)\]\*\s*$/gm, '*$1*')
+    : markdown;
   let i = 0;
   const out = (marked.parse(screenplay, { renderer, gfm: true, breaks }) as string).replace(
     /<h([1234])>/g,
@@ -360,23 +376,37 @@ export default function Page() {
 
   const activeLib = useMemo<Library | null>(() => {
     if (!library) return null;
-    const key: EditionKey = edition || 'v12';
+    const key: EditionKey = edition || 'v13';
     const ed = library.editions?.[key];
     if (!ed) return library;
     return {
       ...ed,
       gallery: library.gallery,
       readerEdition: key === 'v11' ? library.readerEdition : undefined,
-      dialogues: key === 'v12' ? ed.dialogues : library.dialogues,
+      dialogues: key === 'v11' ? library.dialogues : ed.dialogues || library.dialogues,
       editions: library.editions,
     };
   }, [library, edition]);
 
-  const isV12 = edition !== 'v11';
-  const editionLabel = isV12 ? 'نسخهٔ ۱۲' : 'نسخهٔ ۱۱';
-  const editionTag = isV12 ? 'نسخهٔ ۱۲ (اکشنِ بین‌المللی)' : 'نسخهٔ ۱۱ (AAA)';
-  const screenplayDocId = isV12 ? 'SCREENPLAY_V12_FA' : 'SCREENPLAY_V11_FA';
-  const novelDocId = isV12 ? 'RAD_E_HOOR_NOVEL_V12_FA' : 'RAD_E_HOOR_NOVEL_FA';
+  const isV13 = edition === 'v13';
+  const isV12 = edition === 'v12';
+  const isModern = isV13 || isV12;
+  const editionLabel = isV13 ? 'نسخهٔ ۱۳' : isV12 ? 'نسخهٔ ۱۲' : 'نسخهٔ ۱۱';
+  const editionTag = isV13
+    ? 'نسخهٔ ۱۳ (سنتزِ نهاییِ کانن)'
+    : isV12
+      ? 'نسخهٔ ۱۲ (اکشنِ بین‌المللی — آرشیو)'
+      : 'نسخهٔ ۱۱ (روایتِ درامِ بومی — آرشیو)';
+  const screenplayDocId = isV13
+    ? 'SCREENPLAY_V13_FA'
+    : isV12
+      ? 'SCREENPLAY_V12_FA'
+      : 'SCREENPLAY_V11_FA';
+  const novelDocId = isV13
+    ? 'RAD_E_HOOR_NOVEL_V13_FA'
+    : isV12
+      ? 'RAD_E_HOOR_NOVEL_V12_FA'
+      : 'RAD_E_HOOR_NOVEL_FA';
 
   useEffect(() => {
     function key(e: KeyboardEvent) {
@@ -573,6 +603,7 @@ export default function Page() {
 
   const story = useMemo(() => {
     const d =
+      activeLib?.docs.find((x) => x.id === 'SCREENPLAY_V13_FA') ||
       activeLib?.docs.find((x) => x.id === 'SCREENPLAY_V12_FA') ||
       activeLib?.docs.find((x) => x.id === 'SCREENPLAY_V11_FA') ||
       activeLib?.docs.find((x) => x.id === 'SCREENPLAY_FILM_FA');
@@ -581,6 +612,7 @@ export default function Page() {
 
   const novel = useMemo(() => {
     const d =
+      activeLib?.docs.find((x) => x.id === 'RAD_E_HOOR_NOVEL_V13_FA') ||
       activeLib?.docs.find((x) => x.id === 'RAD_E_HOOR_NOVEL_V12_FA') ||
       activeLib?.docs.find((x) => x.id === 'RAD_E_HOOR_NOVEL_FA');
     return d ? parseNovel(d.markdown) : null;
@@ -656,7 +688,7 @@ export default function Page() {
               {busy ? busyText : 'ورود به کتاب طراحی'}
             </button>
           </form>
-          <small>ردِ هور · نسخهٔ ۱۲ (بین‌المللی) و نسخهٔ ۱۱ (آرشیو)</small>
+          <small>ردِ هور · نسخهٔ ۱۳ (سنتزِ نهایی) · نسخهٔ ۱۲ و نسخهٔ ۱۱ (آرشیو)</small>
         </div>
       </main>
     );
@@ -671,18 +703,49 @@ export default function Page() {
             <span className="eyebrow">RAD-E HOOR · انتخاب نسخه</span>
             <h1 id="picker-title">کدام نسخه از ردِ هور را می‌خواهید بخوانید؟</h1>
             <p>
-              هر دو نسخه به‌صورت کامل در این پرتال در دسترس‌اند و هر زمان در نوارِ کناری می‌توانید میانِ آن‌ها جابه‌جا شوید.
+              هر سه نسخه به‌صورت کامل در این پرتال در دسترس‌اند و هر زمان در نوارِ کناری می‌توانید میانِ آن‌ها جابه‌جا شوید.
             </p>
           </header>
           <div className="edition-cards">
-            <article className="edition-card featured" onClick={() => switchEdition('v12')}>
+            <article className="edition-card featured" onClick={() => switchEdition('v13')}>
               <div className="edition-card-top">
                 <span className="edition-badge canon">جدید · Canon فعلی</span>
+                <span className="edition-code" dir="ltr">
+                  v13
+                </span>
+              </div>
+              <h2>نسخهٔ ۱۳ — سنتزِ نهایی</h2>
+              <p>
+                تلفیقِ نهاییِ ستونِ اخلاقیِ «نام و گناه» (تصادفِ سام و همدستیِ دانیال، افشای یگانه در فصل ۱۰) با ساعتِ
+                شنیِ ۶روزهٔ پروازِ ویکتور کروز: ۲ قلهٔ وحشتِ Mk-1 با مکانیکِ فریادزدنِ اسم، سرپیچیِ ۴۰۰هزار دلاریِ سارا،
+                لاگرِ پویا، مهارِ قابل‌بازیِ هواپیما با وینچِ ۱۰تُنی و اپیلوگِ درِ چوبیِ شهداد.
+              </p>
+              <div className="edition-meta">
+                <span>۱۵ فصل + پیش‌درآمد و اپیلوگ</span>
+                <span>۴۱ مأموریت اصلی (M00–M40)</span>
+                <span>رمانِ کامل v13</span>
+                <span>۱۷ شخصیت</span>
+              </div>
+              <button
+                type="button"
+                className="primary"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  switchEdition('v13');
+                }}
+              >
+                ورود به نسخهٔ ۱۳
+              </button>
+            </article>
+
+            <article className="edition-card" onClick={() => switchEdition('v12')}>
+              <div className="edition-card-top">
+                <span className="edition-badge archive">آرشیو</span>
                 <span className="edition-code" dir="ltr">
                   v12
                 </span>
               </div>
-              <h2>نسخهٔ ۱۲ — بازار بین‌المللی (اکشنِ خالص)</h2>
+              <h2>نسخهٔ ۱۲ — اکشنِ بین‌المللی</h2>
               <p>
                 اکشن-تریلر بین‌المللی (MGSV + Mad Max + Sicario + RE4)، ۴۸ ساعتِ پاک‌شدهٔ دانیال، سلاحِ زیستیِ H-0 برای
                 PMCها، پویا دلالِ دیوانهٔ بازارِ سیاه، باندِ پروازِ نمکزار و پایانِ سردِ «سایت ۰۱» — بدونِ ملودرام، درامِ
@@ -696,7 +759,7 @@ export default function Page() {
               </div>
               <button
                 type="button"
-                className="primary"
+                className="edition-secondary-btn"
                 onClick={(e) => {
                   e.stopPropagation();
                   switchEdition('v12');
@@ -713,7 +776,7 @@ export default function Page() {
                   v11
                 </span>
               </div>
-              <h2>نسخهٔ ۱۱ — روایتِ درامِ بومی (آرشیوِ AAA)</h2>
+              <h2>نسخهٔ ۱۱ — روایتِ درامِ بومی</h2>
               <p>
                 روایتِ دراماتیکِ کویرِ لوت با خطِ داستانیِ سام، کاروانسرای رویا، پویا تورلیدرِ سافاری و اپیلوگِ شهداد (به
                 همراه رمانِ ۲۶۵ صفحه‌ای، خلاصه‌های ساده و آرشیوِ پیام‌های صوتی).
@@ -765,14 +828,29 @@ export default function Page() {
         </a>
         <div className="edition">
           <div className="edition-label">
-            <strong>{isV12 ? 'نسخهٔ ۱۲ · بین‌المللی' : 'نسخهٔ ۱۱ · آرشیو AAA'}</strong>
-            <span>{isV12 ? 'اکشنِ خالص · Canon فعلی' : 'روایتِ درامِ بومی'}</span>
+            <strong>
+              {isV13
+                ? 'نسخهٔ ۱۳ · سنتزِ نهایی'
+                : isV12
+                  ? 'نسخهٔ ۱۲ · بین‌المللی'
+                  : 'نسخهٔ ۱۱ · روایتِ بومی'}
+            </strong>
+            <span>
+              {isV13
+                ? 'مرجعِ قفل‌شده · Canon فعلی'
+                : isV12
+                  ? 'آرشیو · اکشنِ بین‌المللی'
+                  : 'آرشیو · درامِ بومی AAA'}
+            </span>
           </div>
           <div className="edition-toggle" role="group" aria-label="تغییر نسخه">
+            <button type="button" className={isV13 ? 'active' : ''} onClick={() => switchEdition('v13')}>
+              نسخهٔ ۱۳
+            </button>
             <button type="button" className={isV12 ? 'active' : ''} onClick={() => switchEdition('v12')}>
               نسخهٔ ۱۲
             </button>
-            <button type="button" className={!isV12 ? 'active' : ''} onClick={() => switchEdition('v11')}>
+            <button type="button" className={!isModern ? 'active' : ''} onClick={() => switchEdition('v11')}>
               نسخهٔ ۱۱
             </button>
           </div>
@@ -795,7 +873,13 @@ export default function Page() {
           ))}
         </nav>
         <div className="sidebar-bottom">
-          <p>{isV12 ? 'لوتِ تاکتیکی در بیرون، وحشتِ Mk-1 در عمق.' : 'لوتِ خشن در بیرون، وحشتِ تنگه در عمق.'}</p>
+          <p>
+            {isV13
+              ? 'نام و ردپا در بیرون، دو قلهٔ وحشتِ Mk-1 در عمق.'
+              : isV12
+                ? 'لوتِ تاکتیکی در بیرون، وحشتِ Mk-1 در عمق.'
+                : 'لوتِ خشن در بیرون، وحشتِ تنگه در عمق.'}
+          </p>
           <span>ردِ هور · {editionLabel}</span>
           <button onClick={logout}>
             <LogOut size={17} />
@@ -954,7 +1038,12 @@ export default function Page() {
                 <div className="hero-shade" />
                 <div className="hero-content">
                   <span className="eyebrow">
-                    ردِ هور · {isV12 ? 'نسخهٔ ۱۲ · اکشنِ بین‌المللی' : 'نسخهٔ ۱۱ · کویرِ لوت'}
+                    ردِ هور ·{' '}
+                    {isV13
+                      ? 'نسخهٔ ۱۳ · سنتزِ نهاییِ کانن'
+                      : isV12
+                        ? 'نسخهٔ ۱۲ · اکشنِ بین‌المللی'
+                        : 'نسخهٔ ۱۱ · کویرِ لوت'}
                   </span>
                   <h1>{activeLib.copy.heroTitle}</h1>
                   <p className="logline">{activeLib.copy.heroText}</p>
@@ -1002,9 +1091,11 @@ export default function Page() {
                   <div>
                     <span className="eyebrow">شخصیت‌های اصلی و همراهان · {editionLabel}</span>
                     <h2>
-                      {isV12
-                        ? 'تیمِ عملیاتی، دلالِ بازارِ سیاه و خریدارانِ PMC'
-                        : 'کسانی که در لوت می‌جنگند، می‌سوزند یا دردسر می‌سازند'}
+                      {isV13
+                        ? '۱۷ چهره با ترازوی «نام و ردپا»، ریتمِ گفتارِ اختصاصی و خاکستریِ واقعی'
+                        : isV12
+                          ? 'تیمِ عملیاتی، دلالِ بازارِ سیاه و خریدارانِ PMC'
+                          : 'کسانی که در لوت می‌جنگند، می‌سوزند یا دردسر می‌سازند'}
                     </h2>
                   </div>
                   <button className="text-link" onClick={() => navigate('story')}>
@@ -1032,7 +1123,13 @@ export default function Page() {
                 <div className="section-heading">
                   <div>
                     <span className="eyebrow">پانزده فصل در ۶ پرده</span>
-                    <h2>{isV12 ? 'از کارگاهِ شهداد تا باندِ پروازِ نمکزار و حجرهٔ رگه' : 'از شهداد تا حجرهٔ رگه'}</h2>
+                    <h2>
+                      {isV13
+                        ? 'از کارگاهِ شهداد تا باندِ نمکزار، حجرهٔ رگه و درِ چوبیِ شهداد'
+                        : isV12
+                          ? 'از کارگاهِ شهداد تا باندِ پروازِ نمکزار و حجرهٔ رگه'
+                          : 'از شهداد تا حجرهٔ رگه'}
+                    </h2>
                   </div>
                   <button className="text-link" onClick={() => navigate('read')}>
                     شروع از پیش‌درآمد و فصل اول
@@ -1070,31 +1167,58 @@ export default function Page() {
                     رمانِ کامل، ۲۰ فصل و اپیلوگ
                   </button>{' '}
                   ·{' '}
-                  <button className="text-link" onClick={() => openDoc('06_WEAPONS_CRAFTING_AND_WORKSHOP_FA', '', 'full')}>
-                    سلاح و ورکشاپ
-                  </button>{' '}
-                  ·{' '}
-                  <button
-                    className="text-link"
-                    onClick={() => openDoc('07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA', '', 'full')}
-                  >
-                    مأموریت‌ها، پایگاه و سنگ‌نگاره‌ها
-                  </button>{' '}
-                  ·{' '}
-                  <button
-                    className="text-link"
-                    onClick={() => openDoc('05_DIRECTION_MISE_EN_SCENE_AND_EASTER_EGGS_FA', '', 'full')}
-                  >
-                    کارگردانی و ۱۸ ایستر‌اگ
-                  </button>
+                  {isV13 ? (
+                    <>
+                      <button className="text-link" onClick={() => openDoc('00_CANON_LEDGER_FA', '', 'full')}>
+                        دفترِ کلِ کانن
+                      </button>{' '}
+                      ·{' '}
+                      <button className="text-link" onClick={() => openDoc('05_GAMEPLAY_FA', '', 'full')}>
+                        گیم‌پلی و مأموریت‌ها (M00–M40)
+                      </button>{' '}
+                      ·{' '}
+                      <button className="text-link" onClick={() => openDoc('PLACES_OF_LOT_FA', '', 'full')}>
+                        مکان‌ها، ناوگان و سلاح‌ها
+                      </button>{' '}
+                      ·{' '}
+                      <button className="text-link" onClick={() => openDoc('DIRECTOR_PRINCIPLES_FA', '', 'full')}>
+                        منشورِ کارگردانی و دمو
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="text-link"
+                        onClick={() => openDoc('06_WEAPONS_CRAFTING_AND_WORKSHOP_FA', '', 'full')}
+                      >
+                        سلاح و ورکشاپ
+                      </button>{' '}
+                      ·{' '}
+                      <button
+                        className="text-link"
+                        onClick={() => openDoc('07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA', '', 'full')}
+                      >
+                        مأموریت‌ها، پایگاه و سنگ‌نگاره‌ها
+                      </button>{' '}
+                      ·{' '}
+                      <button
+                        className="text-link"
+                        onClick={() => openDoc('05_DIRECTION_MISE_EN_SCENE_AND_EASTER_EGGS_FA', '', 'full')}
+                      >
+                        کارگردانی و ۱۸ ایستر‌اگ
+                      </button>
+                    </>
+                  )}
                 </p>
               </section>
               <section className="review-panel">
                 <h2>از خواننده چه نظری می‌خواهیم؟</h2>
                 <p>
-                  {isV12
-                    ? 'لحنِ سرد و بین‌المللیِ v12 چطور بود؟ خطِ ۴۸ ساعتِ پاک‌شده، پویا (دلالِ دیوانه)، باندِ پروازِ نمکزار و پایانِ «سایت ۰۱» جواب داد؟'
-                    : 'لحنِ دیالوگ‌های جدید چطور بود؟ توازنِ اکشنِ انسانی با ۲ فصلِ وحشتِ تنگه جواب داد؟ کدام وسیلهٔ نقلیه یا باس‌فایت قوی‌تر بود؟'}
+                  {isV13
+                    ? 'سنتزِ نسخهٔ ۱۳ چطور بود؟ پیوندِ رازِ «سام» و پروندهٔ «مشتریِ د» با ساعتِ شنیِ پروازِ کروز، مکانیکِ فریادزدنِ اسم («هیراد!»)، مهارِ قابل‌بازیِ هواپیما با وینچِ ۱۰تُنی و اپیلوگِ شهداد چقدر یکپارچه است؟'
+                    : isV12
+                      ? 'لحنِ سرد و بین‌المللیِ v12 چطور بود؟ خطِ ۴۸ ساعتِ پاک‌شده، پویا (دلالِ دیوانه)، باندِ پروازِ نمکزار و پایانِ «سایت ۰۱» جواب داد؟'
+                      : 'لحنِ دیالوگ‌های جدید چطور بود؟ توازنِ اکشنِ انسانی با ۲ فصلِ وحشتِ تنگه جواب داد؟ کدام وسیلهٔ نقلیه یا باس‌فایت قوی‌تر بود؟'}
                 </p>
                 <button
                   className="secondary"
@@ -1127,8 +1251,8 @@ export default function Page() {
                   ['هستهٔ داستان', 'ایده، جهان و کشمکش'],
                   ['شخصیت‌ها', 'قهرمان‌ها و دشمن'],
                   ['مسیر کمپین', 'پانزده فصل'],
-                  ['مأموریت‌های اصلی', '۳۲ مأموریت'],
-                  ['مأموریت‌های فرعی', '۲۳ زنجیره و فعالیت'],
+                  ['مأموریت‌های اصلی', `${fa(activeLib.budget.main_missions.length)} مأموریت`],
+                  ['مأموریت‌های فرعی', `${fa(activeLib.sideStories.length)} زنجیره و فعالیت`],
                 ].map(([title, sub], i) => (
                   <button
                     key={title}
@@ -1146,7 +1270,26 @@ export default function Page() {
                   <>
                     <span className="eyebrow">صفحهٔ ۱ · ایده، جهان و کشمکش · {editionLabel}</span>
                     <h2>ردِ هور در یک نگاه</h2>
-                    {isV12 ? (
+                    {isV13 ? (
+                      <>
+                        <p>
+                          «ردِ هور» (نسخهٔ ۱۳ — سنتزِ نهاییِ کانن) یک اکشن-تریلرِ تاکتیکی و انسانیِ نیمه‌جهان‌باز در کویرِ
+                          لوت است که بر قاعدهٔ آهنینِ <strong>«نام و ردپا»</strong> بنا شده است: دانیال — راننده-مکانیکِ
+                          کامیونِ ده‌تُنیِ «پیرمرد» با زخمِ پنهانِ تصادفِ سامِ هشت‌ساله و دو سال سکوت در برابرِ بردنِ چهار
+                          کارگرِ دست‌بسته — همراهِ سارا (بازرسِ بیمه‌ای که قراردادِ ۴۰۰هزار دلاری‌اش فقط «تحویلِ سالمِ نمونه»
+                          را مجاز دانسته) در برابرِ شبکهٔ فراموشیِ کامران و ساعتِ شنیِ ۶روزهٔ پروازِ <strong>ویکتور کروز</strong>{' '}
+                          (<code>Kestrel Logistics</code>) می‌ایستد.
+                        </p>
+                        <p>
+                          زیست-کانیِ <strong>H-0</strong> روی چهار نمودِ دقیق قفل شده است (گازِ خامِ <code>دَمِ هور</code>،{' '}
+                          <code>Mk-1</code> در دو قلهٔ وحشتِ فصل ۶ و ۱۲ با مکانیکِ فریادزدنِ اسم، آمپولِ <code>H-0 Wipe</code> و
+                          نگهبانانِ بی‌نامِ <code>Mk-2</code> — با حذفِ کاملِ <code>Mk-3</code>). از پیدایشِ سه‌لایهٔ{' '}
+                          <strong>درایوِ کیان</strong> در پایانِ فصل ۲ تا افشای یگانهٔ پروندهٔ <strong>«مشتریِ د»</strong> در
+                          فصل ۱۰، خیانتِ بهرام در برجِ رادیو و مرگش در آشیانهٔ نمکزار، مهارِ ۱۰۰٪ قابل‌بازیِ هواپیما با وینچِ
+                          ۱۰تُنیِ «پیرمرد» و اپیلوگِ کوبیدنِ درِ چوبیِ خانهٔ مادرِ سام در شهداد، هیچ سرنخی بی‌برداشت رها نمی‌شود.
+                        </p>
+                      </>
+                    ) : isV12 ? (
                       <>
                         <p>
                           «ردِ هور» (نسخهٔ ۱۲) یک اکشن-تریلرِ تاکتیکیِ نیمه‌جهان‌باز در کویرِ لوت با ستون‌های لحنی{' '}
@@ -1203,7 +1346,9 @@ export default function Page() {
                     <div className="two-cards">
                       <button
                         className="path-card"
-                        onClick={() => openDoc('04_OPEN_WORLD_SYSTEMS_AND_VISUAL_BIBLE_FA', '', 'full')}
+                        onClick={() =>
+                          openDoc(isV13 ? 'PLACES_OF_LOT_FA' : '04_OPEN_WORLD_SYSTEMS_AND_VISUAL_BIBLE_FA', '', 'full')
+                        }
                       >
                         <h3>راه‌یابی شبانه و تجربهٔ جهان</h3>
                         <p>آموزش ستاره‌یابی، نقشه‌خوانی، نشانه‌های طبیعی و زندگیِ نیمه‌باز در لوت.</p>
@@ -1211,7 +1356,13 @@ export default function Page() {
                       </button>
                       <button
                         className="path-card"
-                        onClick={() => openDoc('07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA', '', 'full')}
+                        onClick={() =>
+                          openDoc(
+                            isV13 ? '05_GAMEPLAY_FA' : '07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA',
+                            '',
+                            'full',
+                          )
+                        }
                       >
                         <h3>کمپ، آبشخور و نگهداری</h3>
                         <p>زندگی روزمرهٔ کمپ، فعالیت‌های اختیاری، آب، غذا، برق و تعمیرات.</p>
@@ -1220,9 +1371,11 @@ export default function Page() {
                     </div>
                     <div className="notice warning">
                       <Eye size={18} />
-                      {isV12
-                        ? 'این مرور پایان داستان را لو می‌دهد: در فصل ۱۵ دانیال پس از نبردِ دوفاز با کامران در حجرهٔ رگه و انهدامِ هواپیمای باربریِ ویکتور کروز در باندِ نمکزار، با فایلِ «سایت ۰۱» روبه‌رو می‌شود و در سپیده به دلِ جادهٔ بازِ لوت می‌زند.'
-                        : 'این مرور پایان داستان را لو می‌دهد: در سکانس نهایی، دانیال در دوئلی رو در رو با کامران مواجه می‌شود و باید دربارهٔ عدالت، انتقام و زنده‌ماندن دیگران تصمیم بگیرد.'}
+                      {isV13
+                        ? 'این مرور پایان داستان را لو می‌دهد: در فصل ۱۵ دانیال در حجرهٔ رگه ویالِ فراموشیِ کامران را می‌شکند («اسمش سام بود»)، روی باندِ نمکزار با وینچِ ۱۰تُنیِ «پیرمرد» و شلیکِ RPG هواپیمای کروز را منهدم می‌کند، پاکت را برای ۱۰ خانواده می‌سپارد و در اپیلوگِ شهداد درِ خانهٔ مادرِ سام را می‌زند.'
+                        : isV12
+                          ? 'این مرور پایان داستان را لو می‌دهد: در فصل ۱۵ دانیال پس از نبردِ دوفاز با کامران در حجرهٔ رگه و انهدامِ هواپیمای باربریِ ویکتور کروز در باندِ نمکزار، با فایلِ «سایت ۰۱» روبه‌رو می‌شود و در سپیده به دلِ جادهٔ بازِ لوت می‌زند.'
+                          : 'این مرور پایان داستان را لو می‌دهد: در سکانس نهایی، دانیال در دوئلی رو در رو با کامران مواجه می‌شود و باید دربارهٔ عدالت، انتقام و زنده‌ماندن دیگران تصمیم بگیرد.'}
                     </div>
                   </>
                 ) : overviewPage === 2 ? (
@@ -1230,9 +1383,11 @@ export default function Page() {
                     <span className="eyebrow">صفحهٔ ۲ · شخصیت‌ها و کشمکش</span>
                     <h2>آدم‌هایی با خواسته‌های جداگانه</h2>
                     <p>
-                      {isV12
-                        ? 'داستان بر یک تیمِ عملیاتیِ کم‌حرف و کارکشته تکیه دارد: سارا با آنالیزِ شیمیایی و کارابین پیش می‌رود؛ کاوه تنها بازماندهٔ نشتِ هفت سال پیش است؛ رامین پهپاد، NVG و EMP می‌سازد؛ مینا نبکاها را ردیابی می‌کند؛ رویا زرادخانهٔ کاروانسرا را در اختیار دارد؛ پویا دلالِ دیوانهٔ «کلوتِ لاشه‌ها» است؛ و سورن پس از کشفِ دوزِ پنهانِ H-0 در جیرهٔ خودش، روی پل علیه کامران شورش می‌کند.'
-                        : 'داستان بر گروهی متکی است که هر کدام مهارت و انگیزهٔ خود را دارند. سارا با مدرک و تحلیل زمین‌شناسی پیش می‌رود؛ کاوه بارِ خاطره و فقدانِ کارگران را دارد؛ رامین کارگاه و وسایل را سرپا نگه می‌دارد؛ مینا از حیات‌وحش و آبشخورها مراقبت می‌کند؛ رویا شبکهٔ رانندگان و مسیرهای غیررسمی را می‌شناسد؛ و سورن از درونِ نیروهای کامران با حقیقت روبه‌رو می‌شود.'}
+                      {isV13
+                        ? 'در نسخهٔ ۱۳ هر یک از ۱۷ شخصیت ریتمِ گفتار، تیکِ رفتاری و شیءِ داستانیِ اختصاصیِ خود را دارد: سارا میانِ قراردادِ ۴۰۰هزار دلاریِ «تحویلِ سالم» و انهدامِ محموله می‌ایستد؛ کاوه بارِ شش نام و دریچهٔ سعید را دارد؛ رامین مغزِ فنی و گرمِ کارگاه است؛ پویا با لاگرِ پنهانِ باتری کمپِ ۱ را لو می‌دهد؛ بهرام برای صندلیِ پرواز رامین را می‌فروشد؛ و سورن با دیدنِ امضای ناخوانایش علیه کامران می‌شورد.'
+                        : isV12
+                          ? 'داستان بر یک تیمِ عملیاتیِ کم‌حرف و کارکشته تکیه دارد: سارا با آنالیزِ شیمیایی و کارابین پیش می‌رود؛ کاوه تنها بازماندهٔ نشتِ هفت سال پیش است؛ رامین پهپاد، NVG و EMP می‌سازد؛ مینا نبکاها را ردیابی می‌کند؛ رویا زرادخانهٔ کاروانسرا را در اختیار دارد؛ پویا دلالِ دیوانهٔ «کلوتِ لاشه‌ها» است؛ و سورن پس از کشفِ دوزِ پنهانِ H-0 در جیرهٔ خودش، روی پل علیه کامران شورش می‌کند.'
+                          : 'داستان بر گروهی متکی است که هر کدام مهارت و انگیزهٔ خود را دارند. سارا با مدرک و تحلیل زمین‌شناسی پیش می‌رود؛ کاوه بارِ خاطره و فقدانِ کارگران را دارد؛ رامین کارگاه و وسایل را سرپا نگه می‌دارد؛ مینا از حیات‌وحش و آبشخورها مراقبت می‌کند؛ رویا شبکهٔ رانندگان و مسیرهای غیررسمی را می‌شناسد؛ و سورن از درونِ نیروهای کامران با حقیقت روبه‌رو می‌شود.'}
                     </p>
                     <div className="overview-people">
                       {activeLib.people.slice(0, 12).map((p) => (
@@ -1280,7 +1435,7 @@ export default function Page() {
                 ) : overviewPage === 4 ? (
                   <>
                     <span className="eyebrow">صفحهٔ ۴ · مأموریت‌های اصلی</span>
-                    <h2>۳۲ مأموریت در دلِ داستان</h2>
+                    <h2>{fa(activeLib.budget.main_missions.length)} مأموریت در دلِ داستان</h2>
                     <p>
                       مأموریت‌های اصلی، جست‌وجوی پاسخ را به کنش تبدیل می‌کنند: تعقیب و ردیابی، نفوذ مخفیانه، درگیری
                       مسلحانه، نجات همراهان و رویارویی با دشمنان مهم. چهار رخداد D01 تا D04 نیز وضعیت رادیو، خودرو، درا
@@ -1319,10 +1474,13 @@ export default function Page() {
                 ) : (
                   <>
                     <span className="eyebrow">صفحهٔ ۵ · مأموریت‌های فرعی</span>
-                    <h2>{isV12 ? 'عملیات‌های جانبی، بازارِ سیاهِ پویا و دفاع از پایگاه' : 'داستان‌های کوچکِ لوت'}</h2>
+                    <h2>
+                      {isModern ? 'عملیات‌های جانبی، بازارِ سیاهِ پویا و دفاع از پایگاه' : 'داستان‌های کوچکِ لوت'}
+                    </h2>
                     <p>
-                      ۲۳ مأموریت و معمای فرعی به بازیکن اجازه می‌دهند پیش از ادامهٔ خط اصلی به تیم، تجهیزات و اکتشاف
-                      بپردازد. بسیاری از آن‌ها پاداشِ عملی، تسلیحاتی یا اطلاعاتی می‌دهند اما اجباری نیستند.
+                      {fa(activeLib.sideStories.length)} مأموریت و معمای فرعی به بازیکن اجازه می‌دهند پیش از ادامهٔ خط
+                      اصلی به تیم، تجهیزات و اکتشاف بپردازد. بسیاری از آن‌ها پاداشِ عملی، تسلیحاتی یا اطلاعاتی می‌دهند
+                      اما اجباری نیستند.
                     </p>
                     <div className="overview-side-missions">
                       {activeLib.sideStories.map((s) => (
@@ -1477,9 +1635,11 @@ export default function Page() {
                   <span className="eyebrow">رمانِ کامل · ۲۰ فصل و اپیلوگ · {editionLabel}</span>
                   <h1>ردِ هور</h1>
                   <p>
-                    {isV12
-                      ? 'رمانِ اکشن-تریلرِ نسخهٔ ۱۲ در سه بخش روایت می‌شود؛ از نشتِ هفت‌سالهٔ تنگه تا باندِ پروازِ نمکزار و پایانِ سردِ «سایت ۰۱».'
-                      : 'رمان در سه بخش روایت می‌شود؛ از فاجعهٔ هفت سال پیش تا رویاروییِ سپیده‌دم در تنگهٔ هور. متن زیر فصل‌به‌فصل پیش می‌رود تا جای روایت و زمان هر فصل روشن بماند.'}
+                    {isV13
+                      ? 'رمانِ اکشن-تریلرِ ادبیِ نسخهٔ ۱۳ در سه بخش (۲۰ فصل و اپیلوگ) روایت می‌شود؛ از هفت چراغ در عمقِ گسل تا مهارِ هواپیمای کروز روی نمکزار و درِ چوبیِ خانهٔ مادرِ سام در شهداد.'
+                      : isV12
+                        ? 'رمانِ اکشن-تریلرِ نسخهٔ ۱۲ در سه بخش روایت می‌شود؛ از نشتِ هفت‌سالهٔ تنگه تا باندِ پروازِ نمکزار و پایانِ سردِ «سایت ۰۱».'
+                        : 'رمان در سه بخش روایت می‌شود؛ از فاجعهٔ هفت سال پیش تا رویاروییِ سپیده‌دم در تنگهٔ هور. متن زیر فصل‌به‌فصل پیش می‌رود تا جای روایت و زمان هر فصل روشن بماند.'}
                   </p>
                   <button className="primary" onClick={() => setNovelOk(true)}>
                     شروع خواندن
@@ -1609,21 +1769,30 @@ export default function Page() {
                 ))}
               </div>
               <div className="two-cards">
-                <button className="path-card" onClick={() => openDoc('02_CHARACTERS_AND_DIALOGUE_CRAFT_FA', '', 'full')}>
+                <button
+                  className="path-card"
+                  onClick={() =>
+                    openDoc(isV13 ? '02_CHARACTERS_FA' : '02_CHARACTERS_AND_DIALOGUE_CRAFT_FA', '', 'full')
+                  }
+                >
                   <h3>شخصیت‌ها و استانداردِ دیالوگ ({edition})</h3>
                   <p>
-                    {isV12
-                      ? 'هستهٔ عملیاتیِ ۱۰ نفره + پویا و ویکتور کروز، قواعدِ دیالوگِ سرد و سه صحنهٔ نمونه.'
-                      : 'روان‌شناسیِ هستهٔ ۱۰ نفره، قواعدِ دیالوگِ زنده و دو صحنهٔ نمونه.'}
+                    {isV13
+                      ? 'بلوک‌های ۷خطیِ هر ۱۷ شخصیت، ریتمِ گفتارِ اختصاصی، پراپ‌های حاملِ داستان و مرزهای دانایی.'
+                      : isV12
+                        ? 'هستهٔ عملیاتیِ ۱۰ نفره + پویا و ویکتور کروز، قواعدِ دیالوگِ سرد و سه صحنهٔ نمونه.'
+                        : 'روان‌شناسیِ هستهٔ ۱۰ نفره، قواعدِ دیالوگِ زنده و دو صحنهٔ نمونه.'}
                   </p>
                   <span className="text-link">خواندن سند</span>
                 </button>
                 <button className="path-card" onClick={() => openDoc(screenplayDocId, '', 'full')}>
                   <h3>فیلم‌نامهٔ کاملِ ۱۵ فصلی</h3>
                   <p>
-                    {isV12
-                      ? 'پیش‌درآمد، ۱۵ فصل، ۵ باس‌فایت و اپیلوگِ سردِ «سایت ۰۱».'
-                      : 'پیش‌درآمد، ۱۵ فصل، ۵ باس‌فایت و اپیلوگِ شهداد.'}
+                    {isV13
+                      ? 'پیش‌درآمد (هفت چراغ)، ۱۵ فصل، ۵ باس‌فایت، مهارِ هواپیما با وینچ و اپیلوگِ درِ چوبیِ شهداد.'
+                      : isV12
+                        ? 'پیش‌درآمد، ۱۵ فصل، ۵ باس‌فایت و اپیلوگِ سردِ «سایت ۰۱».'
+                        : 'پیش‌درآمد، ۱۵ فصل، ۵ باس‌فایت و اپیلوگِ شهداد.'}
                   </p>
                   <span className="text-link">ورود با هشدار افشای داستان</span>
                 </button>
@@ -1641,7 +1810,7 @@ export default function Page() {
                 <strong>راهنمای نقشه</strong>
                 <p>
                   شهداد، نبکاها و کلوت‌ها الهامِ جغرافیاییِ واقعی‌اند. کاروانسرا، نیروگاهِ کامران، کمپ‌ها
-                  {isV12 ? '، باندِ پروازِ نمکزار' : ''} و تنگهٔ هور محل‌های داستانی هستند.
+                  {isModern ? '، آشیانه و باندِ پروازِ نمکزار' : ''} و تنگهٔ هور محل‌های داستانی هستند.
                 </p>
                 <button className="secondary" onClick={() => navigate('maps')}>
                   دیدنِ نقشه‌ها
@@ -1681,9 +1850,11 @@ export default function Page() {
               <span className="eyebrow">دیالوگ‌های زندهٔ {editionLabel}</span>
               <h1>گفت‌وگوهای نوشته‌شده</h1>
               <p className="lead">
-                {isV12
-                  ? 'گفت‌وگوهای هر ۱۵ فصل را جداگانه بخوانید. دیالوگ‌ها در نسخهٔ ۱۲ سرد، کوتاه، تاکتیکی و بدونِ ملودرام‌اند.'
-                  : 'گفت‌وگوهای هر ۱۵ فصل را جداگانه بخوانید. دیالوگ‌ها با لحنِ زنده، تند و خاکی برای نسخهٔ ۱۱ بازنویسی شده‌اند.'}
+                {isV13
+                  ? 'گفت‌وگوهای پیش‌درآمد، ۱۵ فصل و اپیلوگ را فصل‌به‌فصل بخوانید؛ زیرمتن‌محور، شیءمحور و با صدای متمایزِ هر شخصیت در نسخهٔ ۱۳.'
+                  : isV12
+                    ? 'گفت‌وگوهای هر ۱۵ فصل را جداگانه بخوانید. دیالوگ‌ها در نسخهٔ ۱۲ سرد، کوتاه، تاکتیکی و بدونِ ملودرام‌اند.'
+                    : 'گفت‌وگوهای هر ۱۵ فصل را جداگانه بخوانید. دیالوگ‌ها با لحنِ زنده، تند و خاکی برای نسخهٔ ۱۱ بازنویسی شده‌اند.'}
               </p>
               <div className="notice">
                 <Eye size={20} />
@@ -1780,16 +1951,19 @@ export default function Page() {
             <section className="section">
               <span className="eyebrow">ساختارِ کمپینِ ۳۰–۴۰ ساعته · {editionLabel}</span>
               <h1>
-                ۱۵ فصل، ۳۲ مأموریتِ اصلی، {fa(activeLib.sideStories.length)} مأموریت و معمای فرعی
+                ۱۵ فصل، {fa(activeLib.budget.main_missions.length)} مأموریتِ اصلی، {fa(activeLib.sideStories.length)}{' '}
+                مأموریت و معمای فرعی
               </h1>
               <p className="lead">
-                {isV12
-                  ? 'اکشنِ تاکتیکی در کویرِ لوت (کاروانسرا، کمپ، ورکشاپ، دفاع از پایگاه، بازارِ سیاهِ پویا، باندِ پروازِ نمکزار، سنگ‌نگاره‌ها و آبشخورها) در بیرونِ تنگه و ۲ قلهٔ فشردهٔ وحشتِ بقا در اعماقِ تنگه (فصل ۶ و ۱۲).'
-                  : 'اکشنِ جهان‌باز در کویرِ لوت (کاروانسرا، کمپ، ورکشاپ، دفاع از پایگاه، تورلیدرِ دردسرساز، سنگ‌نگاره‌ها و آبشخورها) در بیرونِ تنگه و ۲ فصلِ نادر و هولناکِ وحشت در اعماقِ تنگه (فصل ۶ و ۱۲).'}
+                {isV13
+                  ? '۱۳ فصلِ اکشنِ جاده‌ای، خودرویی و نفوذِ تاکتیکی در کویرِ لوت (کاروانسرا، کمپ‌های ۱ و ۲، ورکشاپ، شبیخون‌های پیرامونی D01–D03، حریقِ D04، بازارِ سیاهِ پویا و باندِ نمکزار) + ۲ قلهٔ متمرکزِ وحشتِ بقای Mk-1 در اعماقِ تنگه (فصل ۶ و ۱۲).'
+                  : isV12
+                    ? 'اکشنِ تاکتیکی در کویرِ لوت (کاروانسرا، کمپ، ورکشاپ، دفاع از پایگاه، بازارِ سیاهِ پویا، باندِ پروازِ نمکزار، سنگ‌نگاره‌ها و آبشخورها) در بیرونِ تنگه و ۲ قلهٔ فشردهٔ وحشتِ بقا در اعماقِ تنگه (فصل ۶ و ۱۲).'
+                    : 'اکشنِ جهان‌باز در کویرِ لوت (کاروانسرا، کمپ، ورکشاپ، دفاع از پایگاه، تورلیدرِ دردسرساز، سنگ‌نگاره‌ها و آبشخورها) در بیرونِ تنگه و ۲ فصلِ نادر و هولناکِ وحشت در اعماقِ تنگه (فصل ۶ و ۱۲).'}
               </p>
               <div className="segmented">
                 {[
-                  ['main', '۳۲ مأموریت اصلی'],
+                  ['main', `${fa(activeLib.budget.main_missions.length)} مأموریت اصلی`],
                   ['side', `${fa(activeLib.sideStories.length)} مأموریت فرعی و دفاع از پایگاه`],
                   ['explore', 'ورکشاپ، سنگ‌نگاره‌ها و آبشخورها'],
                 ].map(([id, t]) => (
@@ -1838,7 +2012,7 @@ export default function Page() {
                                     R02: 'نبکا و آبشخور',
                                     R03: 'کلوت‌ها',
                                     R04: 'نیروگاه خورشیدی',
-                                    R05: isV12 ? 'نمکزار و باندِ پرواز' : 'دشتِ نمک',
+                                    R05: isModern ? 'نمکزار و باندِ پرواز' : 'دشتِ نمک',
                                     R06: 'کاروانسرا / کمپ',
                                     R07: 'رصدگاه',
                                     R08: 'تنگهٔ هور',
@@ -1878,30 +2052,49 @@ export default function Page() {
                 </div>
               ) : (
                 <div className="explore-panel">
-                  <h2>سلاح، ورکشاپ و تیونینگِ آفرود، دفاع از پایگاه، سنگ‌نگاره‌ها و ۱۸ ایستر‌اگ</h2>
+                  <h2>سلاح، ورکشاپ و تیونینگِ آفرود، دفاع از پایگاه، سنگ‌نگاره‌ها و آبشخورها</h2>
                   <p>
                     تمامِ سیستم‌های دنیای باز، جمع‌آوریِ آیتم و کرفتینگ در ورکشاپ، تعمیر و تیونینگِ وسایل نقلیه، شبیخون
                     و بازپس‌گیریِ منابعِ پایگاه، زنجیرهٔ ۶ سنگ‌نگاره و حکاکیِ غار، ۴ آبشخور و ۱۲ عکسِ طبیعت/تحقیقی در
                     اسنادِ کاملِ زیر در دسترس‌اند.
                   </p>
-                  <button
-                    className="primary"
-                    onClick={() => openDoc('06_WEAPONS_CRAFTING_AND_WORKSHOP_FA', '', 'full')}
-                  >
-                    طراحی سلاح، ورکشاپ و تیونینگ
-                  </button>
-                  <button
-                    className="secondary"
-                    onClick={() => openDoc('07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA', '', 'full')}
-                  >
-                    مأموریت‌ها، پایگاه، سنگ‌نگاره‌ها و آبشخورها
-                  </button>
-                  <button
-                    className="secondary"
-                    onClick={() => openDoc('05_DIRECTION_MISE_EN_SCENE_AND_EASTER_EGGS_FA', '', 'full')}
-                  >
-                    سند کارگردانی، میزانسن و ۱۸ ایستر‌اگ
-                  </button>
+                  {isV13 ? (
+                    <>
+                      <button className="primary" onClick={() => openDoc('05_GAMEPLAY_FA', '', 'full')}>
+                        گیم‌پلی، افعال و ماتریسِ مأموریت‌ها (M00–M40)
+                      </button>
+                      <button className="secondary" onClick={() => openDoc('PLACES_OF_LOT_FA', '', 'full')}>
+                        جهان، مکان‌ها، ناوگان و سلاح‌ها
+                      </button>
+                      <button className="secondary" onClick={() => openDoc('DIRECTOR_PRINCIPLES_FA', '', 'full')}>
+                        منشورِ کارگردانی و برشِ عمودیِ دمو
+                      </button>
+                      <button className="secondary" onClick={() => openDoc('00_CANON_LEDGER_FA', '', 'full')}>
+                        دفترِ کلِ کانن (نسخهٔ ۱۳)
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="primary"
+                        onClick={() => openDoc('06_WEAPONS_CRAFTING_AND_WORKSHOP_FA', '', 'full')}
+                      >
+                        طراحی سلاح، ورکشاپ و تیونینگ
+                      </button>
+                      <button
+                        className="secondary"
+                        onClick={() => openDoc('07_CAMP_CARAVANSERAI_WORKSHOP_WATERHOLES_FA', '', 'full')}
+                      >
+                        مأموریت‌ها، پایگاه، سنگ‌نگاره‌ها و آبشخورها
+                      </button>
+                      <button
+                        className="secondary"
+                        onClick={() => openDoc('05_DIRECTION_MISE_EN_SCENE_AND_EASTER_EGGS_FA', '', 'full')}
+                      >
+                        سند کارگردانی، میزانسن و ۱۸ ایستر‌اگ
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </section>
@@ -1955,7 +2148,9 @@ export default function Page() {
                 </button>
                 <button
                   className="path-card"
-                  onClick={() => openDoc('04_OPEN_WORLD_SYSTEMS_AND_VISUAL_BIBLE_FA', '', 'full')}
+                  onClick={() =>
+                    openDoc(isV13 ? 'PLACES_OF_LOT_FA' : '04_OPEN_WORLD_SYSTEMS_AND_VISUAL_BIBLE_FA', '', 'full')
+                  }
                 >
                   <h3>۶ ناحیهٔ دنیای باز و تنگه ({edition})</h3>
                   <p>نقشِ هر منطقه در سواری، اکشن و داستان.</p>
@@ -2057,9 +2252,11 @@ export default function Page() {
               <span className="eyebrow">همهٔ نوشته‌ها در یک جا · {editionLabel}</span>
               <h1>داستان و راهنمای کامل بازی ({editionLabel})</h1>
               <p className="lead">
-                {isV12
-                  ? 'اسنادِ نسخهٔ ۱۲ (بازار بین‌المللی — اکشنِ خالص) مرجعِ فعلی‌اند؛ متنِ کاملِ Markdown هر سند در دسترس است.'
-                  : 'اسنادِ نسخهٔ ۱۱ (بازطراحی AAA) آرشیوِ درامِ بومی‌اند؛ برای هر سند هم توضیحِ ساده و هم متنِ کاملِ Markdown در دسترس است.'}
+                {isV13
+                  ? 'اسنادِ نسخهٔ ۱۳ (سنتزِ نهاییِ کانن) مرجعِ رسمی و قفل‌شدهٔ پروژه هستند؛ از دفترِ کلِ کانن و گاه‌شمار تا فیلم‌نامه و رمانِ کامل.'
+                  : isV12
+                    ? 'اسنادِ نسخهٔ ۱۲ (بازار بین‌المللی — اکشنِ خالص) آرشیوِ نسخهٔ قبل‌اند؛ متنِ کاملِ Markdown هر سند در دسترس است.'
+                    : 'اسنادِ نسخهٔ ۱۱ (بازطراحی AAA) آرشیوِ درامِ بومی‌اند؛ برای هر سند هم توضیحِ ساده و هم متنِ کاملِ Markdown در دسترس است.'}
               </p>
               <div className="filter-row">
                 {['همه', ...new Set(activeLib.docs.map((d) => d.category))].map((c) => (
